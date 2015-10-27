@@ -7,4 +7,5 @@
 ![PatronConceptionDessin](PatronCompositeDessin.PNG)
 
 
-2. 
+2. Concernant le patron de conception de la class DessinComposite, nous avons intégré des instances d'une classe nommée Graffiti, composée d'un Crayon et d'un Chemin, au nombre de 1 à n qui composent un DessinComposite. 
+![PatronConceptionDessinComposite](PatronDessinComposite.PNG)
