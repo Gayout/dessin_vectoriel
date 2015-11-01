@@ -7,5 +7,7 @@
 ![PatronConceptionDessin](PatronCompositeDessin.PNG)
 
 
-2. Concernant le patron de conception de la class DessinComposite, nous avons intégré des instances d'une classe nommée Graffiti, composée d'un Crayon et d'un Chemin, au nombre de 1 à n qui composent un DessinComposite. 
-![PatronConceptionDessinComposite](PatronDessinComposite.PNG)
+2. Concernant l'implémentation de l'interface Dessin, elle se fait en deux étapes. La première étape consiste à étendre l'interface Dessin en une interface Chemin, qui aura comme variable d'instance un objet de type Crayon à qui elle pourra par la suite déléguer des méthodes concernant l'épaisseur du trait par exemple 
+![ImplementationDessin1](ImplementationDessin1.PNG)
+
+3. La deuxième étape est ensuite d'instancier des Chemin, pour cela, de nombreuses classes implémentent cette interface.
