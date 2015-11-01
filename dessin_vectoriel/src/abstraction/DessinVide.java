@@ -18,4 +18,8 @@ public class DessinVide implements Dessin {
 	public void etiqueter(String m) {
 	}
 
+	@Override
+	public void accept(Visiteur visiteur) {
+	}
+
 }

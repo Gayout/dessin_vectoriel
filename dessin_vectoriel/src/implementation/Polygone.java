@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import abstraction.Chemin;
+import abstraction.Dessin;
+import abstraction.Visiteur;
 import exception.PolygoneVideException;
 
 public class Polygone implements Chemin {
@@ -69,6 +71,36 @@ public class Polygone implements Chemin {
 	@Override
 	public void setRempli(boolean b) {
 		rempli = b;
+	}
+
+	@Override
+	public void dessiner() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remplir() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void inserer(Dessin d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void etiqueter(String m) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void accept(Visiteur visiteur) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
