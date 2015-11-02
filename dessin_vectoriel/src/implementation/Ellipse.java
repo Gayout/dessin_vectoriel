@@ -1,5 +1,7 @@
 package implementation;
 
+import java.util.List;
+
 import abstraction.Chemin;
 import abstraction.Dessin;
 
@@ -8,17 +10,19 @@ public class Ellipse implements Chemin {
 	private int gdAxe;
 	private int petitAxe;
 	private long angleAbsGdAxe;
+	private boolean isRempli;
 	
 	public Ellipse() {
 		super();
 	}
 	
-	public Ellipse(Position htGauche, int gdAxe, int petitAxe, long angleAbsGdAxe) {
+	public Ellipse(Position htGauche, int gdAxe, int petitAxe, long angleAbsGdAxe, boolean isRempli) {
 		super();
 		this.htGauche = htGauche;
 		this.gdAxe = gdAxe;
 		this.petitAxe = petitAxe;
 		this.angleAbsGdAxe = angleAbsGdAxe;
+		this.isRempli = isRempli;
 	}
 	
 	public Position getHtGauche() {
@@ -53,6 +57,14 @@ public class Ellipse implements Chemin {
 		this.angleAbsGdAxe = angleAbsGdAxe;
 	}
 
+	public boolean getIsRempli() {
+		return isRempli;
+	}
+
+	public void setIsRempli(boolean isRempli) {
+		this.isRempli = isRempli;
+	}
+	
 	@Override
 	public void dessiner() {
 		// TODO Auto-generated method stub
@@ -99,5 +111,35 @@ public class Ellipse implements Chemin {
 	public void setRempli(boolean b) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Dessin creerCercle(Position centre, int rayon, boolean rempli) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Dessin creerCourbeBezier(boolean rempli, List<Position> pointControle) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Dessin creerDessinComposite(List<Dessin> dessins) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Dessin creerPolygone(boolean rempli, List<Position> sommets) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Dessin creerSegment(Position p1, Position p2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

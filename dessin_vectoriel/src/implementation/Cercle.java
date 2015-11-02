@@ -7,45 +7,47 @@ import abstraction.Dessin;
 import abstraction.DessinVide;
 import abstraction.Visiteur;
 
-public class Cercle implements Chemin {
+public class Cercle extends Ellipse {
 
-	private Position centre;
-	private int rayon;
-	private boolean rempli;
-	
-	public Cercle(Position centre, int rayon, boolean rempli) {
+	public Cercle() {
 		super();
-		this.centre = centre;
-		this.rayon = rayon;
-		this.rempli = rempli;
+	}
+
+	public Cercle(Position centre, int rayon, boolean isRempli) {
+		super(new Position(centre.getX()-rayon, centre.getY()-rayon), rayon, rayon, 0, isRempli);
 	}
 
 	public int getRayon() {
-		return rayon;
+		if (super.getGdAxe() == super.getPetitAxe()) {
+			return super.getGdAxe();
+		}
+		else {
+			return (Integer) null;
+		}
 	}
 
 	public void setRayon(int rayon) {
-		this.rayon = rayon;
+		super.setGdAxe(rayon);
+		super.setPetitAxe(rayon);
 	}
 
-	@Override
-	public Position getPosition() {
-		return centre;
+	public Position getCentre() {
+		return new Position(super.getHtGauche().getX()+super.getGdAxe(), super.getHtGauche().getY()+super.getGdAxe());
 	}
 
 	@Override
 	public void setPosition(Position p) {
-		centre = p;
+		
 	}
 
 	@Override
 	public boolean isRempli() {
-		return rempli;
+		return (Boolean) null;
 	}
 
 	@Override
 	public void setRempli(boolean b) {
-		rempli = b;
+		
 	}
 
 	@Override

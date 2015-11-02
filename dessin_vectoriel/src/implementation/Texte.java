@@ -1,6 +1,7 @@
 package implementation;
 
 import java.awt.Font;
+import java.util.List;
 
 import abstraction.Dessin;
 
@@ -73,5 +74,35 @@ public class Texte implements Dessin {
 	public void etiqueter(String m) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Dessin creerCercle(Position centre, int rayon, boolean rempli) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Dessin creerCourbeBezier(boolean rempli, List<Position> pointControle) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Dessin creerDessinComposite(List<Dessin> dessins) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Dessin creerPolygone(boolean rempli, List<Position> sommets) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Dessin creerSegment(Position p1, Position p2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
