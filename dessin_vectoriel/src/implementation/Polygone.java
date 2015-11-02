@@ -14,12 +14,14 @@ public class Polygone implements Chemin {
 
 	private boolean rempli;
 	private List<Segment> cotes;
+	private boolean ouvert;
 
 	// un polygone est défini par ses cotes, mais on le construit en lui donnant tous ses sommets
-	public Polygone(boolean rempli, List<Position> sommets) {
+	public Polygone(boolean rempli, List<Position> sommets, boolean ouvert) {
 		super();
 		this.rempli = rempli;
-		
+		this.cotes= new ArrayList<Segment>();
+
 		//on regarde si la liste de points a moins de 2 points, si elle en a moins on envoie une erreur
 		try{
 			if(sommets.size()<2){
@@ -31,16 +33,28 @@ public class Polygone implements Chemin {
 		}
 
 		//on creer une fabrique de segment pour définir les cotés du polygone à partir des sommets en paramètre
-		FabriqueDessin<Dessin> fab = new Segment(null,null);
+		FabriqueDessin<Dessin> fab = new Segment();
 		int size = sommets.size();
-		for(int i=0; i<size; i++){
+		for(int i=0; i<size-1; i++){
 			this.cotes.add(
 					(Segment) fab.creerSegment(
-							sommets.get(i), sommets.get((i+1)%size) //i+1 % size vaut toujours i+1 sauf quand i vaut size-1 auquel cas i+1 vaut 0 et on ferme le polygone
+							sommets.get(i), sommets.get(i+1)
 							)
 					);
 		}
-		
+
+		//si le polygone n'est pas ouvert, on le ferme
+		if(!ouvert){
+			this.cotes.add(
+					(Segment) fab.creerSegment(
+							sommets.get(size-1), sommets.get(0)
+							)
+					);
+		}
+	}
+
+	public Polygone() {
+		super();
 	}
 
 	@Override
@@ -115,28 +129,13 @@ public class Polygone implements Chemin {
 	}
 
 	@Override
-	public Dessin creerCercle(Position centre, int rayon, boolean rempli) {
-		return null;
-	}
-
-	@Override
 	public Dessin creerCourbeBezier(boolean rempli, List<Position> pointControle) {
 		return null;
 	}
 
 	@Override
-	public Dessin creerDessinComposite(List<Dessin> dessins) {
-		return null;
-	}
-
-	@Override
-	public Dessin creerPolygone(boolean rempli, List<Position> sommets) {
-		return new Polygone(rempli, sommets);
-	}
-
-	@Override
-	public Dessin creerSegment(Position p1, Position p2) {
-		return null;
+	public Dessin creerPolygone(boolean rempli, List<Position> sommets, boolean ouvert) {
+		return new Polygone(rempli, sommets, ouvert);
 	}
 
 }

@@ -15,6 +15,10 @@ public class Segment implements Chemin{
 		this.arrivee=p2;
 	}
 	
+	public Segment(){
+		super();
+	}
+	
 	public Position getDepart() {
 		return depart;
 	}
@@ -71,26 +75,6 @@ public class Segment implements Chemin{
 	public void etiqueter(String m) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public Dessin creerCercle(Position centre, int rayon, boolean rempli) {
-		return null;
-	}
-
-	@Override
-	public Dessin creerCourbeBezier(boolean rempli, List<Position> pointControle) {
-		return null;
-	}
-
-	@Override
-	public Dessin creerDessinComposite(List<Dessin> dessins) {
-		return null;
-	}
-
-	@Override
-	public Dessin creerPolygone(boolean rempli, List<Position> sommets) {
-		return null;
 	}
 
 	@Override
