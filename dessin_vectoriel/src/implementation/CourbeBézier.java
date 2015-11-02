@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CourbeBézier extends Polygone {
 
-	public CourbeBézier(boolean rempli, List<Droite> cotes) {
+	public CourbeBézier(boolean rempli, List<Segment> cotes) {
 		super(rempli, cotes);
 	}
 

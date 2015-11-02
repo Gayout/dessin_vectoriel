@@ -11,9 +11,9 @@ import exception.PolygoneVideException;
 public class Polygone implements Chemin {
 
 	private boolean rempli;
-	private List<Droite> cotes;
+	private List<Segment> cotes;
 
-	public Polygone(boolean rempli, List<Droite> cotes) {
+	public Polygone(boolean rempli, List<Segment> cotes) {
 		super();
 		this.rempli = rempli;
 		this.cotes = cotes;
@@ -23,7 +23,7 @@ public class Polygone implements Chemin {
 	public Position getPosition() {
 		//on récupère les positions de toutes les droites qui compose le polygône
 		ArrayList<Position> pos = new ArrayList<Position>();
-		for(Droite d: cotes){
+		for(Segment d: cotes){
 			pos.add(d.getPosition());
 		}
 
@@ -50,16 +50,16 @@ public class Polygone implements Chemin {
 
 	@Override
 	public void setPosition(Position p) {
-		for(Droite d : cotes){
+		for(Segment d : cotes){
 			d.setPosition(p);
 		}
 	}
 
-	public List<Droite> getCotes() {
+	public List<Segment> getCotes() {
 		return cotes;
 	}
 
-	public void setCotes(List<Droite> cotes) {
+	public void setCotes(List<Segment> cotes) {
 		this.cotes = cotes;
 	}
 

@@ -4,11 +4,11 @@ import abstraction.Chemin;
 import abstraction.Dessin;
 import abstraction.Visiteur;
 
-public class Droite implements Chemin{
+public class Segment implements Chemin{
 	private Position depart;
 	private Position arrivee;
 	
-	public Droite(Position p1, Position p2){
+	public Segment(Position p1, Position p2){
 		this.depart=p1;
 		this.arrivee=p2;
 	}
