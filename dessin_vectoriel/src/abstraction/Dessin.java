@@ -1,6 +1,6 @@
 package abstraction;
 
-public interface Dessin {
+public interface Dessin extends FabriqueDessin<Dessin>{
 	
 	public void dessiner();
 	public void remplir();

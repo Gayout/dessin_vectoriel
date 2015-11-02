@@ -2,6 +2,8 @@ package abstraction;
 
 import java.util.List;
 
+import implementation.Position;
+
 public class DessinComposite implements Dessin {
 	
 	private List<Dessin> dessins;
@@ -49,6 +51,31 @@ public class DessinComposite implements Dessin {
 		for (Dessin d : dessins){
 			d.accept(visiteur);
 		}		
+	}
+
+	@Override
+	public Dessin creerCercle(Position centre, int rayon, boolean rempli) {
+		return null;
+	}
+
+	@Override
+	public Dessin creerCourbeBezier(boolean rempli, List<Position> pointControle) {
+		return null;
+	}
+
+	@Override
+	public Dessin creerDessinComposite(List<Dessin> dessins) {
+		return new DessinComposite(dessins);
+	}
+
+	@Override
+	public Dessin creerPolygone(boolean rempli, List<Position> sommets) {
+		return null;
+	}
+
+	@Override
+	public Dessin creerSegment(Position p1, Position p2) {
+		return null;
 	}
 
 }
