@@ -3,7 +3,7 @@ package implementation;
 import abstraction.Chemin;
 import abstraction.Dessin;
 
-public class Segment implements Chemin{
+public class Segment extends Chemin{
 	private Position depart;
 	private Position arrivee;
 	
@@ -25,53 +25,12 @@ public class Segment implements Chemin{
 	}
 	
 	@Override
-	public Position getPosition() {
-		return new Position((depart.getX()+arrivee.getX())/2, (depart.getY()+arrivee.getY())/2 );
-	}
-
-	@Override
-	public void setPosition(Position p) {
-		int dx = p.getX() -this.getPosition().getX();
-		int dy = p.getY() -this.getPosition().getY();
-		
-		depart.setX(depart.getX()+dx);
-		depart.setY(depart.getY()+dy);
-		
-		arrivee.setX(arrivee.getX()+dx);
-		arrivee.setY(arrivee.getY()+dy);
-	}
-
-	@Override
 	public boolean isRempli() {
 		return false;
 	}
 
 	@Override
 	public void setRempli(boolean b) {
-	}
-
-	@Override
-	public void dessiner() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void remplir() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void inserer(Dessin d) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void etiqueter(String m) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

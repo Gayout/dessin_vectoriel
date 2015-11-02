@@ -1,13 +1,16 @@
 package abstraction;
 
-import implementation.Position;
 import implementation.Crayon;
 
-public interface Chemin extends Dessin{
-	Crayon crayon= new Crayon(0, null);
+public abstract class Chemin implements Dessin{
+	private Crayon crayon= new Crayon(0, null);
 	
-	public Position getPosition();
-	public void setPosition(Position p);
-	public boolean isRempli();
-	public void setRempli(boolean b);
+	public Crayon getCrayon() {
+		return crayon;
+	}
+	public void setCrayon(Crayon crayon) {
+		this.crayon = crayon;
+	}
+	public abstract boolean isRempli();
+	public abstract void setRempli(boolean b);
 }

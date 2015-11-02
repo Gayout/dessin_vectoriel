@@ -24,31 +24,6 @@ public class DessinComposite implements Dessin {
 	}
 
 	@Override
-	public void dessiner() {
-		for (Dessin d : dessins){
-			d.dessiner();
-		}
-	}
-
-	@Override
-	public void remplir() {
-		for (Dessin d : dessins){
-			d.remplir();
-		}		
-	}
-
-	@Override
-	public void inserer(Dessin d) {
-		dessins.add(d);
-	}
-
-	@Override
-	public void etiqueter(String m) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void accept(Visiteur visiteur) {
 		for (Dessin d : dessins){
 			d.accept(visiteur);

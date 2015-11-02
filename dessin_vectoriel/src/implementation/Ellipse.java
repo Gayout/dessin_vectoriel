@@ -1,34 +1,33 @@
 package implementation;
 
 import abstraction.Chemin;
-import abstraction.Dessin;
 
-public class Ellipse implements Chemin {
-	private Position htGauche;
+public class Ellipse extends Chemin {
+	private Position centre;
 	private int gdAxe;
 	private int petitAxe;
 	private long angleAbsGdAxe;
-	private boolean isRempli;
+	private boolean rempli;
 	
 	public Ellipse() {
 		super();
 	}
 	
-	public Ellipse(Position htGauche, int gdAxe, int petitAxe, long angleAbsGdAxe, boolean isRempli) {
+	public Ellipse(Position centre, int gdAxe, int petitAxe, long angleAbsGdAxe, boolean isRempli) {
 		super();
-		this.htGauche = htGauche;
+		this.centre = centre;
 		this.gdAxe = gdAxe;
 		this.petitAxe = petitAxe;
 		this.angleAbsGdAxe = angleAbsGdAxe;
-		this.isRempli = isRempli;
+		this.rempli = isRempli;
 	}
 	
-	public Position getHtGauche() {
-		return htGauche;
+	public Position getCentre() {
+		return centre;
 	}
 
-	public void setHtGauche(Position htGauche) {
-		this.htGauche = htGauche;
+	public void setCentre(Position centre) {
+		this.centre = centre;
 	}
 
 	public int getGdAxe() {
@@ -55,59 +54,11 @@ public class Ellipse implements Chemin {
 		this.angleAbsGdAxe = angleAbsGdAxe;
 	}
 
-	public boolean getIsRempli() {
-		return isRempli;
-	}
-
-	public void setIsRempli(boolean isRempli) {
-		this.isRempli = isRempli;
-	}
-	
-	@Override
-	public void dessiner() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void remplir() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void inserer(Dessin d) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void etiqueter(String m) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Position getPosition() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setPosition(Position p) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public boolean isRempli() {
-		// TODO Auto-generated method stub
-		return false;
+		return rempli;
 	}
 
-	@Override
-	public void setRempli(boolean b) {
-		// TODO Auto-generated method stub
-		
+	public void setRempli(boolean isRempli) {
+		this.rempli = isRempli;
 	}
 }
