@@ -31,7 +31,7 @@ public class Polygone implements Chemin {
 		}
 
 		//on creer une fabrique de segment pour définir les cotés du polygone à partir des sommets en paramètre
-		FabriqueDessin<Dessin> fab = new Segment(null,null);
+		FabriqueDessin<Dessin> fab = new Segment();
 		int size = sommets.size();
 		for(int i=0; i<size; i++){
 			this.cotes.add(
@@ -43,6 +43,10 @@ public class Polygone implements Chemin {
 		
 	}
 
+	public Polygone() {
+		super();
+	}
+	
 	@Override
 	public Position getPosition() {
 		//on récupère les positions de toutes les droites qui compose le polygône

@@ -13,6 +13,10 @@ public class DessinComposite implements Dessin {
 		this.dessins = dessins;
 	}
 
+	public DessinComposite() {
+		super();
+	}
+
 	public List<Dessin> getDessins() {
 		return dessins;
 	}

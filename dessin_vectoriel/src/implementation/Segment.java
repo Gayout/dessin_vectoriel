@@ -15,6 +15,10 @@ public class Segment implements Chemin{
 		this.arrivee=p2;
 	}
 	
+	public Segment(){
+		super();
+	}
+	
 	public Position getDepart() {
 		return depart;
 	}

@@ -10,6 +10,10 @@ public class CourbeBezier extends Polygone {
 		super(rempli, pointControle);
 	}
 
+	public CourbeBezier() {
+		super();
+	}
+
 	@Override
 	public Dessin creerCourbeBezier(boolean rempli, List<Position> pointControle) {
 		return new CourbeBezier(rempli, pointControle);

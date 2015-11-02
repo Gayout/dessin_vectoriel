@@ -20,6 +20,10 @@ public class Cercle implements Chemin {
 		this.rempli = rempli;
 	}
 
+	public Cercle() {
+		super();
+	}
+
 	public int getRayon() {
 		return rayon;
 	}
