@@ -7,7 +7,7 @@ import abstraction.Dessin;
 public class CourbeBezier extends Polygone {
 
 	public CourbeBezier(boolean rempli, List<Position> pointControle) {
-		super(rempli, pointControle);
+		super(rempli, pointControle, true);
 	}
 
 	public CourbeBezier() {
@@ -20,7 +20,7 @@ public class CourbeBezier extends Polygone {
 	}
 	
 	@Override
-	public Dessin creerPolygone(boolean rempli, List<Position> sommets) {
+	public Dessin creerPolygone(boolean rempli, List<Position> sommets, boolean ouvert) {
 		return null;
 	}
 }

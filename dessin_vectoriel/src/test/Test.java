@@ -34,7 +34,7 @@ public class Test {
 		sommets.add(new Position(0,0));
 		sommets.add(new Position(1, 1));
 		
-        Assert.assertTrue(fab.creerPolygone(false, sommets) instanceof Polygone); 
+        Assert.assertTrue(fab.creerPolygone(false, sommets, true) instanceof Polygone); 
 	}
 	
 	@org.junit.Test
