@@ -5,9 +5,7 @@ import java.util.List;
 
 import abstraction.Chemin;
 import abstraction.Dessin;
-import abstraction.DessinVide;
 import abstraction.FabriqueDessin;
-import abstraction.Visiteur;
 import exception.PolygoneVideException;
 
 public class Polygone implements Chemin {
@@ -92,6 +90,14 @@ public class Polygone implements Chemin {
 
 	public void setCotes(List<Segment> cotes) {
 		this.cotes = cotes;
+	}
+
+	public boolean isOuvert() {
+		return ouvert;
+	}
+
+	public void setOuvert(boolean ouvert) {
+		this.ouvert = ouvert;
 	}
 
 	@Override

@@ -1,17 +1,8 @@
 package implementation;
 
-import java.util.List;
-
-import abstraction.Chemin;
 import abstraction.Dessin;
-import abstraction.DessinVide;
-import abstraction.Visiteur;
 
 public class Cercle extends Ellipse {
-
-	public Cercle() {
-		super();
-	}
 
 	public Cercle(Position centre, int rayon, boolean isRempli) {
 		super(new Position(centre.getX()-rayon, centre.getY()-rayon), rayon, rayon, 0, isRempli);
@@ -26,7 +17,7 @@ public class Cercle extends Ellipse {
 			return super.getGdAxe();
 		}
 		else {
-			return (Integer) null;
+			return 0;
 		}
 	}
 
@@ -46,7 +37,7 @@ public class Cercle extends Ellipse {
 
 	@Override
 	public boolean isRempli() {
-		return (Boolean) null;
+		return false;
 	}
 
 	@Override

@@ -1,10 +1,7 @@
 package implementation;
 
-import java.util.List;
-
 import abstraction.Chemin;
 import abstraction.Dessin;
-import abstraction.Visiteur;
 
 public class Segment implements Chemin{
 	private Position depart;

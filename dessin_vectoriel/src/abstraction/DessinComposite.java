@@ -2,8 +2,6 @@ package abstraction;
 
 import java.util.List;
 
-import implementation.Position;
-
 public class DessinComposite implements Dessin {
 	
 	private List<Dessin> dessins;

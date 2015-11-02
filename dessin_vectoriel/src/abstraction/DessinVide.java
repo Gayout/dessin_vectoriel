@@ -1,9 +1,5 @@
 package abstraction;
 
-import java.util.List;
-
-import implementation.Position;
-
 public class DessinVide implements Dessin {
 
 	public static final DessinVide VIDE = new DessinVide();
