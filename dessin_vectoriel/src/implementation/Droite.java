@@ -71,10 +71,4 @@ public class Droite implements Chemin{
 		
 	}
 
-	@Override
-	public void accept(Visiteur visiteur) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

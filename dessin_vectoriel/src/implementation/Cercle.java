@@ -68,10 +68,4 @@ public class Cercle implements Chemin {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void accept(Visiteur visiteur) {
-		// TODO Auto-generated method stub
-		
-	}
 }
