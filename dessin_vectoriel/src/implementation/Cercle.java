@@ -83,11 +83,6 @@ public class Cercle implements Chemin {
 	}
 
 	@Override
-	public Dessin creerDessinVide() {
-		return DessinVide.VIDE;
-	}
-
-	@Override
 	public Dessin creerDessinComposite(List<Dessin> dessins) {
 		return null;
 	}

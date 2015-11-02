@@ -84,11 +84,6 @@ public class Segment implements Chemin{
 	}
 
 	@Override
-	public Dessin creerDessinVide() {
-		return null;
-	}
-
-	@Override
 	public Dessin creerDessinComposite(List<Dessin> dessins) {
 		return null;
 	}

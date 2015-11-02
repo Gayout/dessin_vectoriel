@@ -42,11 +42,6 @@ public class DessinVide implements Dessin {
 	}
 
 	@Override
-	public Dessin creerDessinVide() {
-		return VIDE;
-	}
-
-	@Override
 	public Dessin creerDessinComposite(List<Dessin> dessins) {
 		return null;
 	}

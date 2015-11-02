@@ -64,11 +64,6 @@ public class DessinComposite implements Dessin {
 	}
 
 	@Override
-	public Dessin creerDessinVide() {
-		return DessinVide.VIDE;
-	}
-
-	@Override
 	public Dessin creerDessinComposite(List<Dessin> dessins) {
 		return new DessinComposite(dessins);
 	}
