@@ -1,7 +1,10 @@
 package implementation;
 
+import java.util.List;
+
 import abstraction.Chemin;
 import abstraction.Dessin;
+import abstraction.DessinVide;
 import abstraction.Visiteur;
 
 public class Cercle implements Chemin {
@@ -67,5 +70,35 @@ public class Cercle implements Chemin {
 	public void etiqueter(String m) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Dessin creerCercle(Position centre, int rayon, boolean rempli) {
+		return new Cercle(centre, rayon, rempli);
+	}
+
+	@Override
+	public Dessin creerCourbeBezier(boolean rempli, List<Position> pointControle) {
+		return null;
+	}
+
+	@Override
+	public Dessin creerDessinVide() {
+		return DessinVide.VIDE;
+	}
+
+	@Override
+	public Dessin creerDessinComposite(List<Dessin> dessins) {
+		return null;
+	}
+
+	@Override
+	public Dessin creerPolygone(boolean rempli, List<Position> sommets) {
+		return null;
+	}
+
+	@Override
+	public Dessin creerSegment(Position p1, Position p2) {
+		return null;
 	}
 }
