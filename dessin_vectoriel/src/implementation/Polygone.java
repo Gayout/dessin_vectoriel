@@ -19,6 +19,7 @@ public class Polygone implements Chemin {
 	public Polygone(boolean rempli, List<Position> sommets) {
 		super();
 		this.rempli = rempli;
+		this.cotes= new ArrayList<Segment>();
 		
 		//on regarde si la liste de points a moins de 2 points, si elle en a moins on envoie une erreur
 		try{

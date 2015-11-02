@@ -44,7 +44,6 @@ public class Test {
 		ArrayList<Position> ptsCtrl = new ArrayList<Position>();
 		ptsCtrl.add(new Position(0,0));
 		ptsCtrl.add(new Position(1, 1));
-		
         Assert.assertTrue(fab.creerCourbeBezier(false, ptsCtrl) instanceof CourbeBezier); 
 	}
 	
