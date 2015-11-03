@@ -5,7 +5,7 @@ import abstraction.Dessin;
 public class Cercle extends Ellipse {
 
 	public Cercle(Position centre, int rayon, boolean isRempli) {
-		super(new Position(centre.getX()-rayon, centre.getY()-rayon), rayon, rayon, 0, isRempli);
+		super(new Position(centre.getX(), centre.getY()), rayon, rayon, 0, isRempli);
 	}
 
 	public Cercle() {

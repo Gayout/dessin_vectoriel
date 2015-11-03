@@ -13,7 +13,7 @@ public class Test {
 	public void creerCercle() {
 		FabriqueDessin<Dessin> fab = new Cercle();
 
-        Assert.assertTrue(fab.creerCercle(null, 0, false) instanceof Cercle); 
+        Assert.assertTrue(fab.creerCercle(new Position(0,0), 0, false) instanceof Cercle); 
 	}
 	
 	@org.junit.Test
