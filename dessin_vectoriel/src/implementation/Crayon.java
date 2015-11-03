@@ -4,9 +4,9 @@ import java.awt.Color;
 
 public class Crayon {
 	private int epaisseur;
-	private Color couleur;
+	private String couleur;
 	
-	public Crayon(int epaisseur, Color couleur) {
+	public Crayon(int epaisseur, String couleur) {
 		super();
 		this.epaisseur = epaisseur;
 		this.couleur = couleur;
@@ -20,11 +20,11 @@ public class Crayon {
 		this.epaisseur = epaisseur;
 	}
 
-	public Color getCouleur() {
+	public String getCouleur() {
 		return couleur;
 	}
 
-	public void setCouleur(Color couleur) {
+	public void setCouleur(String couleur) {
 		this.couleur = couleur;
 	}
 	
