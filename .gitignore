@@ -1,3 +1,5 @@
 .metadata/*
 dessin_vectoriel/ProjectSettings/*
 dessin_vectoriel/Library/*
+.recommenders/*
+*.svg
