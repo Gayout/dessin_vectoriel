@@ -1,5 +1,7 @@
 package interpreteur.svg;
 
+import java.awt.Color;
+
 import implementation.Crayon;
 import implementation.Ellipse;
 import implementation.Position;
@@ -18,7 +20,7 @@ public class EllipseSVG extends Ellipse {
 		int rx = ((this.getAngleAbsGdAxe()%180) < 45) ? this.getGdAxe() : this.getPetitAxe(); 
 		int ry = ((this.getAngleAbsGdAxe()%180) >= 45) ? this.getGdAxe() : this.getPetitAxe();
 	
-		this.setCrayon(new Crayon(2, "black"));
+		this.setCrayon(new Crayon(2, Color.black));
 		
 		this.code = "<ellipse cx=\"" + this.getCentre().getX()
 				+ "\" cy=\"" + this.getCentre().getY()
