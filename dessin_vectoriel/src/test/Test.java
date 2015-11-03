@@ -19,7 +19,7 @@ public class Test {
 	@org.junit.Test
 	public void creerSegment() {
 		FabriqueDessin<Dessin> fab = new Segment();
-
+		System.out.println("/>");
         Assert.assertTrue(fab.creerSegment(null, null) instanceof Segment); 
 	}
 	
