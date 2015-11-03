@@ -1,6 +1,5 @@
 package implementation;
 
-import abstraction.Chemin;
 
 public class Ellipse extends Cercle {
 	

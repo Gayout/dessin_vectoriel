@@ -13,11 +13,19 @@ public class Cercle extends Chemin{
 	public Cercle(Position centre, int rayon, boolean isRempli) {
 		this.centre = centre;
 		this.gdAxe = rayon;
-		this.rempli = rempli;
+		this.rempli = isRempli;
 	}
 
 	public Cercle() {
 		super();
+	}
+
+	public Position getCentre() {
+		return centre;
+	}
+
+	public void setCentre(Position centre) {
+		this.centre = centre;
 	}
 
 	public int getRayon() {
