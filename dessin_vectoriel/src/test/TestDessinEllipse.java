@@ -11,6 +11,7 @@ public class TestDessinEllipse {
 	public static void main(String[] args) {
 			
 		EllipseSVG ellipse = new EllipseSVG(new Position(250,250),50,30,90,false);
+		ellipse.getCrayon().setEpaisseur(10);
 		try {
 
 			File file = new File("ellipse.svg");
