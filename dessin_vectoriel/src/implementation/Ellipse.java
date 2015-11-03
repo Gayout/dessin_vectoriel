@@ -2,40 +2,27 @@ package implementation;
 
 import abstraction.Chemin;
 
-public class Ellipse extends Chemin {
-	private Position centre;
-	private int gdAxe;
+public class Ellipse extends Cercle {
+	
 	private int petitAxe;
 	private long angleAbsGdAxe;
-	private boolean rempli;
 	
 	public Ellipse() {
 		super();
 	}
 	
 	public Ellipse(Position centre, int gdAxe, int petitAxe, long angleAbsGdAxe, boolean isRempli) {
-		super();
-		this.centre = centre;
-		this.gdAxe = gdAxe;
+		super(centre, gdAxe, isRempli);
 		this.petitAxe = petitAxe;
 		this.angleAbsGdAxe = angleAbsGdAxe;
-		this.rempli = isRempli;
-	}
-	
-	public Position getCentre() {
-		return centre;
-	}
-
-	public void setCentre(Position centre) {
-		this.centre = centre;
 	}
 
 	public int getGdAxe() {
-		return gdAxe;
+		return super.getRayon();
 	}
 
 	public void setGdAxe(int gdAxe) {
-		this.gdAxe = gdAxe;
+		super.setRayon(gdAxe);
 	}
 
 	public int getPetitAxe() {
@@ -54,11 +41,4 @@ public class Ellipse extends Chemin {
 		this.angleAbsGdAxe = angleAbsGdAxe;
 	}
 
-	public boolean isRempli() {
-		return rempli;
-	}
-
-	public void setRempli(boolean isRempli) {
-		this.rempli = isRempli;
-	}
 }
