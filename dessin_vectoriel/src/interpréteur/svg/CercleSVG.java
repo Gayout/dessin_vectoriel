@@ -1,5 +1,7 @@
 package interpréteur.svg;
 
-public class CercleSVG {
+import implementation.Cercle;
+
+public class CercleSVG extends Cercle{
 
 }
