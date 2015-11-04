@@ -20,27 +20,37 @@ public class EllipseSVG extends Ellipse {
 
 	public String generateCode(){
 		
-		int rx = ((this.getAngleAbsGdAxe()%180) < 45) ? this.getGdAxe() : this.getPetitAxe(); 
-		int ry = ((this.getAngleAbsGdAxe()%180) >= 45) ? this.getGdAxe() : this.getPetitAxe();
+		int cx = this.getCentre().getX();
+		int cy = this.getCentre().getY();
+		int rx = this.getGdAxe();
+		int ry = this.getPetitAxe();
 		
-		String code = "<ellipse cx=\"" + this.getCentre().getX()
-				+ "\" cy=\"" + this.getCentre().getY()
-				+ "\" rx=\""+rx
+		int red = this.getCrayon().getCouleur().getRed();
+		int green = this.getCrayon().getCouleur().getGreen();
+		int blue = this.getCrayon().getCouleur().getBlue();
+
+		
+		String code = "<ellipse cx=\"" + cx
+				+ "\" cy=\"" + cy
+				+ "\" rx=\""+ rx
 				+ "\" ry="+"\"" + ry +"\" ";
 		
 		code += "style=\"stroke: rgb(" 
-				+ this.getCrayon().getCouleur().getRed()
-				+ ", " + this.getCrayon().getCouleur().getGreen()
-				+ ", " + this.getCrayon().getCouleur().getBlue()+ ")"
+				+ red
+				+ ", " + green
+				+ ", " + blue + ")"
 				+ "; stroke-width:" + this.getCrayon().getEpaisseur() + ";";
 		if(!this.isRempli())
-			code += "fill: none;";
+			code += "fill: none;\"";
 		else
 			code += "fill : rgb(" 
-				+ this.getCrayon().getCouleur().getRed()
-				+ ", " + this.getCrayon().getCouleur().getGreen()
-				+ ", " + this.getCrayon().getCouleur().getBlue()+ ");";
-		code+= "\" />";
+				+ red
+				+ ", " + green
+				+ ", " + blue + ");\"";
+
+		code+= " transform=\"rotate("+this.getAngleAbsGdAxe()+", " + cx + ", " + cy + ")\" ";
+		
+		code+= " />";
 		
 		return code;
 	}
