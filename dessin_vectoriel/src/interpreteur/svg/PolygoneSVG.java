@@ -39,7 +39,7 @@ public class PolygoneSVG extends Polygone {
 				+ red
 				+ ", " + green
 				+ ", " + blue + ")"
-				+ "; stroke-width:" + this.getCrayon().getEpaisseur() + ";";
+				+ "; stroke-width:" + this.getCrayon().getEpaisseur() + "; ";
 		if(!this.isRempli())
 			code += "fill: none;\"";
 		else
