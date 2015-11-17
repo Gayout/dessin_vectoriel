@@ -6,6 +6,10 @@ import abstraction.Dessin;
 
 public class CourbeBezier extends Polygone {
 
+	public CourbeBezier(boolean rempli, List<Position> sommets, boolean ouvert) {
+		super(rempli, sommets, ouvert);
+	}
+
 	public CourbeBezier(boolean rempli, List<Position> pointControle) {
 		super(rempli, pointControle, true);
 	}
