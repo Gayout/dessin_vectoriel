@@ -20,7 +20,7 @@ public class TestSVGBezier {
 		sommets.add(new Position(300,100));
 		sommets.add(new Position(300,200));
 		
-		CourbeBezierSVG courbeBezier = new CourbeBezierSVG(true, sommets, false);
+		CourbeBezierSVG courbeBezier = new CourbeBezierSVG(sommets, false, true);
 		courbeBezier.getCrayon().setEpaisseur(6);
 		try {
 

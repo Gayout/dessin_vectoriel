@@ -31,7 +31,7 @@ public class Test {
 		sommets.add(new Position(0,0));
 		sommets.add(new Position(1, 1));
 		
-        Assert.assertTrue(fab.creerPolygone(false, sommets, true) instanceof Polygone); 
+        Assert.assertTrue(fab.creerPolygone( sommets, true, false) instanceof Polygone); 
 	}
 	
 	@org.junit.Test
@@ -41,7 +41,7 @@ public class Test {
 		ArrayList<Position> ptsCtrl = new ArrayList<Position>();
 		ptsCtrl.add(new Position(0,0));
 		ptsCtrl.add(new Position(1, 1));
-        Assert.assertTrue(fab.creerCourbeBezier(false, ptsCtrl) instanceof CourbeBezier); 
+        Assert.assertTrue(fab.creerCourbeBezier(ptsCtrl, false) instanceof CourbeBezier); 
 	}
 	
 
