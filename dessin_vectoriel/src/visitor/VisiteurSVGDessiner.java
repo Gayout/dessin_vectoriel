@@ -14,7 +14,7 @@ public class VisiteurSVGDessiner implements Visiteur{
 		super();
 		code = "<?xml version=\"1.0\" standalone=\"no\"?>\n"
 				+ "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n"
-				+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"500\" height=\"500\" >\n\t</svg>";
+				+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"500\" height=\"500\" >\n</svg>";
 	}
 
 	public String getCode() {
@@ -34,20 +34,24 @@ public class VisiteurSVGDessiner implements Visiteur{
 	public void visit(Cercle cercle) {
 		code = code.substring(0, code.length()-6);
 		CercleSVG cercleSVG= cercle.creerCercleSVG();
-		code += cercleSVG.generateCode();
-		code += "</svg>";
+		code += "\t"+cercleSVG.generateCode();
+		code += "\n</svg>";
 	}
 
 	@Override
 	public void visit(CourbeBezier courbeBezier) {
-		// TODO Auto-generated method stub
-		
+		code = code.substring(0, code.length()-6);
+		CourbeBezierSVG courbeBezierSVG= courbeBezier.creerCourbeBezierSVG();
+		code += "\t"+courbeBezierSVG.generateCode();
+		code += "\n</svg>";		
 	}
 
 	@Override
 	public void visit(Ellipse ellipse) {
-		// TODO Auto-generated method stub
-		
+		code = code.substring(0, code.length()-6);
+		EllipseSVG ellipseSVG= ellipse.creerEllipseSVG();
+		code += "\t"+ellipseSVG.generateCode();
+		code += "\n</svg>";		
 	}
 
 	@Override
