@@ -2,6 +2,7 @@ package implementation;
 
 import abstraction.Chemin;
 import abstraction.Dessin;
+import abstraction.Visiteur;
 
 public class Rectangle extends Chemin{
 
@@ -56,5 +57,11 @@ public class Rectangle extends Chemin{
 	@Override
 	public Dessin creerRectangle(Position hautGauche, int width, int height, boolean isRempli) {
 		return new Rectangle(hautGauche, width, height, isRempli);
+	}
+
+	@Override
+	public void accept(Visiteur visiteur) {
+		// TODO Auto-generated method stub
+		
 	}
 }

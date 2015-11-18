@@ -2,6 +2,8 @@ package implementation;
 
 import abstraction.Chemin;
 import abstraction.Dessin;
+import abstraction.Visiteur;
+import interpreteur.svg.CercleSVG;
 
 public class Cercle extends Chemin{
 
@@ -46,5 +48,13 @@ public class Cercle extends Chemin{
 	@Override
 	public Dessin creerCercle(Position centre, int rayon, boolean rempli) {
 		return new Cercle(centre, rayon, rempli);
+	}
+	
+	public CercleSVG creerCercleSVG() {
+		return new CercleSVG(this);
+	}
+	
+	public void accept(Visiteur visiteur){
+		visiteur.visit(this);
 	}
 }

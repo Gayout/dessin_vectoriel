@@ -2,6 +2,7 @@ package implementation;
 
 import abstraction.Chemin;
 import abstraction.Dessin;
+import abstraction.Visiteur;
 
 public class Segment extends Chemin{
 	private Position depart;
@@ -36,6 +37,12 @@ public class Segment extends Chemin{
 	@Override
 	public Dessin creerSegment(Position p1, Position p2) {
 		return new Segment(p1, p2);
+	}
+
+	@Override
+	public void accept(Visiteur visiteur) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

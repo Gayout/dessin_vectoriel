@@ -11,7 +11,11 @@ public class CercleSVG extends Cercle{
 	public CercleSVG() {
 		super();
 	}
-
+	
+	public CercleSVG(Cercle cercle){
+		this(cercle.getCentre(), cercle.getRayon(), cercle.isRempli());
+	}
+	
 	public CercleSVG(Position centre, int rayon, boolean isRempli) {
 		super(centre, rayon, isRempli);
 		

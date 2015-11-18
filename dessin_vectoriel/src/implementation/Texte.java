@@ -2,6 +2,7 @@ package implementation;
 
 import java.awt.Font;
 import abstraction.Dessin;
+import abstraction.Visiteur;
 
 public class Texte implements Dessin {
 	private int taillePolice;
@@ -51,5 +52,11 @@ public class Texte implements Dessin {
 
 	public void setHtGauche(Position htGauche) {
 		this.htGauche = htGauche;
+	}
+
+	@Override
+	public void accept(Visiteur visiteur) {
+		// TODO Auto-generated method stub
+		
 	}
 }

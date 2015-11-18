@@ -4,6 +4,7 @@ import java.util.List;
 
 import abstraction.Chemin;
 import abstraction.Dessin;
+import abstraction.Visiteur;
 import exception.PolygoneVideException;
 
 public class Polygone extends Chemin {
@@ -63,6 +64,12 @@ public class Polygone extends Chemin {
 	@Override
 	public Dessin creerPolygone(boolean rempli, List<Position> sommets, boolean ouvert) {
 		return new Polygone(rempli, sommets, ouvert);
+	}
+
+	@Override
+	public void accept(Visiteur visiteur) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
