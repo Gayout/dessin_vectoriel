@@ -6,6 +6,8 @@ public class Crayon {
 	private int epaisseur;
 	private Color couleur;
 	
+	public static Crayon CRAYON_DEFAUT = new Crayon(2, Color.BLACK);
+	
 	public Crayon(int epaisseur, Color couleur) {
 		super();
 		this.epaisseur = epaisseur;

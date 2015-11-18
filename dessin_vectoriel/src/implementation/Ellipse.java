@@ -1,5 +1,8 @@
 package implementation;
 
+import abstraction.Visiteur;
+import interpreteur.svg.CercleSVG;
+import interpreteur.svg.EllipseSVG;
 
 public class Ellipse extends Cercle {
 	
@@ -39,5 +42,27 @@ public class Ellipse extends Cercle {
 	public void setAngleAbsGdAxe(long angleAbsGdAxe) {
 		this.angleAbsGdAxe = angleAbsGdAxe;
 	}
+	
+	@Override
+	public void accept(Visiteur visiteur) {
+		visiteur.visit(this);
+	}
+	
+	@Override
+	public Ellipse creerEllipse(Position centre, int gdAxe, int petitAxe, long angleAbsGdAxe, boolean rempli){
+		return new Ellipse(centre, gdAxe, petitAxe, angleAbsGdAxe,rempli);
+	}
+	
+	@Override
+	public Cercle creerCercle(Position centre, int rayon, boolean rempli){
+		return null;
+	}
+	@Override
+	public CercleSVG creerCercleSVG() {
+		return null;
+	}
 
+	public EllipseSVG creerEllipseSVG() {
+		return new EllipseSVG(this);
+	}
 }

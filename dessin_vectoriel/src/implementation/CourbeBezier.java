@@ -3,15 +3,17 @@ package implementation;
 import java.util.List;
 
 import abstraction.Dessin;
+import abstraction.Visiteur;
+import interpreteur.svg.CourbeBezierSVG;
 
 public class CourbeBezier extends Polygone {
 
-	public CourbeBezier(boolean rempli, List<Position> sommets, boolean ouvert) {
-		super(rempli, sommets, ouvert);
+	public CourbeBezier(List<Position> sommets, boolean ouvert, boolean rempli) {
+		super(sommets, ouvert, rempli);
 	}
 
-	public CourbeBezier(boolean rempli, List<Position> pointControle) {
-		super(rempli, pointControle, true);
+	public CourbeBezier(List<Position> pointControle, boolean rempli) {
+		super(pointControle, true, rempli);
 	}
 
 	public CourbeBezier() {
@@ -19,12 +21,21 @@ public class CourbeBezier extends Polygone {
 	}
 
 	@Override
-	public Dessin creerCourbeBezier(boolean rempli, List<Position> pointControle) {
-		return new CourbeBezier(rempli, pointControle);
+	public Dessin creerCourbeBezier(List<Position> pointControle, boolean rempli) {
+		return new CourbeBezier(pointControle, rempli);
 	}
 	
 	@Override
-	public Dessin creerPolygone(boolean rempli, List<Position> sommets, boolean ouvert) {
+	public Dessin creerPolygone(List<Position> sommets, boolean ouvert, boolean rempli) {
 		return null;
+	}
+	
+	public CourbeBezierSVG creerCourbeBezierSVG() {
+		return new CourbeBezierSVG(this);
+	}
+	
+	@Override
+	public void accept(Visiteur visiteur) {
+		visiteur.visit(this);
 	}
 }

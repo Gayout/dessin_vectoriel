@@ -14,7 +14,7 @@ public class Polygone extends Chemin {
 	private List<Position> sommets;
 	
 	// un polygone est défini par ses cotes, mais on le construit en lui donnant tous ses sommets
-	public Polygone(boolean rempli, List<Position> sommets, boolean ouvert) {
+	public Polygone(List<Position> sommets, boolean ouvert, boolean rempli) {
 		super();
 		this.rempli = rempli;
 		this.sommets = sommets;
@@ -62,14 +62,13 @@ public class Polygone extends Chemin {
 	}
 
 	@Override
-	public Dessin creerPolygone(boolean rempli, List<Position> sommets, boolean ouvert) {
-		return new Polygone(rempli, sommets, ouvert);
+	public Dessin creerPolygone(List<Position> sommets, boolean ouvert, boolean rempli) {
+		return new Polygone(sommets, ouvert, rempli);
 	}
 
 	@Override
 	public void accept(Visiteur visiteur) {
-		// TODO Auto-generated method stub
-		
+		visiteur.visit(this);
 	}
 
 }

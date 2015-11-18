@@ -1,5 +1,7 @@
 package implementation;
 
+import java.awt.Color;
+
 import abstraction.Chemin;
 import abstraction.Dessin;
 import abstraction.Visiteur;
@@ -16,6 +18,8 @@ public class Cercle extends Chemin{
 		this.centre = centre;
 		this.gdAxe = rayon;
 		this.rempli = isRempli;
+	
+
 	}
 
 	public Cercle() {

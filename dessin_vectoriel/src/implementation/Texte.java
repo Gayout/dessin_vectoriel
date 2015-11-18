@@ -13,7 +13,7 @@ public class Texte implements Dessin {
 	public Texte() {
 		super();
 	}
-	
+
 	public Texte(int taillePolice, String police, Font effet, Position htGauche) {
 		super();
 		this.taillePolice = taillePolice;
@@ -56,7 +56,6 @@ public class Texte implements Dessin {
 
 	@Override
 	public void accept(Visiteur visiteur) {
-		// TODO Auto-generated method stub
-		
+		visiteur.visit(this);
 	}
 }

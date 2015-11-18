@@ -41,8 +41,6 @@ public class Segment extends Chemin{
 
 	@Override
 	public void accept(Visiteur visiteur) {
-		// TODO Auto-generated method stub
-		
+		visiteur.visit(this);
 	}
-
 }
