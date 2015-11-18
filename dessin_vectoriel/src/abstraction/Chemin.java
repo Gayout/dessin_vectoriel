@@ -4,7 +4,7 @@ import implementation.Crayon;
 import implementation.Position;
 
 public abstract class Chemin implements Dessin{
-	private Crayon crayon= new Crayon(0, null);
+	private Crayon crayon= Crayon.CRAYON_DEFAUT;
 	
 	public Crayon getCrayon() {
 		return crayon;

@@ -1,5 +1,6 @@
 package abstraction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DessinComposite implements Dessin {
@@ -13,6 +14,7 @@ public class DessinComposite implements Dessin {
 
 	public DessinComposite() {
 		super();
+		this.dessins = new ArrayList<Dessin>();
 	}
 
 	public List<Dessin> getDessins() {
@@ -23,6 +25,10 @@ public class DessinComposite implements Dessin {
 		this.dessins = dessins;
 	}
 
+	public void addDessin(Dessin dessin){
+		this.getDessins().add(dessin);
+	}
+	
 	@Override
 	public void accept(Visiteur visiteur) {
 		for (Dessin d : dessins){
