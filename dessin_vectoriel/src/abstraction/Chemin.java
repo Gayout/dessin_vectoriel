@@ -1,6 +1,7 @@
 package abstraction;
 
 import implementation.Crayon;
+import implementation.Position;
 
 public abstract class Chemin implements Dessin{
 	private Crayon crayon= new Crayon(0, null);

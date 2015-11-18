@@ -20,4 +20,7 @@ public interface FabriqueDessin<T> {
 	public default T creerSegment(Position p1, Position p2) {
 		return null;
 	}
+	public default T creerRectangle(Position hautGauche, int width, int height, boolean isRempli) {
+		return null;
+	}
 }
