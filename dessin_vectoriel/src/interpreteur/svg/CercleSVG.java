@@ -14,13 +14,11 @@ public class CercleSVG extends Cercle{
 	
 	public CercleSVG(Cercle cercle){
 		this(cercle.getCentre(), cercle.getRayon(), cercle.isRempli());
+		this.setCrayon(cercle.getCrayon());
 	}
 	
 	public CercleSVG(Position centre, int rayon, boolean isRempli) {
 		super(centre, rayon, isRempli);
-		
-		this.setCrayon(new Crayon(2, Color.cyan));
-
 	}
 
 public String generateCode(){

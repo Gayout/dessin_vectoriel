@@ -14,9 +14,6 @@ public class RectangleSVG extends Rectangle{
 
 	public RectangleSVG(Position hautGauche, int width, int height, boolean isRempli) {
 		super(hautGauche, width, height, isRempli);
-
-		this.setCrayon(new Crayon(2, Color.cyan));
-
 	}
 
 	public String generateCode(){

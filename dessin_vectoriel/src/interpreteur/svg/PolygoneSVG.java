@@ -14,10 +14,8 @@ public class PolygoneSVG extends Polygone {
 		super();
 	}
 
-	public PolygoneSVG(boolean rempli, List<Position> sommets, boolean ouvert) {
-		super(rempli, sommets, ouvert);
-		
-		this.setCrayon(new Crayon(2, Color.yellow));
+	public PolygoneSVG( List<Position> sommets, boolean ouvert, boolean rempli) {
+		super(sommets, ouvert, rempli);
 	}
 
 	public String generateCode(){

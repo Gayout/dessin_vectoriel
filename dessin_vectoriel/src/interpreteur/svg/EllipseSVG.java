@@ -12,10 +12,14 @@ public class EllipseSVG extends Ellipse {
 		super();
 	}
 
+	public EllipseSVG(Ellipse ellipse){
+		this(ellipse.getCentre(), ellipse.getGdAxe(), ellipse.getPetitAxe(), ellipse.getAngleAbsGdAxe(), ellipse.isRempli());
+		this.setCrayon(ellipse.getCrayon());
+	}
+	
+	
 	public EllipseSVG(Position centre, int gdAxe, int petitAxe, long angleAbsGdAxe, boolean isRempli) {
 		super(centre, gdAxe, petitAxe, angleAbsGdAxe, isRempli);
-		
-		this.setCrayon(new Crayon(2, Color.yellow));
 	}
 
 	public String generateCode(){

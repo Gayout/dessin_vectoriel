@@ -12,10 +12,13 @@ public class CourbeBezierSVG extends CourbeBezier {
 		super();
 	}
 
-	public CourbeBezierSVG(boolean rempli, List<Position> sommets, boolean ouvert) {
-		super(rempli, sommets, ouvert);
-		
-		this.setCrayon(new Crayon(2, Color.orange));
+	public CourbeBezierSVG(CourbeBezier courbeBezier){
+		this(courbeBezier.getSommets(), courbeBezier.isOuvert(), courbeBezier.isRempli());
+		this.setCrayon(courbeBezier.getCrayon());
+	}
+	
+	public CourbeBezierSVG( List<Position> sommets, boolean ouvert, boolean rempli) {
+		super(sommets, ouvert, rempli);
 	}
 
 	public String generateCode(){

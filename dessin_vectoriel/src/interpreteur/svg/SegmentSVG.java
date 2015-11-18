@@ -14,8 +14,6 @@ public class SegmentSVG extends Segment {
 
 	public SegmentSVG(Position p1, Position p2) {
 		super(p1, p2);
-		
-		this.setCrayon(new Crayon(2, Color.pink));
 	}
 	
 public String generateCode(){
