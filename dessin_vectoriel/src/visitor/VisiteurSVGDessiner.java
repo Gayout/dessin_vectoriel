@@ -56,20 +56,26 @@ public class VisiteurSVGDessiner implements Visiteur{
 
 	@Override
 	public void visit(Polygone polygone) {
-		// TODO Auto-generated method stub
-		
+		code = code.substring(0, code.length()-6);
+		PolygoneSVG polygoneSVG= polygone.creerPolygoneSVG();
+		code += "\t"+polygoneSVG.generateCode();
+		code += "\n</svg>";			
 	}
 
 	@Override
 	public void visit(Rectangle rectangle) {
-		// TODO Auto-generated method stub
-		
+		code = code.substring(0, code.length()-6);
+		RectangleSVG rectangleSVG= rectangle.creerRectangleSVG();
+		code += "\t"+rectangleSVG.generateCode();
+		code += "\n</svg>";			
 	}
 
 	@Override
 	public void visit(Segment segment) {
-		// TODO Auto-generated method stub
-		
+		code = code.substring(0, code.length()-6);
+		SegmentSVG segmentSVG= segment.creerSegmentSVG();
+		code += "\t"+segmentSVG.generateCode();
+		code += "\n</svg>";			
 	}
 
 	@Override

@@ -11,6 +11,11 @@ public class RectangleSVG extends Rectangle{
 	public RectangleSVG() {
 		super();
 	}
+	
+	public RectangleSVG(Rectangle rectangle){
+		this(rectangle.getHautGauche(), rectangle.getWidth(), rectangle.getHeight(), rectangle.isRempli());
+		this.setCrayon(rectangle.getCrayon());
+	}
 
 	public RectangleSVG(Position hautGauche, int width, int height, boolean isRempli) {
 		super(hautGauche, width, height, isRempli);

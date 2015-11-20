@@ -3,6 +3,7 @@ package implementation;
 import abstraction.Chemin;
 import abstraction.Dessin;
 import abstraction.Visiteur;
+import interpreteur.svg.SegmentSVG;
 
 public class Segment extends Chemin{
 	private Position depart;
@@ -39,6 +40,10 @@ public class Segment extends Chemin{
 		return new Segment(p1, p2);
 	}
 
+	public SegmentSVG creerSegmentSVG(){
+		return new SegmentSVG(this);
+	}
+	
 	@Override
 	public void accept(Visiteur visiteur) {
 		visiteur.visit(this);

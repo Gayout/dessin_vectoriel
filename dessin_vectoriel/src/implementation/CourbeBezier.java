@@ -2,9 +2,11 @@ package implementation;
 
 import java.util.List;
 
+
 import abstraction.Dessin;
 import abstraction.Visiteur;
 import interpreteur.svg.CourbeBezierSVG;
+import interpreteur.svg.PolygoneSVG;
 
 public class CourbeBezier extends Polygone {
 
@@ -32,6 +34,11 @@ public class CourbeBezier extends Polygone {
 	
 	public CourbeBezierSVG creerCourbeBezierSVG() {
 		return new CourbeBezierSVG(this);
+	}
+	
+	@Override
+	public PolygoneSVG creerPolygoneSVG() {
+		return null;
 	}
 	
 	@Override

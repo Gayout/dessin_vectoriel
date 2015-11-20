@@ -14,6 +14,11 @@ public class PolygoneSVG extends Polygone {
 		super();
 	}
 
+	public PolygoneSVG(Polygone polygone){
+		this(polygone.getSommets(), polygone.isOuvert(), polygone.isRempli());
+		this.setCrayon(polygone.getCrayon());
+	}
+	
 	public PolygoneSVG( List<Position> sommets, boolean ouvert, boolean rempli) {
 		super(sommets, ouvert, rempli);
 	}

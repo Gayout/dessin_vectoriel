@@ -3,6 +3,7 @@ package implementation;
 import abstraction.Chemin;
 import abstraction.Dessin;
 import abstraction.Visiteur;
+import interpreteur.svg.RectangleSVG;
 
 public class Rectangle extends Chemin{
 
@@ -59,8 +60,13 @@ public class Rectangle extends Chemin{
 		return new Rectangle(hautGauche, width, height, isRempli);
 	}
 
+	public RectangleSVG creerRectangleSVG(){
+		return new RectangleSVG(this);
+	}
+	
 	@Override
 	public void accept(Visiteur visiteur) {
 		visiteur.visit(this);
 	}
+	
 }

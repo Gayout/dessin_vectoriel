@@ -1,6 +1,7 @@
 package test;
 
 import java.awt.Color;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -13,9 +14,15 @@ import abstraction.DessinComposite;
 import implementation.Cercle;
 import implementation.CourbeBezier;
 import implementation.Crayon;
+import implementation.Polygone;
 import implementation.Position;
+import implementation.Rectangle;
+import implementation.Segment;
 import interpreteur.svg.CourbeBezierSVG;
 import interpreteur.svg.EllipseSVG;
+import interpreteur.svg.PolygoneSVG;
+import interpreteur.svg.RectangleSVG;
+import interpreteur.svg.SegmentSVG;
 import visitor.VisiteurSVGDessiner;
 
 public class TestVisiteurSVG {
@@ -25,9 +32,15 @@ public class TestVisiteurSVG {
 
 		DessinComposite dessin = new DessinComposite();
 
+		
+		
+		/******CERCLE******/
 		Cercle cercle = new Cercle(new Position(150,150), 100, Dessin.VIDE);
 		cercle.setCrayon(new Crayon(2, Color.cyan));
 		
+		
+		
+		/******COURBE BEZIER*******/
 		List<Position> sommets = new ArrayList<Position>();
 
 		sommets.add(new Position(100,100));
@@ -38,12 +51,38 @@ public class TestVisiteurSVG {
 		CourbeBezier courbeBezier = new CourbeBezier(sommets, Dessin.FERME, Dessin.REMPLI);
 		courbeBezier.setCrayon(new Crayon(2,Color.yellow));
 
+		
+		
+		/******ELLIPSE*******/
 		EllipseSVG ellipse = new EllipseSVG(new Position(250,250),50,30,30,Dessin.VIDE);
 		ellipse.setCrayon(new Crayon(10, Color.red));
 
+		
+		
+		/******RECTANGLE*******/
+		Polygone polygone = new Polygone(sommets, true, false);
+		polygone.getCrayon().setEpaisseur(6);
+
+		
+		
+		/******RECTANGLE*******/
+		Rectangle rectangle = new Rectangle(new Position(40,140), 290,250,false);
+		rectangle.setCrayon(new Crayon(2, Color.green));;
+		
+		
+		
+		/******SEGMENT*******/
+		Segment ligne = new Segment(new Position(0,0), new Position(100, 200));
+		ligne.setCrayon(new Crayon(1, Color.orange));
+		
+		
+		
 		dessin.addDessin(cercle);
 		dessin.addDessin(courbeBezier);
 		dessin.addDessin(ellipse);
+		dessin.addDessin(polygone);
+		dessin.addDessin(rectangle);
+		dessin.addDessin(ligne);
 
 		dessin.accept(visiteur);
 
