@@ -1,6 +1,7 @@
 package implementation;
 
 import abstraction.Visiteur;
+import interpreteur.awt.EllipseAWT;
 import interpreteur.svg.CercleSVG;
 import interpreteur.svg.EllipseSVG;
 
@@ -64,5 +65,9 @@ public class Ellipse extends Cercle {
 
 	public EllipseSVG creerEllipseSVG() {
 		return new EllipseSVG(this);
+	}
+
+	public EllipseAWT creerEllipseAWT() {
+		return new EllipseAWT(this);
 	}
 }
