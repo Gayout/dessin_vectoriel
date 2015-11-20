@@ -1,4 +1,4 @@
-package interpréteur.awt;
+package interpreteur.awt;
 
 public class TexteAWT {
 
