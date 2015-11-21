@@ -59,7 +59,15 @@ public class CourbeBezierAWT  extends Frame{
 			Graphics2D ga = (Graphics2D)g;
 			ga.setPaint(color);
 			ga.setStroke(new BasicStroke((epaisseur)));
+			
+			if(courbeBezier.isRempli())
+				ga.fill(r1);
 			ga.draw(r1);
+			
+			if(!courbeBezier.isOuvert()){
+				Shape r2 = new Line2D.Float(pos.get(0).getX(), pos.get(0).getY(), pos.get(pos.size()-1).getX(), pos.get(pos.size()-1).getY());
+				ga.draw(r2);
+			}
 			
 		} catch (BezierException e) {
 			e.printStackTrace();

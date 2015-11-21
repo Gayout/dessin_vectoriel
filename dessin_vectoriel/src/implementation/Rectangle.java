@@ -3,6 +3,7 @@ package implementation;
 import abstraction.Chemin;
 import abstraction.Dessin;
 import abstraction.Visiteur;
+import interpreteur.awt.RectangleAWT;
 import interpreteur.svg.RectangleSVG;
 
 public class Rectangle extends Chemin{
@@ -67,6 +68,10 @@ public class Rectangle extends Chemin{
 	@Override
 	public void accept(Visiteur visiteur) {
 		visiteur.visit(this);
+	}
+
+	public RectangleAWT creerRectangleAWT() {
+		return new RectangleAWT(this);
 	}
 	
 }

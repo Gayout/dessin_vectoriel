@@ -19,7 +19,7 @@ public class TestSVGPolygone {
 		sommets.add(new Position(200,200));
 		sommets.add(new Position(300,100));
 		
-		PolygoneSVG Polygone = new PolygoneSVG(sommets, true, false);
+		PolygoneSVG Polygone = new PolygoneSVG(sommets, false, true);
 		Polygone.getCrayon().setEpaisseur(6);
 		try {
 

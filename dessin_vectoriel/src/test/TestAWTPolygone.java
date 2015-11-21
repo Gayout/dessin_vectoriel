@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import abstraction.Dessin;
-import implementation.CourbeBezier;
+import implementation.Polygone;
 import implementation.Position;
-import interpreteur.awt.CourbeBezierAWT;
-import interpreteur.svg.CourbeBezierSVG;
+import interpreteur.awt.PolygoneAWT;
+import interpreteur.svg.PolygoneSVG;
 
-public class TestAWTBezier {
+public class TestAWTPolygone {
 
 
 	public static void main(String args[]) 
@@ -24,10 +24,10 @@ public class TestAWTBezier {
 		sommets.add(new Position(300,100));
 		sommets.add(new Position(300,200));
 
-		CourbeBezier courbeBezier = new CourbeBezier(sommets, false, false);
+		Polygone Polygone = new Polygone(sommets, false, true);
 
-		CourbeBezierAWT courbeBezierAWT= courbeBezier.creerCourbeBezierAWT(); 
-		courbeBezierAWT.addWindowListener(
+		PolygoneAWT PolygoneAWT= Polygone.creerPolygoneAWT(); 
+		PolygoneAWT.addWindowListener(
 				new WindowAdapter()
 				{
 					public void windowClosing(WindowEvent we)
@@ -37,7 +37,7 @@ public class TestAWTBezier {
 				}
 				);
 
-		courbeBezierAWT.setSize(400, 400);
-		courbeBezierAWT.setVisible(true);
+		PolygoneAWT.setSize(400, 400);
+		PolygoneAWT.setVisible(true);
 	}
 }

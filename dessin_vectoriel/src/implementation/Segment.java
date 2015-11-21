@@ -3,6 +3,7 @@ package implementation;
 import abstraction.Chemin;
 import abstraction.Dessin;
 import abstraction.Visiteur;
+import interpreteur.awt.SegmentAWT;
 import interpreteur.svg.SegmentSVG;
 
 public class Segment extends Chemin{
@@ -47,5 +48,9 @@ public class Segment extends Chemin{
 	@Override
 	public void accept(Visiteur visiteur) {
 		visiteur.visit(this);
+	}
+
+	public SegmentAWT creerSegmentAWT() {
+		return new SegmentAWT(this);
 	}
 }

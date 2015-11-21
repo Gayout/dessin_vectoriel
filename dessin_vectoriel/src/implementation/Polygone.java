@@ -6,6 +6,7 @@ import abstraction.Chemin;
 import abstraction.Dessin;
 import abstraction.Visiteur;
 import exception.PolygoneVideException;
+import interpreteur.awt.PolygoneAWT;
 import interpreteur.svg.PolygoneSVG;
 
 public class Polygone extends Chemin {
@@ -74,6 +75,10 @@ public class Polygone extends Chemin {
 
 	public PolygoneSVG creerPolygoneSVG() {
 		return new PolygoneSVG(this);
+	}
+
+	public PolygoneAWT creerPolygoneAWT() {
+		return new PolygoneAWT(this);
 	}
 
 }
