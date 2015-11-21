@@ -5,6 +5,7 @@ import java.awt.Color;
 import abstraction.Chemin;
 import abstraction.Dessin;
 import abstraction.Visiteur;
+import interpreteur.awt.CercleAWT;
 import interpreteur.svg.CercleSVG;
 
 public class Cercle extends Chemin{
@@ -58,7 +59,12 @@ public class Cercle extends Chemin{
 		return new CercleSVG(this);
 	}
 	
+	public CercleAWT creerCercleAWT(){
+		return new CercleAWT(this);
+	}
+	
 	public void accept(Visiteur visiteur){
 		visiteur.visit(this);
 	}
+	
 }

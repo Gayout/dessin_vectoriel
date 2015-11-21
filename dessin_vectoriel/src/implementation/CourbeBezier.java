@@ -5,6 +5,8 @@ import java.util.List;
 
 import abstraction.Dessin;
 import abstraction.Visiteur;
+import interpreteur.awt.CourbeBezierAWT;
+import interpreteur.awt.PolygoneAWT;
 import interpreteur.svg.CourbeBezierSVG;
 import interpreteur.svg.PolygoneSVG;
 
@@ -36,8 +38,17 @@ public class CourbeBezier extends Polygone {
 		return new CourbeBezierSVG(this);
 	}
 	
+	public CourbeBezierAWT creerCourbeBezierAWT() {
+		return new CourbeBezierAWT(this);
+	}
+	
 	@Override
 	public PolygoneSVG creerPolygoneSVG() {
+		return null;
+	}
+	
+	@Override
+	public PolygoneAWT creerPolygoneAWT() {
 		return null;
 	}
 	
@@ -45,4 +56,6 @@ public class CourbeBezier extends Polygone {
 	public void accept(Visiteur visiteur) {
 		visiteur.visit(this);
 	}
+
+	
 }

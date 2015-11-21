@@ -11,7 +11,7 @@ public class TestSVGEllipse {
 
 	public static void main(String[] args) {
 			
-		EllipseSVG ellipse = new EllipseSVG(new Position(250,250),50,30,30,false);
+		EllipseSVG ellipse = new EllipseSVG(new Position(200,200),200,100,45,false);
 		ellipse.getCrayon().setEpaisseur(10);
 		try {
 
