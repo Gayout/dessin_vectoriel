@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DessinComposite implements Dessin {
-	
+
 	private List<Dessin> dessins;
-	
+
 	public DessinComposite(List<Dessin> dessins) {
 		super();
 		this.dessins = dessins;
@@ -28,12 +28,11 @@ public class DessinComposite implements Dessin {
 	public void addDessin(Dessin dessin){
 		this.getDessins().add(dessin);
 	}
-	
+
 	@Override
 	public void accept(Visiteur visiteur) {
-		for (Dessin d : dessins){
+		for (Dessin d : dessins)
 			d.accept(visiteur);
-		}		
 	}
 
 	@Override

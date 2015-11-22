@@ -1,5 +1,6 @@
 package interpreteur.svg;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import implementation.CourbeBezier;
@@ -22,19 +23,25 @@ public class CourbeBezierSVG extends CourbeBezier {
 	public String generateCode(){
 		
 		List<Position> sommets = this.getSommets();
+		/* On créé une copie car on aura besoin par la suite de supprimer une élément des sommets mais qu'on ne veut pas affecter la variable d'instance de la courbe de Bezier*/
+		List<Position> copy = new ArrayList<Position>();
+		
+		for(Position p : sommets){
+			copy.add(p);
+		}
 		
 		int red = this.getCrayon().getCouleur().getRed();
 		int green = this.getCrayon().getCouleur().getGreen();
 		int blue = this.getCrayon().getCouleur().getBlue();
 
 		
-		String code = "<path d = \"M "+ sommets.get(0).getX() + " " + sommets.get(0).getY()+" ";
+		String code = "<path d = \"M "+ copy.get(0).getX() + " " + copy.get(0).getY()+" ";
 		
-		code += ((sommets.size() < 3) ? "L" : ((sommets.size() == 3)? "Q": "C") )+ " ";
+		code += ((copy.size() < 3) ? "L" : ((copy.size() == 3)? "Q": "C") )+ " ";
 		
-		sommets.remove(0);
+		copy.remove(0);
 		
-		for(Position p : sommets){
+		for(Position p : copy){
 			code += p.getX()+" "+p.getY()+" ";
 		}
 		

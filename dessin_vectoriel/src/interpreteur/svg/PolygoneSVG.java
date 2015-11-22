@@ -29,7 +29,7 @@ public class PolygoneSVG extends Polygone {
 		int blue = this.getCrayon().getCouleur().getBlue();
 
 		
-		String code = "<"+ (this.isOuvert() ? "polyline" : "polygon") +" points=\"";
+		String code = "<"+ (this.isOuvert() ? "polyline" : "polygon") +" points=\" ";
 		
 		for(Position p : sommets){
 			code += p.getX()+","+p.getY()+" ";
