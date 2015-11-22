@@ -39,9 +39,7 @@ public class PolygoneAWT extends Frame{
 		this.polygone = polygone;
 	}
 
-
-
-	public void paint(Graphics g) {
+	public Shape shape(){
 		List<Position> pos = polygone.getSommets();
 		int size = pos.size();
 		int[] x = new int[size];
@@ -53,8 +51,6 @@ public class PolygoneAWT extends Frame{
 		}
 		
 
-		Color color = polygone.getCrayon().getCouleur();
-		int epaisseur = polygone.getCrayon().getEpaisseur();
 		Shape r1 = new Path2D.Float();
 		((Path2D) r1).moveTo(x[0],y[0]);
 
@@ -63,6 +59,15 @@ public class PolygoneAWT extends Frame{
 		
 		if(!polygone.isOuvert())
 			((Path2D) r1).lineTo(x[0],y[0]);
+		
+		return r1;
+	}
+
+	public void paint(Graphics g) {
+
+		Color color = polygone.getCrayon().getCouleur();
+		int epaisseur = polygone.getCrayon().getEpaisseur();
+		Shape r1 = this.shape();
 
 		Graphics2D ga = (Graphics2D)g;
 		ga.setPaint(color);

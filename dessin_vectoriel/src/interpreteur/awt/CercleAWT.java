@@ -1,10 +1,16 @@
 package interpreteur.awt;
 
 import java.awt.*;
+import java.awt.geom.CubicCurve2D;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
+import java.awt.geom.QuadCurve2D;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.border.StrokeBorder;
 
+import exception.BezierException;
 import implementation.Cercle;
 import implementation.Position;
 
@@ -29,17 +35,25 @@ public class CercleAWT extends Frame{
 		this.cercle = cercle;
 	}
 
+	public Shape shape() {
 
-
-	public void paint(Graphics g) {
 		Position c = cercle.getCentre();
 		int x = c.getX();
 		int y = c.getY();
 		int r = cercle.getRayon();
+		
+		Shape r1 = new Ellipse2D.Float(x-r, y-r, 2*r, 2*r);
+
+		return r1;
+	}
+
+
+	public void paint(Graphics g) {
+		
 		Color color = cercle.getCrayon().getCouleur();
 		int epaisseur = cercle.getCrayon().getEpaisseur();
 		
-		Shape r1 = new Ellipse2D.Float(x, y, r, r);
+		Shape r1 = this.shape();
 		
 		Graphics2D ga = (Graphics2D)g;
 		ga.setPaint(color);

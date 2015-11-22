@@ -2,7 +2,7 @@ package interpreteur.awt;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Frame;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.HeadlessException;
@@ -10,13 +10,18 @@ import java.awt.Shape;
 import java.awt.geom.CubicCurve2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.QuadCurve2D;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JFrame;
 
 import exception.BezierException;
 import implementation.CourbeBezier;
 import implementation.Position;
 
-public class CourbeBezierAWT  extends Frame{
+public class CourbeBezierAWT 
+extends JFrame
+{
 
 	private CourbeBezier courbeBezier;
 
@@ -37,13 +42,11 @@ public class CourbeBezierAWT  extends Frame{
 		this.courbeBezier = courbeBezier;
 	}
 
+	public List<Shape> shape() {
+		List<Shape> shapes = new ArrayList<Shape>();
 
-
-	public void paint(Graphics g) {
 		List<Position> pos = courbeBezier.getSommets();
 
-		Color color = courbeBezier.getCrayon().getCouleur();
-		int epaisseur = courbeBezier.getCrayon().getEpaisseur();
 		try {
 			Shape r1;
 
@@ -56,22 +59,37 @@ public class CourbeBezierAWT  extends Frame{
 			else
 				throw new BezierException();
 
-			Graphics2D ga = (Graphics2D)g;
-			ga.setPaint(color);
-			ga.setStroke(new BasicStroke((epaisseur)));
-			
-			if(courbeBezier.isRempli())
-				ga.fill(r1);
-			ga.draw(r1);
-			
+			shapes.add(r1);
 			if(!courbeBezier.isOuvert()){
 				Shape r2 = new Line2D.Float(pos.get(0).getX(), pos.get(0).getY(), pos.get(pos.size()-1).getX(), pos.get(pos.size()-1).getY());
-				ga.draw(r2);
+				shapes.add(r2);
 			}
-			
+
 		} catch (BezierException e) {
 			e.printStackTrace();
 		}
+		return shapes;
+	}
+
+	public void paint(Graphics g) {
+
+		Color color = courbeBezier.getCrayon().getCouleur();
+		int epaisseur = courbeBezier.getCrayon().getEpaisseur();
+		Shape r1 = this.shape().get(0);
+
+		Graphics2D ga = (Graphics2D)g;
+		ga.setPaint(color);
+		ga.setStroke(new BasicStroke((epaisseur)));
+
+		if(courbeBezier.isRempli())
+			ga.fill(r1);
+		ga.draw(r1);
+
+		if(!courbeBezier.isOuvert()){
+			Shape r2= this.shape().get(1);
+			ga.draw(r2);
+		}
+
 	}
 
 }

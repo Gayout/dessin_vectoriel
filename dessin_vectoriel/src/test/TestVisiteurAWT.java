@@ -14,21 +14,22 @@ import abstraction.DessinComposite;
 import implementation.Cercle;
 import implementation.CourbeBezier;
 import implementation.Crayon;
+import implementation.Ellipse;
 import implementation.Polygone;
 import implementation.Position;
 import implementation.Rectangle;
 import implementation.Segment;
-import interpreteur.svg.CourbeBezierSVG;
-import interpreteur.svg.EllipseSVG;
-import interpreteur.svg.PolygoneSVG;
-import interpreteur.svg.RectangleSVG;
-import interpreteur.svg.SegmentSVG;
-import visitor.VisiteurSVGDessiner;
+import interpreteur.awt.CourbeBezierAWT;
+import interpreteur.awt.EllipseAWT;
+import interpreteur.awt.PolygoneAWT;
+import interpreteur.awt.RectangleAWT;
+import interpreteur.awt.SegmentAWT;
+import visitor.VisiteurAWTDessiner;
 
-public class TestVisiteurSVG {
+public class TestVisiteurAWT {
 
 	public static void main(String[] args) {
-		VisiteurSVGDessiner visiteur = new VisiteurSVGDessiner();
+		VisiteurAWTDessiner visiteur = new VisiteurAWTDessiner();
 
 		DessinComposite dessin = new DessinComposite();
 
@@ -48,13 +49,13 @@ public class TestVisiteurSVG {
 		sommets.add(new Position(300,100));
 		sommets.add(new Position(300,200));
 
-		CourbeBezier courbeBezier = new CourbeBezier(sommets, Dessin.FERME, Dessin.REMPLI);
+		CourbeBezier courbeBezier = new CourbeBezier(sommets, Dessin.OUVERT, Dessin.REMPLI);
 		courbeBezier.setCrayon(new Crayon(2,Color.yellow));
 
 		
 		
 		/******ELLIPSE*******/
-		EllipseSVG ellipse = new EllipseSVG(new Position(250,250),50,30,30,Dessin.VIDE);
+		Ellipse ellipse = new Ellipse(new Position(250,250),50,30,30,Dessin.VIDE);
 		ellipse.setCrayon(new Crayon(10, Color.red));
 
 		
@@ -74,40 +75,16 @@ public class TestVisiteurSVG {
 		/******SEGMENT*******/
 		Segment ligne = new Segment(new Position(0,0), new Position(100, 200));
 		ligne.setCrayon(new Crayon(1, Color.orange));
-		
-		
-		
+				
 		dessin.addDessin(cercle);
 		dessin.addDessin(courbeBezier);
 		dessin.addDessin(ellipse);
 		dessin.addDessin(polygone);
 		dessin.addDessin(rectangle);
 		dessin.addDessin(ligne);
-
+		
 		dessin.accept(visiteur);
-
-		try {
-
-			File file = new File("visiteur.svg");
-
-			if (!file.createNewFile()){
-				System.out.println("File already exist");
-				file.delete();
-				file = new File("visiteur.svg");
-				System.out.println("File is overwrited!");
-			}
-			else
-				System.out.println("File is created!");
-
-			FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(visiteur.getCode());
-			bw.close();
-
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 }

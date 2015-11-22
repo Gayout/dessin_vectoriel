@@ -27,15 +27,6 @@ public class TestAWTBezier {
 		CourbeBezier courbeBezier = new CourbeBezier(sommets, false, false);
 
 		CourbeBezierAWT courbeBezierAWT= courbeBezier.creerCourbeBezierAWT(); 
-		courbeBezierAWT.addWindowListener(
-				new WindowAdapter()
-				{
-					public void windowClosing(WindowEvent we)
-					{
-						System.exit(0);
-					}
-				}
-				);
 
 		courbeBezierAWT.setSize(400, 400);
 		courbeBezierAWT.setVisible(true);

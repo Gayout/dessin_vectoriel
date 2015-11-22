@@ -29,8 +29,19 @@ public class EllipseAWT extends Frame{
 		this.ellipse = ellipse;
 	}
 
-	public void paint(Graphics g) {
+	public Shape shape(){
+		Position c = ellipse.getCentre();
+		int x = c.getX();
+		int y = c.getY();
+		int width = ellipse.getGdAxe();
+		int height = ellipse.getPetitAxe();
 
+		Shape r1 = new Ellipse2D.Float(x-width, y-height, 2*width, 2*height);
+		
+		return r1;
+	}
+	
+	public void paint(Graphics g) {
 		Position c = ellipse.getCentre();
 		int x = c.getX();
 		int y = c.getY();
@@ -38,8 +49,8 @@ public class EllipseAWT extends Frame{
 		int height = ellipse.getPetitAxe();
 		long angle =ellipse.getAngleAbsGdAxe();
 
-		Shape r1 = new Ellipse2D.Float(x, y, width, height);
-
+		Shape r1 = this.shape();
+		
 		Graphics2D ga = (Graphics2D)g;
 		ga.rotate(Math.toRadians(angle),x+ width / 2,  height / 2);
 		ga.setPaint(Color.red);
