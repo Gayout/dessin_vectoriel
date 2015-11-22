@@ -1,7 +1,5 @@
 package implementation;
 
-import java.awt.Color;
-
 import abstraction.Chemin;
 import abstraction.Dessin;
 import abstraction.Visiteur;

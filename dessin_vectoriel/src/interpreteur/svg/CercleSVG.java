@@ -1,9 +1,7 @@
 package interpreteur.svg;
 
-import java.awt.Color;
 
 import implementation.Cercle;
-import implementation.Crayon;
 import implementation.Position;
 
 public class CercleSVG extends Cercle{

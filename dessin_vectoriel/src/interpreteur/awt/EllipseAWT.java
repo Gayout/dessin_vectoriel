@@ -1,12 +1,6 @@
 package interpreteur.awt;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.HeadlessException;
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
 import implementation.Ellipse;
@@ -14,6 +8,10 @@ import implementation.Position;
 
 public class EllipseAWT extends Frame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Ellipse ellipse;
 
 	public EllipseAWT(Ellipse ellipse) throws HeadlessException {
@@ -52,7 +50,7 @@ public class EllipseAWT extends Frame{
 		Shape r1 = this.shape();
 		
 		Graphics2D ga = (Graphics2D)g;
-		ga.rotate(Math.toRadians(angle),x+ width / 2,  height / 2);
+		ga.rotate(Math.toRadians(angle),x+ width / 2,  y+height / 2);
 		ga.setPaint(Color.red);
 		ga.setStroke(new BasicStroke((5)));
 		if(ellipse.isRempli())

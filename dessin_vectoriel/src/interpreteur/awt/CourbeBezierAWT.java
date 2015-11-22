@@ -1,28 +1,24 @@
 package interpreteur.awt;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.HeadlessException;
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.CubicCurve2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.QuadCurve2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
-
 import exception.BezierException;
 import implementation.CourbeBezier;
 import implementation.Position;
 
 public class CourbeBezierAWT 
-extends JFrame
+extends Frame
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private CourbeBezier courbeBezier;
 
 

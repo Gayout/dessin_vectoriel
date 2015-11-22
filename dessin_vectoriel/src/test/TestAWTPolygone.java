@@ -5,11 +5,9 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import abstraction.Dessin;
 import implementation.Polygone;
 import implementation.Position;
 import interpreteur.awt.PolygoneAWT;
-import interpreteur.svg.PolygoneSVG;
 
 public class TestAWTPolygone {
 

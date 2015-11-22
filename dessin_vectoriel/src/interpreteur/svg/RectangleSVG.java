@@ -1,9 +1,7 @@
 package interpreteur.svg;
 
-import java.awt.Color;
 
 import implementation.Rectangle;
-import implementation.Crayon;
 import implementation.Position;
 
 public class RectangleSVG extends Rectangle{

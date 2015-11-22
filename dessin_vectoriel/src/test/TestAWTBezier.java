@@ -1,15 +1,11 @@
 package test;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import abstraction.Dessin;
 import implementation.CourbeBezier;
 import implementation.Position;
 import interpreteur.awt.CourbeBezierAWT;
-import interpreteur.svg.CourbeBezierSVG;
 
 public class TestAWTBezier {
 

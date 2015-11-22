@@ -1,21 +1,17 @@
 package interpreteur.awt;
 
 import java.awt.*;
-import java.awt.geom.CubicCurve2D;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.QuadCurve2D;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.swing.border.StrokeBorder;
-
-import exception.BezierException;
 import implementation.Cercle;
 import implementation.Position;
 
 public class CercleAWT extends Frame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Cercle cercle;
 
 

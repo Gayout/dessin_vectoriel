@@ -1,25 +1,16 @@
 package interpreteur.awt;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.HeadlessException;
-import java.awt.Polygon;
-import java.awt.Shape;
-import java.awt.geom.CubicCurve2D;
+import java.awt.*;
 import java.awt.geom.Line2D;
-import java.awt.geom.Path2D;
-import java.awt.geom.QuadCurve2D;
-import java.util.List;
 
-import exception.BezierException;
 import implementation.Segment;
-import implementation.Position;
 
 public class SegmentAWT extends Frame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Segment segment;
 
 

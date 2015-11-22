@@ -7,8 +7,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 
-import javax.swing.JFrame;
-
 import abstraction.Dessin;
 import abstraction.Visiteur;
 import implementation.*;
@@ -16,6 +14,10 @@ import interpreteur.awt.*;
 
 public class VisiteurAWTDessiner extends Frame implements Visiteur{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Graphics g;
 
 	public VisiteurAWTDessiner() {

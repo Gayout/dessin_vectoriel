@@ -14,15 +14,11 @@ import abstraction.DessinComposite;
 import implementation.Cercle;
 import implementation.CourbeBezier;
 import implementation.Crayon;
+import implementation.Ellipse;
 import implementation.Polygone;
 import implementation.Position;
 import implementation.Rectangle;
 import implementation.Segment;
-import interpreteur.svg.CourbeBezierSVG;
-import interpreteur.svg.EllipseSVG;
-import interpreteur.svg.PolygoneSVG;
-import interpreteur.svg.RectangleSVG;
-import interpreteur.svg.SegmentSVG;
 import visitor.VisiteurSVGDessiner;
 
 public class TestVisiteurSVG {
@@ -54,7 +50,7 @@ public class TestVisiteurSVG {
 		
 		
 		/******ELLIPSE*******/
-		EllipseSVG ellipse = new EllipseSVG(new Position(250,250),50,30,30,Dessin.VIDE);
+		Ellipse ellipse = new Ellipse(new Position(250,250),50,30,30,Dessin.VIDE);
 		ellipse.setCrayon(new Crayon(10, Color.red));
 
 		

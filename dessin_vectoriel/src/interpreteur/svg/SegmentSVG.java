@@ -1,8 +1,5 @@
 package interpreteur.svg;
 
-import java.awt.Color;
-
-import implementation.Crayon;
 import implementation.Position;
 import implementation.Segment;
 

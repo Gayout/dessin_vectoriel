@@ -1,7 +1,6 @@
 package abstraction;
 
 import implementation.Crayon;
-import implementation.Position;
 
 public abstract class Chemin implements Dessin{
 	private Crayon crayon= Crayon.CRAYON_DEFAUT;

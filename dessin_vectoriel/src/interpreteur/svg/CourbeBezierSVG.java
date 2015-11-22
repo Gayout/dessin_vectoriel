@@ -1,10 +1,8 @@
 package interpreteur.svg;
 
-import java.awt.Color;
 import java.util.List;
 
 import implementation.CourbeBezier;
-import implementation.Crayon;
 import implementation.Position;
 
 public class CourbeBezierSVG extends CourbeBezier {

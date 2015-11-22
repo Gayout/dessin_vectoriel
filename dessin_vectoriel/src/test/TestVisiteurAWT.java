@@ -1,11 +1,8 @@
 package test;
 
 import java.awt.Color;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,11 +16,6 @@ import implementation.Polygone;
 import implementation.Position;
 import implementation.Rectangle;
 import implementation.Segment;
-import interpreteur.awt.CourbeBezierAWT;
-import interpreteur.awt.EllipseAWT;
-import interpreteur.awt.PolygoneAWT;
-import interpreteur.awt.RectangleAWT;
-import interpreteur.awt.SegmentAWT;
 import visitor.VisiteurAWTDessiner;
 
 public class TestVisiteurAWT {
@@ -31,16 +23,21 @@ public class TestVisiteurAWT {
 	public static void main(String[] args) {
 		VisiteurAWTDessiner visiteur = new VisiteurAWTDessiner();
 
+		visiteur.addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent we)
+			{
+				System.exit(0);
+			}
+		});
+
 		DessinComposite dessin = new DessinComposite();
 
-		
-		
 		/******CERCLE******/
 		Cercle cercle = new Cercle(new Position(150,150), 100, Dessin.VIDE);
 		cercle.setCrayon(new Crayon(2, Color.cyan));
-		
-		
-		
+
+
+
 		/******COURBE BEZIER*******/
 		List<Position> sommets = new ArrayList<Position>();
 
@@ -52,39 +49,39 @@ public class TestVisiteurAWT {
 		CourbeBezier courbeBezier = new CourbeBezier(sommets, Dessin.OUVERT, Dessin.REMPLI);
 		courbeBezier.setCrayon(new Crayon(2,Color.yellow));
 
-		
-		
+
+
 		/******ELLIPSE*******/
 		Ellipse ellipse = new Ellipse(new Position(250,250),50,30,30,Dessin.VIDE);
 		ellipse.setCrayon(new Crayon(10, Color.red));
 
-		
-		
+
+
 		/******POLYGONE*******/
 		Polygone polygone = new Polygone(sommets, true, false);
 		polygone.getCrayon().setEpaisseur(6);
 
-		
-		
+
+
 		/******RECTANGLE*******/
 		Rectangle rectangle = new Rectangle(new Position(40,140), 290,250,false);
 		rectangle.setCrayon(new Crayon(2, Color.green));;
-		
-		
-		
+
+
+
 		/******SEGMENT*******/
 		Segment ligne = new Segment(new Position(0,0), new Position(100, 200));
 		ligne.setCrayon(new Crayon(1, Color.orange));
-				
+
 		dessin.addDessin(cercle);
 		dessin.addDessin(courbeBezier);
 		dessin.addDessin(ellipse);
 		dessin.addDessin(polygone);
 		dessin.addDessin(rectangle);
 		dessin.addDessin(ligne);
-		
+
 		dessin.accept(visiteur);
-		
+
 	}
 
 }

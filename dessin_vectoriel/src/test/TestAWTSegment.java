@@ -2,14 +2,9 @@ package test;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.List;
-
-import abstraction.Dessin;
 import implementation.Segment;
 import implementation.Position;
 import interpreteur.awt.SegmentAWT;
-import interpreteur.svg.SegmentSVG;
 
 public class TestAWTSegment {
 
