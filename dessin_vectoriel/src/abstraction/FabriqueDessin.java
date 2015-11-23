@@ -52,7 +52,7 @@ public interface FabriqueDessin<T> {
 	 * @param petitAxe
 	 * @param angleAbsGdAxe
 	 * @param rempli
-	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe Cercle
+	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe Ellipse
 	 */
 	public default T creerEllipse(Position centre, int gdAxe, int petitAxe, long angleAbsGdAxe, boolean rempli){
 		return null;
@@ -63,7 +63,7 @@ public interface FabriqueDessin<T> {
 	 * La fabrique qui sert à créer une Courbe de Bézier
 	 * @param pointControle
 	 * @param rempli
-	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe Cercle
+	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe CourbeBezier
 	 */
 	public default T creerCourbeBezier(List<Position> pointControle, boolean rempli) {
 		return null;
@@ -73,7 +73,7 @@ public interface FabriqueDessin<T> {
 	 * @see DessinComposite#creerDessinComposite(List)
 	 * La fabrique qui sert à créer un DessinComposite
 	 * @param dessins
-	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe Cercle
+	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe DessinComposite
 	 */
 	public default T creerDessinComposite(List<Dessin> dessins) {
 		return null;
@@ -86,7 +86,7 @@ public interface FabriqueDessin<T> {
 	 * @param sommets
 	 * @param ouvert
 	 * @param rempli
-	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe Cercle
+	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe Polygone
 	 */
 	public default T creerPolygone(List<Position> sommets, boolean ouvert, boolean rempli) {
 		return null;
@@ -99,7 +99,7 @@ public interface FabriqueDessin<T> {
 	 * 		Le point de départ du segment
 	 * @param p2
 	 * 		Le point d'arrivée du segment
-	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe Cercle
+	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe Segment
 	 */
 	public default T creerSegment(Position p1, Position p2) {
 		return null;
@@ -112,7 +112,7 @@ public interface FabriqueDessin<T> {
 	 * @param width
 	 * @param height
 	 * @param isRempli
-	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe Cercle
+	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe Rectangle
 	 */
 	public default T creerRectangle(Position hautGauche, int width, int height, boolean isRempli) {
 		return null;
