@@ -9,7 +9,7 @@ import implementation.Position;
 import interpreteur.awt.EllipseAWT;
 
 public class TestAWTEllipse {
-
+/*
 	public static void main(String args[]) 
 	{
 		Ellipse ellipse= new Ellipse(new Position(200,200), 200, 100, 45, Dessin.REMPLI);
@@ -28,4 +28,5 @@ public class TestAWTEllipse {
 		ellipseAWT.setSize(400, 400);
 		ellipseAWT.setVisible(true);
 	}
+	*/
 }

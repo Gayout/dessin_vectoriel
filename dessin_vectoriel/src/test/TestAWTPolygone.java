@@ -11,7 +11,7 @@ import interpreteur.awt.PolygoneAWT;
 
 public class TestAWTPolygone {
 
-
+/*
 	public static void main(String args[]) 
 	{
 
@@ -38,4 +38,5 @@ public class TestAWTPolygone {
 		PolygoneAWT.setSize(400, 400);
 		PolygoneAWT.setVisible(true);
 	}
+	*/
 }

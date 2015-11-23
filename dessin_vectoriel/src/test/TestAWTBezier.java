@@ -9,7 +9,7 @@ import interpreteur.awt.CourbeBezierAWT;
 
 public class TestAWTBezier {
 
-
+	/*
 	public static void main(String args[]) 
 	{
 
@@ -27,4 +27,5 @@ public class TestAWTBezier {
 		courbeBezierAWT.setSize(400, 400);
 		courbeBezierAWT.setVisible(true);
 	}
+	 */
 }

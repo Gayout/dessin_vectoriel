@@ -10,34 +10,59 @@ import java.util.List;
 import exception.BezierException;
 import implementation.CourbeBezier;
 import implementation.Position;
-
+/**
+ * <b>CourbeBezierAWT est une classe d'interprétation en AWT. Elle interpréte la classe Cercle.</b>
+ * @author Aurore Claude/Quentin Gayout
+ * @see CourbeBezier
+ *
+ */
 public class CourbeBezierAWT 
-extends Frame
+//décommenter pour tester TestAWTBezier
+//extends Frame
 {
-
 	/**
-	 * 
+	 * Une CourbeBezierAWT est défini par une CourbeBezier
+	 * @see CourbeBezier
+	 * @see CourbeBezierAWT#getCourbeBezier()
+	 * @see CourbeBezierAWT#CourbeBezierAWT(CourbeBezier)
+	 * @see CourbeBezierAWT#setCourbeBezier(CourbeBezier)
 	 */
-	private static final long serialVersionUID = 1L;
 	private CourbeBezier courbeBezier;
 
 
-	public CourbeBezierAWT(CourbeBezier courbeBezier) throws HeadlessException {
+	/**
+	 * Constructeur complet
+	 * @param courbeBezier
+	 * 	courbe
+	 */
+	public CourbeBezierAWT(CourbeBezier courbeBezier) 
+			//throws HeadlessException 
+	{
 		super();
 		this.courbeBezier = courbeBezier;
 	}
 
-
+	/**
+	 * @see CourbeBezierAWT#courbeBezier
+	 * @return Courbe de Bézier
+	 */
 	public CourbeBezier getCourbeBezier() {
 		return courbeBezier;
 	}
 
-
-
+	/**
+	 * Change la courbe
+	 * @see CourbeBezierAWT#courbeBezier
+	 * @param courbeBezier
+	 * 	courbe
+	 */
 	public void setCourbeBezier(CourbeBezier courbeBezier) {
 		this.courbeBezier = courbeBezier;
 	}
 
+	/**
+	 * @return Transforme courbe en une Shape dessinable dans une Frame
+	 */
 	public List<Shape> shape() {
 		List<Shape> shapes = new ArrayList<Shape>();
 
@@ -67,6 +92,9 @@ extends Frame
 		return shapes;
 	}
 
+	/*
+	 * Méthode pour TestAWTBezier
+	 */
 	public void paint(Graphics g) {
 
 		Color color = courbeBezier.getCrayon().getCouleur();

@@ -12,7 +12,7 @@ import interpreteur.awt.CercleAWT;
 
 public class TestAWTCercle {
 
-
+/*
 	public static void main(String args[]) 
 	{
 		Cercle cercle = new Cercle(new Position(0,0), 100, Dessin.REMPLI);
@@ -31,4 +31,5 @@ public class TestAWTCercle {
 		cercleAWT.setSize(400, 400);
 		cercleAWT.setVisible(true);
 	}
+	*/
 }

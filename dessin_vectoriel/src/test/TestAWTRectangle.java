@@ -9,7 +9,7 @@ import interpreteur.awt.RectangleAWT;
 
 public class TestAWTRectangle {
 
-
+/*
 	public static void main(String args[]) 
 	{
 
@@ -32,4 +32,5 @@ public class TestAWTRectangle {
 		RectangleAWT.setSize(400, 400);
 		RectangleAWT.setVisible(true);
 	}
+*/
 }
