@@ -41,6 +41,9 @@ public class CercleSVG extends Cercle{
 		super(centre, rayon, isRempli);
 	}
 
+	/**
+	 * @return Transforme la figure en sa représentation svg.
+	 */
 	public String generateCode(){
 
 		String code = "<circle cx=\"" + this.getCentre().getX()
