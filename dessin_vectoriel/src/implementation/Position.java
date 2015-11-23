@@ -22,7 +22,9 @@ public class Position {
 	/**
 	 * Constructeur complet
 	 * @param x
+	 * 	x
 	 * @param y
+	 * 	y
 	 */
 	public Position(int x, int y) {
 		super();
@@ -42,6 +44,7 @@ public class Position {
 	 * Change x
 	 * @see Position#x
 	 * @param x
+	 * 	x
 	 */
 	public void setX(int x) {
 		this.x = x;
@@ -59,6 +62,7 @@ public class Position {
 	 * Change y
 	 * @see Position#y
 	 * @param y
+	 * 	y
 	 */
 	public void setY(int y) {
 		this.y = y;
@@ -67,7 +71,9 @@ public class Position {
 	/**
 	 * La fabrique d'une position
 	 * @param x
+	 * 	x
 	 * @param y
+	 * 	y
 	 * @return une position
 	 */
 	public Position creerPosition(int x, int y){

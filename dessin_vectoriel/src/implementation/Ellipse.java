@@ -40,10 +40,15 @@ public class Ellipse extends Cercle {
 	/**
 	 * Le constructeur complet de l'Ellipse
 	 * @param centre
+	 * 	position
 	 * @param gdAxe
+	 * 	grand axe
 	 * @param petitAxe
+	 * 	petit axe
 	 * @param angleAbsGdAxe
+	 * 	angle
 	 * @param isRempli
+	 * 	remplissage
 	 */
 	public Ellipse(Position centre, int gdAxe, int petitAxe, long angleAbsGdAxe, boolean isRempli) {
 		super(centre, gdAxe, isRempli);
@@ -61,6 +66,7 @@ public class Ellipse extends Cercle {
 	/**
 	 * Change le grandAxe de l'Ellipse
 	 * @param gdAxe
+	 * 	grand axe
 	 */
 	public void setGdAxe(int gdAxe) {
 		super.setRayon(gdAxe);
@@ -78,6 +84,7 @@ public class Ellipse extends Cercle {
 	 * Change le petit Axe de l'Ellipse
 	 * @see Ellipse#petitAxe
 	 * @param petitAxe
+	 * 	petit axe
 	 */
 	public void setPetitAxe(int petitAxe) {
 		this.petitAxe = petitAxe;
@@ -95,6 +102,7 @@ public class Ellipse extends Cercle {
 	 * Change l'angle de l'Ellipse
 	 * @see Ellipse#angleAbsGdAxe
 	 * @param angleAbsGdAxe
+	 * 	angle
 	 */
 	public void setAngleAbsGdAxe(long angleAbsGdAxe) {
 		this.angleAbsGdAxe = angleAbsGdAxe;
@@ -157,6 +165,7 @@ public class Ellipse extends Cercle {
 	/**
 	 * Accepte la visite
 	 * @param visiteur
+	 * 	visiteur
 	 * @see Visiteur
 	 * @see Visiteur#visit(Ellipse)
 	 * @see Dessin#accept(Visiteur)

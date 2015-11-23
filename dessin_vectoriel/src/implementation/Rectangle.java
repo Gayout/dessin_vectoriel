@@ -53,9 +53,13 @@ public class Rectangle extends Chemin{
 	/**
 	 * Constructeur complet d'un rectangle
 	 * @param hautGauche
+	 * 	position
 	 * @param width
+	 * 	largeur
 	 * @param height
+	 * 	hauteur
 	 * @param isRempli
+	 * 	remplissage
 	 */
 	public Rectangle(Position hautGauche, int width, int height, boolean isRempli) {
 		this.hautGauche = hautGauche;
@@ -83,6 +87,7 @@ public class Rectangle extends Chemin{
 	 * Change le remplissage du rectangle
 	 * @see Rectangle#rempli
 	 * @param isRempli
+	 * 	remplissage
 	 */
 	public void setRempli(boolean isRempli) {
 		this.rempli = isRempli;
@@ -102,6 +107,7 @@ public class Rectangle extends Chemin{
 	 * @see Position
 	 * @see Rectangle#hautGauche
 	 * @param hautGauche
+	 * 	position
 	 */
 	public void setHautGauche(Position hautGauche) {
 		this.hautGauche = hautGauche;
@@ -119,6 +125,7 @@ public class Rectangle extends Chemin{
 	 * Change la largeur
 	 * @see Rectangle#width
 	 * @param width
+	 * 	largeur
 	 */
 	public void setWidth(int width) {
 		this.width = width;
@@ -136,6 +143,7 @@ public class Rectangle extends Chemin{
 	 * Change la hauteur
 	 * @see Rectangle#height
 	 * @param height
+	 * 	hauteur
 	 */
 	public void setHeight(int height) {
 		this.height = height;
@@ -171,6 +179,7 @@ public class Rectangle extends Chemin{
 	/**
 	 * Accepte la visite
 	 * @param visiteur
+	 * 	visiteur
 	 * @see Visiteur
 	 * @see Visiteur#visit(Rectangle)
 	 * @see Dessin#accept(Visiteur)

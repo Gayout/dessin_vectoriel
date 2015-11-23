@@ -55,9 +55,13 @@ public class Texte implements Dessin {
 	/**
 	 * Constructeur complet
 	 * @param taillePolice
+	 * 		taille de police
 	 * @param texte
+	 * 		valeur du texte
 	 * @param police
+	 * 		police
 	 * @param htGauche
+	 * 		position du texte
 	 */
 	public Texte(int taillePolice, String texte, Font police, Position htGauche) {
 		super();
@@ -79,6 +83,7 @@ public class Texte implements Dessin {
 	 * Change la taille de police
 	 * @see Texte#taillePolice
 	 * @param taillePolice
+	 * 		taille de police
 	 */
 	public void setTaillePolice(int taillePolice) {
 		this.taillePolice = taillePolice;
@@ -95,6 +100,7 @@ public class Texte implements Dessin {
 	 * Change la police
 	 * @see Texte#police
 	 * @param police
+	 * 		Police
 	 */
 	public void setPolice(Font police) {
 		this.police = police;
@@ -112,6 +118,7 @@ public class Texte implements Dessin {
 	 * Change la valeur du texte
 	 * @see Texte#texte
 	 * @param texte
+	 * 		valeur du texte
 	 */
 	public void setTexte(String texte) {
 		this.texte = texte;
@@ -131,6 +138,7 @@ public class Texte implements Dessin {
 	 * @see Position
 	 * @see Texte#htGauche
 	 * @param htGauche
+	 * 		position du texte
 	 */
 	public void setHtGauche(Position htGauche) {
 		this.htGauche = htGauche;
@@ -139,6 +147,7 @@ public class Texte implements Dessin {
 	/**
 	 * Accepte la visite
 	 * @param visiteur
+	 * 		visiteur
 	 * @see Visiteur
 	 * @see Visiteur#visit(Texte)
 	 * @see Dessin#accept(Visiteur)

@@ -44,8 +44,11 @@ public class Cercle extends Chemin{
 	/**
 	 * Le Constructeur complet de Cercle prend une position (centre), un rayon et déclare le cercle rempli ou vide
 	 * @param centre
+	 * 	position
 	 * @param rayon
+	 * 	rayon
 	 * @param isRempli
+	 * 	remplissage
 	 */
 	public Cercle(Position centre, int rayon, boolean isRempli) {
 		this.centre = centre;
@@ -76,6 +79,7 @@ public class Cercle extends Chemin{
 	 * Change le centre du Cercle
 	 * @see Cercle#centre
 	 * @param centre
+	 * 	position
 	 */
 	public void setCentre(Position centre) {
 		this.centre = centre;
@@ -93,6 +97,7 @@ public class Cercle extends Chemin{
 	 * Change le rayon du Cercle
 	 * @see Cercle#gdAxe
 	 * @param  rayon
+	 * 	rayon
 	 */
 	public void setRayon(int rayon) {
 		this.gdAxe= rayon;
@@ -110,6 +115,7 @@ public class Cercle extends Chemin{
 	 * Change le remplissage du Cercle
 	 * @see Cercle#rempli
 	 * @param isRempli
+	 * 	remplissage
 	 */
 	public void setRempli(boolean isRempli) {
 		this.rempli = isRempli;
@@ -144,6 +150,7 @@ public class Cercle extends Chemin{
 	/**
 	 * Accepte la visite
 	 * @param visiteur
+	 * 	visiteur
 	 * @see Visiteur
 	 * @see Visiteur#visit(Cercle)
 	 * @see Dessin#accept(Visiteur)

@@ -46,8 +46,11 @@ public class Polygone extends Chemin {
 	
 	/** un polygone est défini par ses cotes, mais on le construit en lui donnant tous ses sommets
 	 * @param sommets
+	 * 	sommets
 	 * @param ouvert
+	 * 	ouverture
 	 * @param rempli
+	 * 	remplissage
 	 */
 	public Polygone(List<Position> sommets, boolean ouvert, boolean rempli) {
 		super();
@@ -86,6 +89,7 @@ public class Polygone extends Chemin {
 	 * @see Polygone
 	 * Change les sommets du polygone
 	 * @param sommets
+	 * 	sommets
 	 * @see Polygone#sommets
 	 */
 	public void setSommets(List<Position> sommets) {
@@ -104,6 +108,7 @@ public class Polygone extends Chemin {
 	 * Change l'ouverture d'un polygone
 	 * @see Polygone#ouvert
 	 * @param ouvert
+	 * 	ouverture
 	 */
 	public void setOuvert(boolean ouvert) {
 		this.ouvert = ouvert;
@@ -122,6 +127,7 @@ public class Polygone extends Chemin {
 	 * Change le remplissage d'un polygone
 	 * @see Polygone#rempli
 	 * @param b
+	 * 	remplissage
 	 */
 	@Override
 	public void setRempli(boolean b) {
@@ -157,6 +163,7 @@ public class Polygone extends Chemin {
 	/**
 	 * Accepte la visite
 	 * @param visiteur
+	 * 	visiteur
 	 * @see Visiteur
 	 * @see Visiteur#visit(Polygone)
 	 * @see Dessin#accept(Visiteur)

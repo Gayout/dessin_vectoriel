@@ -3,7 +3,6 @@ package abstraction;
  * <b>Dessin est la plus haute couche du patron Composite</b>
  * <p>
  * Un Dessin est une interface qui étends la Fabrique de Dessin et qui permet la visite de Visiteurs
- * </p>
  * <p>
  * Dessin est implémenté ensuite par :
  * <ul>
@@ -11,7 +10,6 @@ package abstraction;
  * <li>Un Dessin Composite</li>
  * <li>Un Chemin</li>
  * </ul>
- * </p>
  * @see Chemin
  * @see DessinVide
  * @see DessinComposite

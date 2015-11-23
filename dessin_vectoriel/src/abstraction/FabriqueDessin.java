@@ -17,7 +17,6 @@ import implementation.*;
  * <li>Un Segment</li>
  * <li>Un Texte</li>
  * </ul>
- * </p>
  * @see DessinComposite
  * @see Cercle
  * @see CourbeBezier
@@ -36,8 +35,11 @@ public interface FabriqueDessin<T> {
 	 * @see Cercle#creerCercle(Position, int, boolean)
 	 * @see Ellipse#creerCercle(Position, int, boolean)
 	 * @param centre
+	 * 	position
 	 * @param rayon
+	 * 	rayon
 	 * @param rempli
+	 * 	remplissage
 	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe Cercle
 	 */
 	public default T creerCercle(Position centre, int rayon, boolean rempli){
@@ -48,10 +50,15 @@ public interface FabriqueDessin<T> {
 	 * La fabrique qui sert à créer une Ellipse
 	 * @see Ellipse#creerEllipse(Position, int, int, long, boolean)
 	 * @param centre
+	 * 	position
 	 * @param gdAxe
+	 * 	grand axe
 	 * @param petitAxe
+	 * 	petit axe
 	 * @param angleAbsGdAxe
+	 * 	angle
 	 * @param rempli
+	 * 	remplissage
 	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe Ellipse
 	 */
 	public default T creerEllipse(Position centre, int gdAxe, int petitAxe, long angleAbsGdAxe, boolean rempli){
@@ -59,13 +66,17 @@ public interface FabriqueDessin<T> {
 	}
 	
 	/**
-	 * @see CourbeBezier#creerCourbeBezier(List, boolean)
+	 * @see CourbeBezier#creerCourbeBezier(List, boolean, boolean)
 	 * La fabrique qui sert à créer une Courbe de Bézier
 	 * @param pointControle
+	 * 	point de controle
+	 * @param ouvert
+	 * 	ouverture
 	 * @param rempli
+	 * 	remplissage
 	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe CourbeBezier
 	 */
-	public default T creerCourbeBezier(List<Position> pointControle, boolean rempli) {
+	public default T creerCourbeBezier(List<Position> pointControle, boolean ouvert, boolean rempli) {
 		return null;
 	}
 	
@@ -73,6 +84,7 @@ public interface FabriqueDessin<T> {
 	 * @see DessinComposite#creerDessinComposite(List)
 	 * La fabrique qui sert à créer un DessinComposite
 	 * @param dessins
+	 * 	dessins
 	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe DessinComposite
 	 */
 	public default T creerDessinComposite(List<Dessin> dessins) {
@@ -84,8 +96,11 @@ public interface FabriqueDessin<T> {
 	 * @see CourbeBezier#creerPolygone(List, boolean, boolean)
 	 * La fabrique qui sert à créer un Polygone
 	 * @param sommets
+	 * 	sommets
 	 * @param ouvert
+	 * 	ouverture
 	 * @param rempli
+	 * 	remplissage
 	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe Polygone
 	 */
 	public default T creerPolygone(List<Position> sommets, boolean ouvert, boolean rempli) {
@@ -109,9 +124,13 @@ public interface FabriqueDessin<T> {
 	 * @see Rectangle#creerRectangle(Position, int, int, boolean)
 	 * La fabrique qui sert à créer un Rectangle
 	 * @param hautGauche
+	 * 	position
 	 * @param width
+	 * 	largeur
 	 * @param height
+	 * 	hauteur
 	 * @param isRempli
+	 * 	remplissage
 	 * @return Par défaut ne retourne rien, elle sera implementé dans la classe Rectangle
 	 */
 	public default T creerRectangle(Position hautGauche, int width, int height, boolean isRempli) {

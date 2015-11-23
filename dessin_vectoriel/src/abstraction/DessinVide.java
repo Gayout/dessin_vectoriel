@@ -25,6 +25,7 @@ public class DessinVide implements Dessin {
 	 * La fonction hérité de Dessin qui permet la visite d'un visiteur
 	 * @see Dessin#accept(Visiteur)
 	 * @param visiteur
+	 * 	visiteur
 	 * @see Visiteur
 	 */
 	@Override

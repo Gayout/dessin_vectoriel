@@ -36,7 +36,9 @@ public class Segment extends Chemin{
 	/**
 	 * Constructeur complet
 	 * @param p1
+	 * 	depart
 	 * @param p2
+	 * 	arrivee
 	 */
 	public Segment(Position p1, Position p2){
 		this.depart=p1;
@@ -64,6 +66,7 @@ public class Segment extends Chemin{
 	 * Change le départ du segment
 	 * @see Segment#depart
 	 * @param depart
+	 * 	depart
 	 */
 	public void setDepart(Position depart) {
 		this.depart = depart;
@@ -74,6 +77,7 @@ public class Segment extends Chemin{
 	 * Change l'arrivee du segment
 	 * @see Segment#arrivee
 	 * @param arrivee
+	 * 	arrivee
 	 */
 	public void setArrivee(Position arrivee) {
 		this.arrivee = arrivee;
@@ -99,6 +103,7 @@ public class Segment extends Chemin{
 	/**
 	 * Ne fait rien, Un segment n'est pas rempli
 	 * @param b
+	 * 	remplissage
 	 */
 	@Override
 	public void setRempli(boolean b) {
@@ -133,6 +138,7 @@ public class Segment extends Chemin{
 	/**
 	 * Accepte la visite
 	 * @param visiteur
+	 * 	visiteur
 	 * @see Visiteur
 	 * @see Visiteur#visit(Segment)
 	 * @see Dessin#accept(Visiteur)

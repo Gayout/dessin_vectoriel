@@ -20,21 +20,15 @@ public class CourbeBezier extends Polygone {
 
 	/**
 	 * Le Constructeur complet de CourbeBezier prend une liste de points de controle, déclare la courbe ouverte ou fermée et remplie ou vide
-	 * @param centre
-	 * @param rayon
-	 * @param isRempli
+	 * @param sommets
+	 * 	points de controle
+	 * @param ouvert
+	 * 	rayon
+	 * @param rempli
+	 * 	remplissage
 	 */
 	public CourbeBezier(List<Position> sommets, boolean ouvert, boolean rempli) {
 		super(sommets, ouvert, rempli);
-	}
-
-	/**
-	 * Constructeur d'une courbe par défaut ouverte
-	 * @param pointControle
-	 * @param rempli
-	 */
-	public CourbeBezier(List<Position> pointControle, boolean rempli) {
-		super(pointControle, true, rempli);
 	}
 
 	/**
@@ -46,12 +40,12 @@ public class CourbeBezier extends Polygone {
 
 	/**
 	 * La fabrique d'une courbe de Bezier
-	 * @see FabriqueDessin#creerCourbeBezier(List, boolean)
-	 * @see CourbeBezier#CourbeBezier(List, boolean)
+	 * @see FabriqueDessin#creerCourbeBezier(List, boolean, boolean)
+	 * @see CourbeBezier#CourbeBezier(List, boolean, boolean)
 	 */
 	@Override
-	public Dessin creerCourbeBezier(List<Position> pointControle, boolean rempli) {
-		return new CourbeBezier(pointControle, rempli);
+	public Dessin creerCourbeBezier(List<Position> pointControle, boolean ouvert, boolean rempli) {
+		return new CourbeBezier(pointControle,ouvert,  rempli);
 	}
 
 	/**
@@ -101,6 +95,7 @@ public class CourbeBezier extends Polygone {
 	/**
 	 * Accepte la visite
 	 * @param visiteur
+	 * 	visiteur
 	 * @see Visiteur
 	 * @see Visiteur#visit(CourbeBezier)
 	 * @see Dessin#accept(Visiteur)

@@ -10,7 +10,6 @@ import visitor.*;
  * <li>Un VisiteurAWTDessiner</li>
  * <li>Un VisiteurSVGDessiner</li>
  * </ul>
- * </p>
  * @see VisiteurAWTDessiner
  * @see VisiteurSVGDessiner
  * @author Aurore Claude/Quentin Gayout
@@ -21,6 +20,7 @@ public interface Visiteur {
 	 * La visite d'un Dessin
 	 * @see Dessin#accept(Visiteur)
 	 * @param dessin
+	 * 	dessin
 	 */
 	void visit(Dessin dessin);
 	
@@ -28,6 +28,7 @@ public interface Visiteur {
 	 * La visite d'un Cercle
 	 * @see Cercle#accept(Visiteur)
 	 * @param cercle
+	 * 	cercle
 	 */
 	void visit(Cercle cercle);
 	
@@ -35,6 +36,7 @@ public interface Visiteur {
 	 * La visite d'une Courbe de Bézier
 	 * @see CourbeBezier#accept(Visiteur)
 	 * @param courbeBezier
+	 * 	courbeBezier
 	 */
 	void visit(CourbeBezier courbeBezier);
 	
@@ -42,6 +44,7 @@ public interface Visiteur {
 	 * La visite d'une Ellipse
 	 * @see Ellipse#accept(Visiteur)
 	 * @param ellipse
+	 * 	ellipse
 	 */
 	void visit(Ellipse ellipse);
 	
@@ -49,6 +52,7 @@ public interface Visiteur {
 	 * La visite d'un Polygone
 	 * @see Polygone#accept(Visiteur)
 	 * @param polygone
+	 * 	polygone
 	 */
 	void visit(Polygone polygone);
 	
@@ -56,6 +60,7 @@ public interface Visiteur {
 	 * La visite d'un Rectangle
 	 * @see Rectangle#accept(Visiteur)
 	 * @param rectangle
+	 * 	rectangle
 	 */
 	void visit(Rectangle rectangle);
 	
@@ -63,6 +68,7 @@ public interface Visiteur {
 	 * La visite d'un Segment 
 	 * @see Segment#accept(Visiteur)
 	 * @param segment
+	 * 	segment
 	 */
 	void visit(Segment segment);
 	
@@ -70,6 +76,7 @@ public interface Visiteur {
 	 * La visite d'un Texte
 	 * @see Texte#accept(Visiteur)
 	 * @param texte
+	 * 	texte
 	 */
 	void visit(Texte texte);
 }

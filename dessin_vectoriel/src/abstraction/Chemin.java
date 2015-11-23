@@ -1,6 +1,6 @@
 package abstraction;
 
-import implementation.Crayon;
+import implementation.*;
 
 /**
  * <b>Chemin est une classe abstraite qui implemente l'interface Dessin</b>
@@ -15,7 +15,6 @@ import implementation.Crayon;
  * <li>Un Segment</li>
  * <li>Un Texte</li>
  * </ul>
- * </p>
  * @see Cercle
  * @see CourbeBezier
  * @see Ellipse

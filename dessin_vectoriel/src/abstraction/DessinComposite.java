@@ -27,6 +27,7 @@ public class DessinComposite implements Dessin {
 	/**
 	 * Le constructeur qui prend en paramètre une liste de dessin
 	 * @param dessins
+	 * 	dessins
 	 * @see Dessin
 	 * @see DessinComposite#dessins
 	 */
@@ -57,6 +58,7 @@ public class DessinComposite implements Dessin {
 	 * @see DessinComposite#dessins
 	 * @see Dessin
 	 * @param dessins
+	 * 	dessins
 	 */
 	public void setDessins(List<Dessin> dessins) {
 		this.dessins = dessins;
@@ -66,6 +68,7 @@ public class DessinComposite implements Dessin {
 	 * Ajoute un Dessin à la liste de Dessin qui compose le dessin composite
 	 * @see Dessin
 	 * @param dessin
+	 * 	dessin
 	 */
 	public void addDessin(Dessin dessin){
 		this.getDessins().add(dessin);
@@ -74,6 +77,8 @@ public class DessinComposite implements Dessin {
 	/**
 	 * Accepte le visiteur pour qu'il effectue son service au sein du dessin composite
 	 * @see Visiteur
+	 * @param visiteur
+	 * 	visiteur
 	 * @see Dessin#accept(Visiteur)
 	 */
 	@Override

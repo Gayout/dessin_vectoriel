@@ -31,7 +31,9 @@ public class Crayon {
 	/**
 	 * Le constructeur du Crayon prend en paramètre une épaisseur et une couleur
 	 * @param epaisseur
+	 * 	epaisseur
 	 * @param couleur
+	 * 	couleur
 	 */
 	public Crayon(int epaisseur, Color couleur) {
 		super();
@@ -50,6 +52,7 @@ public class Crayon {
 	/**
 	 * Change l'épaisseur du Crayon
 	 * @param epaisseur
+	 * 	epaisseur
 	 * @see Crayon#epaisseur
 	 */
 	public void setEpaisseur(int epaisseur) {
@@ -67,6 +70,7 @@ public class Crayon {
 	/**
 	 * Change la couleur du Crayon
 	 * @param couleur
+	 * 	couleur
 	 * @see Crayon#couleur
 	 */
 	public void setCouleur(Color couleur) {
