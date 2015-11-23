@@ -132,8 +132,10 @@ public class VisiteurSVGDessiner implements Visiteur{
 	 */
 	@Override
 	public void visit(Texte texte) {
-		// TODO Auto-generated method stub
-		
+		code = code.substring(0, code.length()-6);
+		TexteSVG texteSVG= texte.creerTexteSVG();
+		code += "\t"+texteSVG.generateCode();
+		code += "\n</svg>";			
 	}
 
 }

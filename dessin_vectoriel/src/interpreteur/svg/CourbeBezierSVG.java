@@ -8,7 +8,7 @@ import implementation.CourbeBezier;
 import implementation.Position;
 
 /**
- * <b>CourbeBezierAWT est une classe d'interprétation en SVG. Elle interpréte la classe CourbeBezier.</b>
+ * <b>CourbeBezierSVG est une classe d'interprétation en SVG. Elle interpréte la classe CourbeBezier.</b>
  * @author Aurore Claude/Quentin Gayout
  * @see CourbeBezier
  *

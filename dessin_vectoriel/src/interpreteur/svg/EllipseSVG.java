@@ -3,7 +3,7 @@ package interpreteur.svg;
 import implementation.Ellipse;
 import implementation.Position;
 /**
- * <b>EllipseAWT est une classe d'interprétation en SVG. Elle interpréte la classe Ellipse.</b>
+ * <b>EllipseSVG est une classe d'interprétation en SVG. Elle interpréte la classe Ellipse.</b>
  * @author Aurore Claude/Quentin Gayout
  * @see Ellipse
  *

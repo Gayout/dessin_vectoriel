@@ -4,7 +4,7 @@ package interpreteur.svg;
 import implementation.Rectangle;
 import implementation.Position;
 /**
- * <b>RectangleAWT est une classe d'interprétation en SVG. Elle interpréte la classe Rectangle.</b>
+ * <b>RectangleSVG est une classe d'interprétation en SVG. Elle interpréte la classe Rectangle.</b>
  * @author Aurore Claude/Quentin Gayout
  * @see Rectangle
  *

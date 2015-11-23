@@ -3,7 +3,7 @@ package interpreteur.svg;
 import implementation.Position;
 import implementation.Segment;
 /**
- * <b>SegmentAWT est une classe d'interprétation en SVG. Elle interpréte la classe Segment.</b>
+ * <b>SegmentSVG est une classe d'interprétation en SVG. Elle interpréte la classe Segment.</b>
  * @author Aurore Claude/Quentin Gayout
  * @see Segment
  *

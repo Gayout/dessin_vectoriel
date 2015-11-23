@@ -5,12 +5,14 @@ import java.awt.Font;
 import abstraction.Chemin;
 import abstraction.Dessin;
 import abstraction.Visiteur;
+import interpreteur.awt.TexteAWT;
+import interpreteur.svg.TexteSVG;
 /**
  * <b>Texte est une classe qui implémente Chemin.</b>
  * @author Aurore Claude/Quentin Gayout
  * @see Chemin
  */
-public class Texte implements Dessin {
+public class Texte extends Chemin {
 	
 	/**
 	 * Un Texte est défini par la taille de sa Police
@@ -31,10 +33,10 @@ public class Texte implements Dessin {
 	/**
 	 * Un Texte est défini par sa Police
 	 * @see Texte#getPolice()
-	 * @see Texte#setPolice(Font)
+	 * @see Texte#setPolice(String)
 	 * @see Texte#Texte(int, String, Font, Position)
 	 */
-	private Font police;
+	private String police;
 	
 	/**
 	 * Un Texte est défini par son coin haut-gauche
@@ -63,7 +65,7 @@ public class Texte implements Dessin {
 	 * @param htGauche
 	 * 		position du texte
 	 */
-	public Texte(int taillePolice, String texte, Font police, Position htGauche) {
+	public Texte(int taillePolice, String texte, String police, Position htGauche) {
 		super();
 		this.taillePolice = taillePolice;
 		this.police = police;
@@ -92,7 +94,7 @@ public class Texte implements Dessin {
 	 * @see Texte#police
 	 * @return La police
 	 */
-	public Font getPolice() {
+	public String getPolice() {
 		return police;
 	}
 
@@ -102,7 +104,7 @@ public class Texte implements Dessin {
 	 * @param police
 	 * 		Police
 	 */
-	public void setPolice(Font police) {
+	public void setPolice(String police) {
 		this.police = police;
 	}
 
@@ -155,5 +157,38 @@ public class Texte implements Dessin {
 	@Override
 	public void accept(Visiteur visiteur) {
 		visiteur.visit(this);
+	}
+
+	/**
+	 * @return False. Un texte n'est jamais rempli
+	 */
+	@Override
+	public boolean isRempli() {
+		return false;
+	}
+
+	/**
+	 * Ne fait rien, Un texte n'est pas rempli
+	 * @param b
+	 * 	remplissage
+	 */
+	@Override
+	public void setRempli(boolean b) {
+	}
+
+	/**
+	 * @return Un texte interprété en SVG
+	 * @see TexteSVG
+	 */
+	public TexteSVG creerTexteSVG(){
+		return new TexteSVG(this);
+	}
+
+	/**
+	 * @return Un texte interprété en SVG
+	 * @see TexteSVG
+	 */
+	public TexteAWT creerTexteAWT() {
+		return new TexteAWT(this);
 	}
 }

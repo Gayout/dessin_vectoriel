@@ -5,7 +5,7 @@ import java.util.List;
 import implementation.Polygone;
 import implementation.Position;
 /**
- * <b>PolugoneAWT est une classe d'interprétation en SVG. Elle interpréte la classe Polygone.</b>
+ * <b>PolygoneSVG est une classe d'interprétation en SVG. Elle interpréte la classe Polygone.</b>
  * @author Aurore Claude/Quentin Gayout
  * @see Polygone
  *

@@ -2,6 +2,7 @@ package visitor;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -249,7 +250,15 @@ public class VisiteurAWTDessiner extends Frame implements Visiteur{
 	 */
 	@Override
 	public void visit(Texte texte) {
-		// TODO Auto-generated method stub
+
+		String font = ""+texte.getPolice()+"-"+texte.getTaillePolice();
+
+		Graphics2D ga = (Graphics2D)g;
+		
+		ga.setColor(texte.getCrayon().getCouleur());
+		ga.setFont(Font.decode(font));
+		
+		ga.drawString(texte.getTexte(), texte.getHtGauche().getX(), texte.getHtGauche().getY());
 
 	}
 
