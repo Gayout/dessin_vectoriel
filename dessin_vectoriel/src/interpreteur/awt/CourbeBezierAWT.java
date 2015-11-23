@@ -11,7 +11,7 @@ import exception.BezierException;
 import implementation.CourbeBezier;
 import implementation.Position;
 /**
- * <b>CourbeBezierAWT est une classe d'interprétation en AWT. Elle interpréte la classe Cercle.</b>
+ * <b>CourbeBezierAWT est une classe d'interprétation en AWT. Elle interpréte la classe CourbeBezier.</b>
  * @author Aurore Claude/Quentin Gayout
  * @see CourbeBezier
  *

@@ -6,7 +6,7 @@ import java.awt.geom.Ellipse2D;
 import implementation.Ellipse;
 import implementation.Position;
 /**
- * <b>Ellipse est une classe d'interprétation en AWT. Elle interpréte la classe Cercle.</b>
+ * <b>Ellipse est une classe d'interprétation en AWT. Elle interpréte la classe Ellipse.</b>
  * @author Aurore Claude/Quentin Gayout
  * @see Ellipse
  *

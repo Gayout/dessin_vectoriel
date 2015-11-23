@@ -8,7 +8,7 @@ import java.util.List;
 import implementation.Polygone;
 import implementation.Position;
 /**
- * <b>PolygoneAWT est une classe d'interprétation en AWT. Elle interpréte la classe Cercle.</b>
+ * <b>PolygoneAWT est une classe d'interprétation en AWT. Elle interpréte la classe Polygone.</b>
  * @author Aurore Claude/Quentin Gayout
  * @see Polygone
  *

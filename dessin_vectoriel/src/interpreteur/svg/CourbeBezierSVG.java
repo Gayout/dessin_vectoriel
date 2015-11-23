@@ -1,25 +1,50 @@
 package interpreteur.svg;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import implementation.CourbeBezier;
 import implementation.Position;
 
+/**
+ * <b>CourbeBezierAWT est une classe d'interprétation en SVG. Elle interpréte la classe CourbeBezier.</b>
+ * @author Aurore Claude/Quentin Gayout
+ * @see CourbeBezier
+ *
+ */
 public class CourbeBezierSVG extends CourbeBezier {
+	/**
+	 * Constructeur Vide
+	 */
 	public CourbeBezierSVG() {
 		super();
 	}
-
+	/**
+	 * Constructeur par recopie
+	 * @param courbeBezier
+	 * 	courbeBezier
+	 */
 	public CourbeBezierSVG(CourbeBezier courbeBezier){
 		this(courbeBezier.getSommets(), courbeBezier.isOuvert(), courbeBezier.isRempli());
 		this.setCrayon(courbeBezier.getCrayon());
 	}
-	
+	/**
+	 * Constructeur complet
+	 * @param sommets
+	 * 	points de controle
+	 * @param ouvert
+	 * 	ouverture
+	 * @param rempli
+	 * 	remplissage
+	 */
 	public CourbeBezierSVG( List<Position> sommets, boolean ouvert, boolean rempli) {
 		super(sommets, ouvert, rempli);
 	}
 
+	/**
+	 * @return Transforme la figure en sa représentation svg.
+	 */
 	public String generateCode(){
 		
 		List<Position> sommets = this.getSommets();

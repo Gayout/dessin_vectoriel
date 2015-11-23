@@ -7,7 +7,7 @@ import java.awt.geom.Rectangle2D;
 
 import implementation.Rectangle;
 /**
- * <b>RectangleAWT est une classe d'interprétation en AWT. Elle interpréte la classe Cercle.</b>
+ * <b>RectangleAWT est une classe d'interprétation en AWT. Elle interpréte la classe Rectangle.</b>
  * @author Aurore Claude/Quentin Gayout
  * @see Rectangle
  *

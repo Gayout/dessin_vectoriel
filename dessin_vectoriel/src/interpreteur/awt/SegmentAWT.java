@@ -5,7 +5,7 @@ import java.awt.geom.Line2D;
 
 import implementation.Segment;
 /**
- * <b>SegmentAWT est une classe d'interprétation en AWT. Elle interpréte la classe Cercle.</b>
+ * <b>SegmentAWT est une classe d'interprétation en AWT. Elle interpréte la classe Segment.</b>
  * @author Aurore Claude/Quentin Gayout
  * @see Segment
  *
