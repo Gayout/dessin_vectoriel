@@ -4,6 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
 
+import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -16,8 +17,10 @@ public class JControllerListRectangle implements Observer, ListSelectionListener
 	private MainView parent;
 	private JList<String> list;
 	private Application application;
+	private JButton mod;
+	private JButton sup;
 
-	public JControllerListRectangle(MainView parent, JList<String> list, Application application) {
+	public JControllerListRectangle(MainView parent, JList<String> list, Application application, JButton mod, JButton sup) {
 		this.parent = parent;
 		this.list = list;
 		this.application = application;
@@ -27,6 +30,13 @@ public class JControllerListRectangle implements Observer, ListSelectionListener
 		}
 		data.add(0, "-");
 
+		this.mod = mod;
+		this.sup = sup;
+		if (this.application.getRectangleSelected()==null) {
+			this.mod.setEnabled(false);
+			this.sup.setEnabled(false);
+		}
+		
 		this.list.setListData(data);
 		this.list.setSelectedIndex(0);
 		this.parent.setListRectangles(list);
@@ -36,10 +46,14 @@ public class JControllerListRectangle implements Observer, ListSelectionListener
 	public void valueChanged(ListSelectionEvent arg0) {
 		if ((this.list.getSelectedIndex() != -1) && !((String)this.list.getSelectedValue()).equals("-")) {
 			this.application.setRectangleSelected(this.application.getRectangles().get(this.list.getSelectedIndex() - 1));
+			this.mod.setEnabled(true);
+			this.sup.setEnabled(true);
 		}
 		else {
 			if (this.list.getSelectedIndex() != -1) {
 				this.application.setRectangleSelected(null);
+				this.mod.setEnabled(false);
+				this.sup.setEnabled(false);
 			}
 		}
 	}

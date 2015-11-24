@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import abstraction.Application;
+import controller.listes.JControllerListCercle;
 import implementation.CourbeBezier;
 import implementation.Position;
 import view.figures.CourbeView;
@@ -17,12 +18,14 @@ public class JControllerSaveCourbe implements ActionListener {
 	private CourbeView fenetre;
 	private CourbeView2 parent;
 	private boolean rempli;
+	private boolean edition;
 
-	public JControllerSaveCourbe (Application application, CourbeView fenetre, CourbeView2 parent, boolean rempli) {
+	public JControllerSaveCourbe (Application application, CourbeView fenetre, CourbeView2 parent, boolean rempli, boolean edition) {
 		this.application = application;
 		this.fenetre = fenetre;
 		this.parent = parent;
 		this.rempli = rempli;
+		this.edition = edition;
 	}
 
 	@Override
@@ -52,7 +55,13 @@ public class JControllerSaveCourbe implements ActionListener {
 				points.add(new Position(x, y));
 				CourbeBezier c = new CourbeBezier(points, !fenetre.getFerme().isSelected(), this.rempli);
 				c.setCrayon(this.application.getCrayon());
-				this.application.addCourbe(c);
+				if (!edition) {
+					this.application.addCourbe(c);
+				}
+				else {
+					int i = JControllerListCercle.branchToIndice(this.application.getCercles(), this.application.getCercleSelected());
+					this.application.replaceCourbe(i-1, c);
+				}
 				this.application.setCourbeSelected(c);
 				this.parent.setVisible(false);
 			}

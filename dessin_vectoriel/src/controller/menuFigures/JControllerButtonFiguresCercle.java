@@ -14,6 +14,7 @@ public class JControllerButtonFiguresCercle implements ActionListener {
 	
 	public JControllerButtonFiguresCercle (MainView fenetre, boolean edition, Application application) {
 		this.fenetre = fenetre;
+		this.edition = edition;
 		this.application = application;
 	}
 	

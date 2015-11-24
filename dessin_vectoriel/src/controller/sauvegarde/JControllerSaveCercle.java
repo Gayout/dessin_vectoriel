@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import abstraction.Application;
+import controller.listes.JControllerListCercle;
 import implementation.Cercle;
 import implementation.Position;
 import view.figures.CercleView;
@@ -13,12 +14,14 @@ import view.figures.CercleView;
 public class JControllerSaveCercle implements ActionListener {
 	CercleView parent;
 	private boolean rempli;
+	private boolean edition;
 	private Application application;
 
-	public JControllerSaveCercle (Application application, CercleView parent, boolean rempli) {
+	public JControllerSaveCercle (Application application, CercleView parent, boolean rempli, boolean edition) {
 		this.parent = parent;
 		this.rempli = rempli;
 		this.application = application;
+		this.edition = edition;
 	}
 
 	@Override
@@ -36,7 +39,13 @@ public class JControllerSaveCercle implements ActionListener {
 							Position centre = new Position(xC,yC);
 							Cercle c = new Cercle(centre, rayon, rempli);
 							c.setCrayon(this.application.getCrayon());
-							this.application.addCercle(c);
+							if (!edition) {
+								this.application.addCercle(c);
+							}
+							else {
+								int i = JControllerListCercle.branchToIndice(this.application.getCercles(), this.application.getCercleSelected());
+								this.application.replaceCercle(i-1, c);
+							}
 							this.application.setCercleSelected(c);
 							this.parent.setVisible(false);
 						}

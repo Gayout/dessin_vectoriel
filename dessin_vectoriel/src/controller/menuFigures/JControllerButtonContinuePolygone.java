@@ -14,12 +14,14 @@ public class JControllerButtonContinuePolygone implements ActionListener {
 	private PolygoneView fenetre;
 	private boolean edition;
 	private boolean rempli;
+	private boolean ferme;
 
-	public JControllerButtonContinuePolygone (Application application, PolygoneView fenetre, boolean edition, boolean rempli) {
+	public JControllerButtonContinuePolygone (Application application, PolygoneView fenetre, boolean edition, boolean rempli, boolean ferme) {
 		this.application = application;
 		this.fenetre = fenetre;
 		this.edition = edition;
 		this.rempli = rempli;
+		this.ferme = ferme;
 	}
 
 	@Override
@@ -31,7 +33,7 @@ public class JControllerButtonContinuePolygone implements ActionListener {
 				JOptionPane.showMessageDialog(this.fenetre, "Entrez un nombre de points compris entre 0 et 4 inclus svp.", "Erreur!", 0);
 			}
 			else {
-				PolygoneView2 pv = new PolygoneView2(this.application, this.fenetre, this.edition, nb, this.rempli);
+				PolygoneView2 pv = new PolygoneView2(this.application, this.fenetre, this.edition, nb, this.rempli, this.ferme);
 				pv.setVisible(true);
 				fenetre.setVisible(false);
 			}

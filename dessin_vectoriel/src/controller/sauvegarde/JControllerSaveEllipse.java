@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import abstraction.Application;
+import controller.listes.JControllerListEllipse;
 import implementation.Ellipse;
 import implementation.Position;
 import view.figures.EllipseView;
@@ -14,11 +15,13 @@ public class JControllerSaveEllipse  implements ActionListener {
 	private Application application;
 	private EllipseView parent;
 	private boolean rempli;
+	private boolean edition;
 
-	public JControllerSaveEllipse (Application application, EllipseView parent, boolean rempli) {
+	public JControllerSaveEllipse (Application application, EllipseView parent, boolean rempli, boolean edition) {
 		this.application = application;
 		this.parent = parent;
 		this.rempli = rempli;
+		this.edition = edition;
 	}
 
 	@Override
@@ -41,7 +44,13 @@ public class JControllerSaveEllipse  implements ActionListener {
 										Position centre = new Position(xC,yC);
 										Ellipse ep = new Ellipse(centre, gdAxe, ptiAxe, angle, this.rempli);
 										ep.setCrayon(this.application.getCrayon());
-										this.application.addEllipse(ep);
+										if (!edition) {
+											this.application.addEllipse(ep);
+										}
+										else {
+											int i = JControllerListEllipse.branchToIndice(this.application.getEllipses(), this.application.getEllipseSelected());
+											this.application.replaceEllipse(i-1, ep);
+										}
 										this.application.setEllipseSelected(ep);
 										this.parent.setVisible(false);
 									}

@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import abstraction.Application;
 import controller.sauvegarde.JControllerSaveCarre;
+import implementation.Rectangle;
 import view.MainView;
 
 public class CarreView extends JDialog {
@@ -37,6 +38,31 @@ public class CarreView extends JDialog {
 		
 		this.application = application;
 		
+		this.cote = new JTextField(4);
+		this.cote.setFont(new Font(this.cote.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.xG = new JTextField(4);
+		this.xG.setFont(new Font(this.xG.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.yG = new JTextField(4);
+		this.yG.setFont(new Font(this.yG.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.rempli = new JCheckBox("remplie");
+		this.rempli.setFont(new Font(this.rempli.getFont().getName(), Font.ITALIC, TEXT_SIZE));
+		
+		if(edition) {
+			Rectangle cAncien = this.application.getCarreSelected();
+			int xGAncien = cAncien.getHautGauche().getX();
+			int yGAncien = cAncien.getHautGauche().getY();
+			int coteAncien = cAncien.getHeight();
+			boolean rempliAncien = cAncien.isRempli();
+			
+			this.xG.setText(""+xGAncien);
+			this.yG.setText(""+yGAncien);
+			this.cote.setText(""+coteAncien);
+			this.rempli.setSelected(rempliAncien);
+		}
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 		
@@ -47,8 +73,7 @@ public class CarreView extends JDialog {
 		JLabel titleC = new JLabel("Coté ");
 		titleC.setFont(new Font(titleC.getFont().getName(), Font.BOLD, TITLE_SIZE));
 		panelCote.add(titleC, BorderLayout.WEST);
-		this.cote = new JTextField(4);
-		this.cote.setFont(new Font(this.cote.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurC = new JPanel();
 		panelValeurC.add(this.cote);
 		panelValeurC.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -62,8 +87,7 @@ public class CarreView extends JDialog {
 		JLabel x = new JLabel("Abscisse ");
 		x.setFont(new Font(x.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		panelX.add(x, BorderLayout.WEST);
-		this.xG = new JTextField(4);
-		this.xG.setFont(new Font(this.xG.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurX = new JPanel();
 		panelValeurX.add(this.xG);
 		panelValeurX.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -74,8 +98,7 @@ public class CarreView extends JDialog {
 		JLabel y = new JLabel("Ordonnée ");
 		y.setFont(new Font(y.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		panelY.add(y, BorderLayout.WEST);
-		this.yG = new JTextField(4);
-		this.yG.setFont(new Font(this.yG.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurY = new JPanel();
 		panelValeurY.add(this.yG);
 		panelValeurY.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -95,8 +118,7 @@ public class CarreView extends JDialog {
 		JLabel titleR = new JLabel("Figure ");
 		titleR.setFont(new Font(titleR.getFont().getName(), Font.BOLD, TITLE_SIZE));
 		panelRempli.add(titleR, BorderLayout.WEST);
-		this.rempli = new JCheckBox("remplie");
-		this.rempli.setFont(new Font(this.rempli.getFont().getName(), Font.ITALIC, TEXT_SIZE));
+		
 		JPanel panelValeurR = new JPanel();
 		panelValeurR.add(this.rempli);
 		panelValeurR.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -109,7 +131,7 @@ public class CarreView extends JDialog {
 		
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
-		JControllerSaveCarre controlCarre = new JControllerSaveCarre(this.application, this, this.rempli.isSelected());
+		JControllerSaveCarre controlCarre = new JControllerSaveCarre(this.application, this, this.rempli.isSelected(), edition);
 		save.addActionListener(controlCarre);
 		this.getRootPane().setDefaultButton(save);
 		panelSave.add(save);

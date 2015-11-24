@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import abstraction.Application;
+import controller.listes.JControllerListRectangle;
 import implementation.Position;
 import implementation.Rectangle;
 import view.figures.RectangleView;
@@ -14,11 +15,13 @@ public class JControllerSaveRectangle implements ActionListener {
 	private Application application;
 	private RectangleView parent;
 	private boolean rempli;
+	private boolean edition;
 
-	public JControllerSaveRectangle (Application application, RectangleView parent, boolean rempli) {
+	public JControllerSaveRectangle (Application application, RectangleView parent, boolean rempli, boolean edition) {
 		this.application = application;
 		this.parent = parent;
 		this.rempli = rempli;
+		this.edition = edition;
 	}
 
 	@Override
@@ -38,7 +41,13 @@ public class JControllerSaveRectangle implements ActionListener {
 								Position gauche = new Position(xG,yG);
 								Rectangle r = new Rectangle(gauche, largeur, hauteur, this.rempli);
 								r.setCrayon(this.application.getCrayon());
-								this.application.addRectangle(r);
+								if (!edition) {
+									this.application.addRectangle(r);	
+								}
+								else {
+									int i = JControllerListRectangle.branchToIndice(this.application.getRectangles(), this.application.getRectangleSelected());
+									this.application.replaceRectangle(i-1, r);
+								}
 								this.application.setRectangleSelected(r);
 								this.parent.setVisible(false);
 							}

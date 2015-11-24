@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import abstraction.Application;
 import controller.sauvegarde.JControllerSaveEllipse;
+import implementation.Ellipse;
 import view.MainView;
 
 public class EllipseView extends JDialog {
@@ -39,6 +40,41 @@ public class EllipseView extends JDialog {
 		
 		this.application = application;
 		
+		this.gdAxe = new JTextField(4);
+		this.gdAxe.setFont(new Font(this.gdAxe.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.ptiAxe = new JTextField(4);
+		this.ptiAxe.setFont(new Font(this.ptiAxe.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.yC = new JTextField(4);
+		this.yC.setFont(new Font(this.yC.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.xC = new JTextField(4);
+		this.xC.setFont(new Font(this.xC.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.angle = new JTextField(3);
+		this.angle.setFont(new Font(this.angle.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.rempli = new JCheckBox("remplie");
+		this.rempli.setFont(new Font(this.rempli.getFont().getName(), Font.ITALIC, TEXT_SIZE));
+		
+		if (edition) {
+			Ellipse eAncien = this.application.getEllipseSelected();
+			int gdAxeAncien = eAncien.getGdAxe();
+			int ptiAxeAncien = eAncien.getPetitAxe();
+			int xCAncien = eAncien.getCentre().getX();
+			int yCAncien = eAncien.getCentre().getY();
+			long angleAncien = eAncien.getAngleAbsGdAxe();
+			boolean rempliAncien = eAncien.isRempli();
+			
+			this.gdAxe.setText(""+gdAxeAncien);
+			this.ptiAxe.setText(""+ptiAxeAncien);
+			this.xC.setText(""+xCAncien);
+			this.yC.setText(""+yCAncien);
+			this.angle.setText(""+angleAncien);
+			this.rempli.setSelected(rempliAncien);
+		}
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 		
@@ -52,8 +88,7 @@ public class EllipseView extends JDialog {
 		JLabel gd = new JLabel("Grand axe ");
 		gd.setFont(new Font(gd.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		panelGd.add(gd, BorderLayout.WEST);
-		this.gdAxe = new JTextField(4);
-		this.gdAxe.setFont(new Font(this.gdAxe.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurGd = new JPanel();
 		panelValeurGd.add(this.gdAxe);
 		panelValeurGd.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -64,8 +99,7 @@ public class EllipseView extends JDialog {
 		JLabel pti = new JLabel("Petit axe ");
 		pti.setFont(new Font(pti.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		panelPti.add(pti, BorderLayout.WEST);
-		this.ptiAxe = new JTextField(4);
-		this.ptiAxe.setFont(new Font(this.ptiAxe.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurPti = new JPanel();
 		panelValeurPti.add(this.ptiAxe);
 		panelValeurPti.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -88,8 +122,7 @@ public class EllipseView extends JDialog {
 		JLabel x = new JLabel("Abscisse ");
 		x.setFont(new Font(x.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		panelX.add(x, BorderLayout.WEST);
-		this.xC = new JTextField(4);
-		this.xC.setFont(new Font(this.xC.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+	
 		JPanel panelValeurX = new JPanel();
 		panelValeurX.add(this.xC);
 		panelValeurX.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -100,8 +133,7 @@ public class EllipseView extends JDialog {
 		JLabel y = new JLabel("Ordonnée ");
 		y.setFont(new Font(y.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		panelY.add(y, BorderLayout.WEST);
-		this.yC = new JTextField(4);
-		this.yC.setFont(new Font(this.yC.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+	
 		JPanel panelValeurY = new JPanel();
 		panelValeurY.add(this.yC);
 		panelValeurY.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -124,8 +156,7 @@ public class EllipseView extends JDialog {
 		JLabel titleDe = new JLabel("°");
 		titleDe.setFont(new Font(titleDe.getFont().getName(), Font.BOLD, TEXT_SIZE));
 		panelAngle.add(titleDe, BorderLayout.EAST);
-		this.angle = new JTextField(3);
-		this.angle.setFont(new Font(this.angle.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurD = new JPanel();
 		panelValeurD.add(this.angle);
 		panelValeurD.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -136,8 +167,7 @@ public class EllipseView extends JDialog {
 		JLabel titleR = new JLabel("Figure ");
 		titleR.setFont(new Font(titleR.getFont().getName(), Font.BOLD, TITLE_SIZE));
 		panelRempli.add(titleR, BorderLayout.WEST);
-		this.rempli = new JCheckBox("remplie");
-		this.rempli.setFont(new Font(this.rempli.getFont().getName(), Font.ITALIC, TEXT_SIZE));
+		
 		JPanel panelValeurR = new JPanel();
 		panelValeurR.add(this.rempli);
 		panelValeurR.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -151,7 +181,7 @@ public class EllipseView extends JDialog {
 		
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
-		JControllerSaveEllipse controlEllipse = new JControllerSaveEllipse(this.application, this, this.rempli.isSelected());
+		JControllerSaveEllipse controlEllipse = new JControllerSaveEllipse(this.application, this, this.rempli.isSelected(), edition);
 		save.addActionListener(controlEllipse);
 		this.getRootPane().setDefaultButton(save);
 		panelSave.add(save);

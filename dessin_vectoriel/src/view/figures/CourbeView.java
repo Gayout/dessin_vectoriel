@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import abstraction.Application;
 import controller.menuFigures.JControllerButtonContinueCourbe;
+import implementation.CourbeBezier;
 import view.MainView;
 
 public class CourbeView extends JDialog {
@@ -36,6 +37,26 @@ public class CourbeView extends JDialog {
 		
 		this.application = application;
 		
+		this.ferme = new JCheckBox("fermée");
+		this.ferme.setFont(new Font(this.ferme.getFont().getName(), Font.ITALIC, TEXT_SIZE));
+		
+		this.nombrePoints = new JTextField(2);
+		this.nombrePoints.setFont(new Font(this.nombrePoints.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.rempli = new JCheckBox("remplie");
+		this.rempli.setFont(new Font(this.rempli.getFont().getName(), Font.ITALIC, TEXT_SIZE));
+		
+		if (edition) {
+			CourbeBezier cAncien = this.application.getCourbeSelected();
+			boolean fermeAncien = !cAncien.isOuvert();
+			boolean rempliAncien = cAncien.isRempli();
+			int nbrePointsAncien = cAncien.getSommets().size();
+			
+			this.ferme.setSelected(fermeAncien);
+			this.rempli.setSelected(rempliAncien);
+			this.nombrePoints.setText(""+nbrePointsAncien);
+		}
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 
@@ -43,8 +64,7 @@ public class CourbeView extends JDialog {
 		JLabel titleF = new JLabel("Figure ");
 		titleF.setFont(new Font(titleF.getFont().getName(), Font.BOLD, TITLE_SIZE));
 		panelFerme.add(titleF, BorderLayout.WEST);
-		this.ferme = new JCheckBox("fermée");
-		this.ferme.setFont(new Font(this.ferme.getFont().getName(), Font.ITALIC, TEXT_SIZE));
+		
 		JPanel panelValeurF = new JPanel();
 		panelValeurF.add(this.ferme);
 		panelValeurF.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -55,8 +75,7 @@ public class CourbeView extends JDialog {
 		JLabel titleP = new JLabel("Nombre de points ");
 		titleP.setFont(new Font(titleP.getFont().getName(), Font.BOLD, TITLE_SIZE));
 		panelPoints.add(titleP, BorderLayout.WEST);
-		this.nombrePoints = new JTextField(2);
-		this.nombrePoints.setFont(new Font(this.nombrePoints.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurP = new JPanel();
 		panelValeurP.add(this.nombrePoints);
 		panelValeurP.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -67,8 +86,7 @@ public class CourbeView extends JDialog {
 		JLabel titleR = new JLabel("Figure ");
 		titleR.setFont(new Font(titleR.getFont().getName(), Font.BOLD, TITLE_SIZE));
 		panelRempli.add(titleR, BorderLayout.WEST);
-		this.rempli = new JCheckBox("remplie");
-		this.rempli.setFont(new Font(this.rempli.getFont().getName(), Font.ITALIC, TEXT_SIZE));
+		
 		JPanel panelValeurR = new JPanel();
 		panelValeurR.add(this.rempli);
 		panelValeurR.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -81,7 +99,7 @@ public class CourbeView extends JDialog {
 		
 		JPanel panelContinuer = new JPanel();
 		JButton continuer = new JButton("Continuer");
-		JControllerButtonContinueCourbe controlCourbe = new JControllerButtonContinueCourbe(this.application, this, this.ferme.isSelected(), this.rempli.isSelected());
+		JControllerButtonContinueCourbe controlCourbe = new JControllerButtonContinueCourbe(this.application, this, edition, this.rempli.isSelected(), this.ferme.isSelected());
 		continuer.addActionListener(controlCourbe);
 		this.getRootPane().setDefaultButton(continuer);
 		panelContinuer.add(continuer);

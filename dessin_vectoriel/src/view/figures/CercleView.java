@@ -7,6 +7,7 @@ import javax.swing.*;
 
 import abstraction.Application;
 import controller.sauvegarde.JControllerSaveCercle;
+import implementation.Cercle;
 import view.MainView;
 
 public class CercleView extends JDialog {
@@ -30,6 +31,31 @@ public class CercleView extends JDialog {
 		
 		this.application = application;
 		
+		this.r = new JTextField(4);
+		this.r.setFont(new Font(this.r.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.xC = new JTextField(4);
+		this.xC.setFont(new Font(this.xC.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.yC = new JTextField(4);
+		this.yC.setFont(new Font(this.yC.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.rempli = new JCheckBox("remplie");
+		this.rempli.setFont(new Font(this.rempli.getFont().getName(), Font.ITALIC, TEXT_SIZE));
+		
+		if (edition) {
+			Cercle cAncien = this.application.getCercleSelected();
+			int rAncien = cAncien.getRayon();
+			int xCAncien = cAncien.getCentre().getX();
+			int yCAncien = cAncien.getCentre().getY();
+			boolean rempliAncien = cAncien.isRempli();
+			
+			this.r.setText(""+rAncien);
+			this.xC.setText(""+xCAncien);
+			this.yC.setText(""+yCAncien);
+			this.rempli.setSelected(rempliAncien);
+		}
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 		
@@ -40,8 +66,7 @@ public class CercleView extends JDialog {
 		JLabel titleR = new JLabel("Rayon ");
 		titleR.setFont(new Font(titleR.getFont().getName(), Font.BOLD, TITLE_SIZE));
 		panelRayon.add(titleR, BorderLayout.WEST);
-		this.r = new JTextField(4);
-		this.r.setFont(new Font(this.r.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurR = new JPanel();
 		panelValeurR.add(this.r);
 		panelValeurR.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -55,8 +80,7 @@ public class CercleView extends JDialog {
 		JLabel x = new JLabel("Abscisse ");
 		x.setFont(new Font(x.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		panelX.add(x, BorderLayout.WEST);
-		this.xC = new JTextField(4);
-		this.xC.setFont(new Font(this.xC.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurX = new JPanel();
 		panelValeurX.add(this.xC);
 		panelValeurX.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -67,8 +91,7 @@ public class CercleView extends JDialog {
 		JLabel y = new JLabel("Ordonnée ");
 		y.setFont(new Font(y.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		panelY.add(y, BorderLayout.WEST);
-		this.yC = new JTextField(4);
-		this.yC.setFont(new Font(this.yC.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurY = new JPanel();
 		panelValeurY.add(this.yC);
 		panelValeurY.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -88,8 +111,7 @@ public class CercleView extends JDialog {
 		JLabel titleRe = new JLabel("Figure ");
 		titleRe.setFont(new Font(titleRe.getFont().getName(), Font.BOLD, TITLE_SIZE));
 		panelRempli.add(titleRe, BorderLayout.WEST);
-		this.rempli = new JCheckBox("remplie");
-		this.rempli.setFont(new Font(this.rempli.getFont().getName(), Font.ITALIC, TEXT_SIZE));
+		
 		JPanel panelValeurRe = new JPanel();
 		panelValeurRe.add(this.rempli);
 		panelValeurRe.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -102,7 +124,7 @@ public class CercleView extends JDialog {
 		
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
-		JControllerSaveCercle controlCercle = new JControllerSaveCercle(this.application, this, this.rempli.isSelected());
+		JControllerSaveCercle controlCercle = new JControllerSaveCercle(this.application, this, this.rempli.isSelected(), edition);
 		save.addActionListener(controlCercle);
 		this.getRootPane().setDefaultButton(save);
 		panelSave.add(save);

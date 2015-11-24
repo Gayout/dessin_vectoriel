@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import abstraction.Application;
+import controller.listes.JControllerListSegment;
 import implementation.Position;
 import implementation.Segment;
 import view.figures.SegmentView;
@@ -13,10 +14,12 @@ import view.figures.SegmentView;
 public class JControllerSaveSegment implements ActionListener  {
 	private SegmentView parent;
 	private Application application;
+	private boolean edition;
 
-	public JControllerSaveSegment (SegmentView parent, Application application) {
+	public JControllerSaveSegment (SegmentView parent, Application application, boolean edition) {
 		this.parent = parent;
 		this.application = application;
+		this.edition = edition;
 	}
 
 	@Override
@@ -38,8 +41,15 @@ public class JControllerSaveSegment implements ActionListener  {
 							Position arrivee = new Position(xA, yA);
 							Segment s = new Segment(depart, arrivee);
 							s.setCrayon(this.application.getCrayon());
-							this.application.addSegment(s);
+							if (!edition) {
+								this.application.addSegment(s);
+							}
+							else {
+								int i = JControllerListSegment.branchToIndice(this.application.getSegments(), this.application.getSegmentSelected());
+								this.application.replaceSegment(i-1, s);
+							}
 							this.application.setSegmentSelected(s);
+							
 							this.parent.setVisible(false);
 						}
 						else {

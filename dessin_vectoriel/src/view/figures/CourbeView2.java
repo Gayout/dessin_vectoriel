@@ -29,7 +29,7 @@ public class CourbeView2 extends JDialog {
 	private ArrayList<JTextField> x;
 	private ArrayList<JTextField> y;
 
-	public CourbeView2 (Application application, CourbeView parent, boolean edition, int nb, boolean rempli) {
+	public CourbeView2 (Application application, CourbeView parent, boolean edition, int nb, boolean rempli, boolean ferme) {
 		super(parent, "Créer une courbe", true);
 		
 		this.application = application;
@@ -86,7 +86,7 @@ public class CourbeView2 extends JDialog {
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
 		this.getRootPane().setDefaultButton(save);
-		JControllerSaveCourbe saveCourbe = new JControllerSaveCourbe(this.application, parent, this, rempli);
+		JControllerSaveCourbe saveCourbe = new JControllerSaveCourbe(this.application, parent, this, rempli, edition);
 		save.addActionListener(saveCourbe);
 		panelSave.add(save);
 		panelSave.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));

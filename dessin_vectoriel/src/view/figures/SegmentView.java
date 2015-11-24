@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 
 import abstraction.Application;
 import controller.sauvegarde.JControllerSaveSegment;
+import implementation.Segment;
 import view.MainView;
 
 public class SegmentView extends JDialog {
@@ -25,7 +26,6 @@ public class SegmentView extends JDialog {
 	public static final int CATEGORY_SIZE = 15;
 	public static final int TEXT_SIZE = 20;
 	
-	@SuppressWarnings("unused")
 	private Application application;
 	private JTextField xD;
 	private JTextField yD;
@@ -36,6 +36,31 @@ public class SegmentView extends JDialog {
 		super(parent, "Créer un trait", true);
 		
 		this.application = application;
+		
+		this.xD = new JTextField(4);
+		this.xD.setFont(new Font(this.xD.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.yD = new JTextField(4);
+		this.yD.setFont(new Font(this.yD.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.xA = new JTextField(4);
+		this.xA.setFont(new Font(this.xA.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.yA = new JTextField(4);
+		this.yA.setFont(new Font(this.yA.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		if (edition) {
+			Segment sAncien = this.application.getSegmentSelected();
+			int xDAncien = sAncien.getDepart().getX();
+			int yDAncien = sAncien.getDepart().getY();
+			int xAAncien = sAncien.getArrivee().getX();
+			int yAAncien = sAncien.getArrivee().getY();
+			
+			this.xD.setText(""+xDAncien);
+			this.yD.setText(""+yDAncien);
+			this.xA.setText(""+xAAncien);
+			this.yA.setText(""+yAAncien);
+		}
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
@@ -50,8 +75,7 @@ public class SegmentView extends JDialog {
 		JLabel xD = new JLabel("Abscisse ");
 		xD.setFont(new Font(xD.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		panelXD.add(xD, BorderLayout.WEST);
-		this.xD = new JTextField(4);
-		this.xD.setFont(new Font(this.xD.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurX = new JPanel();
 		panelValeurX.add(this.xD);
 		panelValeurX.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -62,8 +86,7 @@ public class SegmentView extends JDialog {
 		JLabel yD = new JLabel("Ordonnée ");
 		yD.setFont(new Font(yD.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		panelYD.add(yD, BorderLayout.WEST);
-		this.yD = new JTextField(4);
-		this.yD.setFont(new Font(this.yD.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurYD = new JPanel();
 		panelValeurYD.add(this.yD);
 		panelValeurYD.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -86,8 +109,7 @@ public class SegmentView extends JDialog {
 		JLabel xA = new JLabel("Abscisse ");
 		xA.setFont(new Font(xA.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		panelXA.add(xA, BorderLayout.WEST);
-		this.xA = new JTextField(4);
-		this.xA.setFont(new Font(this.xA.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurXA = new JPanel();
 		panelValeurXA.add(this.xA);
 		panelValeurXA.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -98,8 +120,7 @@ public class SegmentView extends JDialog {
 		JLabel yA = new JLabel("Ordonnée ");
 		yA.setFont(new Font(yA.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		panelYA.add(yA, BorderLayout.WEST);
-		this.yA = new JTextField(4);
-		this.yA.setFont(new Font(this.yA.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+	
 		JPanel panelValeurYA = new JPanel();
 		panelValeurYA.add(this.yA);
 		panelValeurYA.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -121,7 +142,7 @@ public class SegmentView extends JDialog {
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
 		this.getRootPane().setDefaultButton(save);
-		JControllerSaveSegment saveSegment = new JControllerSaveSegment(this, application);
+		JControllerSaveSegment saveSegment = new JControllerSaveSegment(this, application, edition);
 		save.addActionListener(saveSegment);
 		panelSave.add(save);
 		panelSave.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));

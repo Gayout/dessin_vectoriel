@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import abstraction.Application;
 import controller.sauvegarde.JControllerSaveRectangle;
+import implementation.Rectangle;
 import view.MainView;
 
 public class RectangleView extends JDialog {
@@ -38,6 +39,37 @@ public class RectangleView extends JDialog {
 		
 		this.application = application;
 		
+		this.largeur = new JTextField(4);
+		this.largeur.setFont(new Font(this.largeur.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.hauteur = new JTextField(4);
+		this.hauteur.setFont(new Font(this.hauteur.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.xG = new JTextField(4);
+		this.xG.setFont(new Font(this.xG.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.yG = new JTextField(4);
+		this.yG.setFont(new Font(this.yG.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
+		this.rempli = new JCheckBox("remplie");
+		this.rempli.setFont(new Font(this.rempli.getFont().getName(), Font.ITALIC, TEXT_SIZE));
+		
+		if (edition) {
+			Rectangle rAncien = this.application.getRectangleSelected();
+			int xGAncien = rAncien.getHautGauche().getX();
+			int yGAncien = rAncien.getHautGauche().getY();
+			int largeurAncien = rAncien.getWidth();
+			int hauteurAncien = rAncien.getHeight();
+			boolean rempliAncien = rAncien.isRempli();
+			
+			this.xG.setText(""+xGAncien);
+			this.yG.setText(""+yGAncien);
+			this.hauteur.setText(""+hauteurAncien);
+			this.largeur.setText(""+largeurAncien);
+			this.rempli.setSelected(rempliAncien);
+		}
+			
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 		
@@ -51,8 +83,7 @@ public class RectangleView extends JDialog {
 		JLabel dx = new JLabel("Largeur (dx)");
 		dx.setFont(new Font(dx.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		largeur.add(dx, BorderLayout.WEST);
-		this.largeur = new JTextField(4);
-		this.largeur.setFont(new Font(this.largeur.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurLarg = new JPanel();
 		panelValeurLarg.add(this.largeur);
 		panelValeurLarg.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -63,8 +94,7 @@ public class RectangleView extends JDialog {
 		JLabel dy = new JLabel("Hauteur (dy)");
 		dy.setFont(new Font(dy.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		hauteur.add(dy, BorderLayout.WEST);
-		this.hauteur = new JTextField(4);
-		this.hauteur.setFont(new Font(this.hauteur.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurHaut = new JPanel();
 		panelValeurHaut.add(this.hauteur);
 		panelValeurHaut.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -87,8 +117,7 @@ public class RectangleView extends JDialog {
 		JLabel x = new JLabel("Abscisse ");
 		x.setFont(new Font(x.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		panelX.add(x, BorderLayout.WEST);
-		this.xG = new JTextField(4);
-		this.xG.setFont(new Font(this.xG.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+		
 		JPanel panelValeurX = new JPanel();
 		panelValeurX.add(this.xG);
 		panelValeurX.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -99,8 +128,7 @@ public class RectangleView extends JDialog {
 		JLabel y = new JLabel("Ordonnée ");
 		y.setFont(new Font(y.getFont().getName(), Font.ITALIC, CATEGORY_SIZE));
 		panelY.add(y, BorderLayout.WEST);
-		this.yG = new JTextField(4);
-		this.yG.setFont(new Font(this.yG.getFont().getName(), Font.PLAIN, TEXT_SIZE));
+	
 		JPanel panelValeurY = new JPanel();
 		panelValeurY.add(this.yG);
 		panelValeurY.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
@@ -120,8 +148,7 @@ public class RectangleView extends JDialog {
 		JLabel titleR = new JLabel("Figure ");
 		titleR.setFont(new Font(titleR.getFont().getName(), Font.BOLD, TITLE_SIZE));
 		panelRempli.add(titleR, BorderLayout.WEST);
-		this.rempli = new JCheckBox("remplie");
-		this.rempli.setFont(new Font(this.rempli.getFont().getName(), Font.ITALIC, TEXT_SIZE));
+	
 		JPanel panelValeurR = new JPanel();
 		panelValeurR.add(this.rempli);
 		panelValeurR.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -134,7 +161,7 @@ public class RectangleView extends JDialog {
 		
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
-		JControllerSaveRectangle controlRectangle = new JControllerSaveRectangle(this.application, this, this.rempli.isSelected());
+		JControllerSaveRectangle controlRectangle = new JControllerSaveRectangle(this.application, this, this.rempli.isSelected(), edition);
 		save.addActionListener(controlRectangle);
 		this.getRootPane().setDefaultButton(save);
 		panelSave.add(save);

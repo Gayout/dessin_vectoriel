@@ -14,6 +14,7 @@ public class JControllerButtonFiguresSegment implements ActionListener {
 	
 	public JControllerButtonFiguresSegment (MainView fenetre, boolean edition, Application application) {
 		this.fenetre = fenetre;
+		this.edition = edition;
 		this.application = application;
 	}
 	

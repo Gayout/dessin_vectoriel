@@ -30,7 +30,7 @@ public class PolygoneView2 extends JDialog {
 	private ArrayList<JTextField> y;
 	
 
-	public PolygoneView2 (Application application, PolygoneView parent, boolean edition, int nb, boolean rempli) {
+	public PolygoneView2 (Application application, PolygoneView parent, boolean edition, int nb, boolean rempli, boolean ferme) {
 		super(parent, "Créer un polygone", true);
 		
 		this.application = application;
@@ -87,7 +87,7 @@ public class PolygoneView2 extends JDialog {
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
 		this.getRootPane().setDefaultButton(save);
-		JControllerSavePolygone savePolygone = new JControllerSavePolygone(this.application, parent, this, rempli);
+		JControllerSavePolygone savePolygone = new JControllerSavePolygone(this.application, parent, this, rempli, edition);
 		save.addActionListener(savePolygone);
 		panelSave.add(save);
 		panelSave.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));

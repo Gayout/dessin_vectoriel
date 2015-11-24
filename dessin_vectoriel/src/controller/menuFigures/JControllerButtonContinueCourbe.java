@@ -14,12 +14,14 @@ public class JControllerButtonContinueCourbe implements ActionListener {
 	private CourbeView fenetre;
 	private boolean edition;
 	private boolean rempli;
-
-	public JControllerButtonContinueCourbe (Application application, CourbeView fenetre, boolean edition, boolean rempli) {
+	private boolean ferme;
+	
+	public JControllerButtonContinueCourbe (Application application, CourbeView fenetre, boolean edition, boolean rempli, boolean ferme) {
 		this.application = application;
 		this.fenetre = fenetre;
 		this.edition = edition;
 		this.rempli = rempli;
+		this.ferme = ferme;
 	}
 
 	@Override
@@ -31,7 +33,7 @@ public class JControllerButtonContinueCourbe implements ActionListener {
 				JOptionPane.showMessageDialog(this.fenetre, "Entrez un nombre de points compris entre 0 et 4 inclus svp.", "Erreur!", 0);
 			}
 			else {
-				CourbeView2 cv = new CourbeView2(this.application, this.fenetre, this.edition, nb, rempli);
+				CourbeView2 cv = new CourbeView2(this.application, this.fenetre, this.edition, nb, this.rempli, this.ferme);
 				cv.setVisible(true);
 				fenetre.setVisible(false);
 			}

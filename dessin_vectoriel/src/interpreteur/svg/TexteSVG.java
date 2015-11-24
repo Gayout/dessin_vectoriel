@@ -1,7 +1,5 @@
 package interpreteur.svg;
 
-import java.awt.Font;
-
 import implementation.Position;
 import implementation.Texte;
 /**

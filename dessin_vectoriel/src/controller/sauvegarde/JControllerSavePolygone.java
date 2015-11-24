@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import abstraction.Application;
+import controller.listes.JControllerListPolygone;
 import implementation.Polygone;
 import implementation.Position;
 import view.figures.PolygoneView;
@@ -17,12 +18,14 @@ public class JControllerSavePolygone implements ActionListener {
 	private PolygoneView fenetre;
 	private PolygoneView2 parent;
 	private boolean rempli;
+	private boolean edition;
 
-	public JControllerSavePolygone (Application application, PolygoneView fenetre, PolygoneView2 parent, boolean rempli) {
+	public JControllerSavePolygone (Application application, PolygoneView fenetre, PolygoneView2 parent, boolean rempli, boolean edition) {
 		this.application = application;
 		this.fenetre = fenetre;
 		this.parent = parent;
 		this.rempli = rempli;
+		this.edition = edition;
 	}
 
 	@Override
@@ -52,7 +55,13 @@ public class JControllerSavePolygone implements ActionListener {
 				points.add(new Position(x, y));
 				Polygone p = new Polygone(points, !fenetre.getFerme().isSelected(), this.rempli);
 				p.setCrayon(this.application.getCrayon());
-				this.application.addPolygone(p);
+				if (this.edition) {
+					this.application.addPolygone(p);
+				}
+				else {
+					int i = JControllerListPolygone.branchToIndice(this.application.getPolygones(), this.application.getPolygoneSelected());
+					this.application.replacePolygone(i-1, p);
+				}
 				this.application.setPolygoneSelected(p);
 				this.parent.setVisible(false);
 			}

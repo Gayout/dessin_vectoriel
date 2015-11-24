@@ -26,6 +26,13 @@ import controller.menuFigures.JControllerButtonFiguresImage;
 import controller.menuFigures.JControllerButtonFiguresPolygone;
 import controller.menuFigures.JControllerButtonFiguresRectangle;
 import controller.menuFigures.JControllerButtonFiguresSegment;
+import controller.suppression.JControllerDeleteCarre;
+import controller.suppression.JControllerDeleteCercle;
+import controller.suppression.JControllerDeleteCourbe;
+import controller.suppression.JControllerDeleteEllipse;
+import controller.suppression.JControllerDeletePolygone;
+import controller.suppression.JControllerDeleteRectangle;
+import controller.suppression.JControllerDeleteSegment;
 
 public class MainView extends JFrame {
 	/**
@@ -39,9 +46,12 @@ public class MainView extends JFrame {
 	public static final int ITEM_MENU_SIZE = 15;
 	public static final int CRAYON_SIZE = 20;
 	public static final int ITEM_CRAYON_SIZE = 15;
-	public static final int ITEM_MODIFICATION_SIZE = 30;
-	public static final int TITLE_MODIFICATION_SIZE = 30;
-	public static final int ITEM_LIST_MODIFICATION_SIZE = 20;
+	public static final int ITEM_MODIFICATION_SIZE = 20;
+	public static final int TITLE_MODIFICATION_SIZE = 20;
+	public static final int ITEM_LIST_MODIFICATION_SIZE = 15;
+	public static final int ITEM_EXPORT_SIZE = 30;
+	public static final int DETAILS_TITLE_SIZE = 15;
+	public static final int DETAILS_ITEM_SIZE = 10;
 
 	//== COULEUR DES POLICES ==\\
 	public static final Color CRAYON_COLOR_POLICE = Color.BLACK;
@@ -174,7 +184,7 @@ public class MainView extends JFrame {
 
 		//Ajout Preview AWT
 		this.createPreview();
-		
+
 		this.setVisible(true);
 		this.pack();
 		this.setLocationRelativeTo(null);		
@@ -340,7 +350,7 @@ public class MainView extends JFrame {
 		JPanel rectanglePanel = new JPanel();
 		rectanglePanel.setBackground(ITEM_DESSIN_COLOR_BACKGROUND);
 		JButton bRectangle = new JButton(new ImageIcon(getClass().getResource("/view/images/Rectangle.png")));
-		JControllerButtonFiguresRectangle controllerRectangle = new JControllerButtonFiguresRectangle(this, false,this.getApplication());
+		JControllerButtonFiguresRectangle controllerRectangle = new JControllerButtonFiguresRectangle(this, false, this.getApplication());
 		bRectangle.addActionListener(controllerRectangle);
 		bRectangle.setToolTipText("Tracer un rectangle");
 		rectanglePanel.add(bRectangle);
@@ -366,7 +376,7 @@ public class MainView extends JFrame {
 		imagePanel.add(bImage);
 		imagePanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 15));
 		figuresPanel.add(imagePanel);
-		
+
 		this.getContentPane().add(figuresPanel, BorderLayout.WEST);
 		this.pack();
 	}
@@ -377,101 +387,170 @@ public class MainView extends JFrame {
 		menu.setFont(new Font(menu.getFont().getName(), Font.BOLD, ITEM_MODIFICATION_SIZE));
 		menu.setBackground(ITEM_MODIFICATION_COLOR_BACKGROUND);
 		menu.setForeground(ITEM_MODIFICATION_COLOR_POLICE);
-
-		PanelModification traits = new PanelModification("Trait", this.getListSegments());
-		JControllerListSegment controlSegments = new JControllerListSegment(this, this.getListSegments(), this.getApplication());
+		//== SEGMENTS ==\\
+		JButton modTrait = new JButton("Modifier");
+		JControllerButtonFiguresSegment controllerSegment = new JControllerButtonFiguresSegment(this, true, this.getApplication());
+		modTrait.addActionListener(controllerSegment);
+		JButton supTrait = new JButton("Supprimer");
+		JControllerDeleteSegment deleteSegment = new JControllerDeleteSegment(this, this.getApplication());
+		supTrait.addActionListener(deleteSegment);
+		PanelModification traits = new PanelModification("Trait", this.getListSegments(), modTrait, supTrait);
+		JControllerListSegment controlSegments = new JControllerListSegment(this, this.getListSegments(), this.getApplication(), modTrait, supTrait);
 		this.getApplication().addObserver(controlSegments);
 		this.getListSegments().addListSelectionListener(controlSegments);
 		menu.addTab("Trait", traits);
 		menu.setMnemonicAt(0, '0');
-		
-		PanelModification courbes = new PanelModification("Courbe", this.getListCourbes());
-		JControllerListCourbe controlCourbes = new JControllerListCourbe(this, this.getListCourbes(), this.getApplication());
+
+		JButton modCourbe = new JButton("Modifier");
+		JControllerButtonFiguresCourbe controllerCourbe = new JControllerButtonFiguresCourbe(this, true, this.getApplication());
+		modCourbe.addActionListener(controllerCourbe);
+		JButton supCourbe = new JButton("Supprimer");
+		JControllerDeleteCourbe deleteCourbe = new JControllerDeleteCourbe(this, this.getApplication());
+		supCourbe.addActionListener(deleteCourbe);
+		PanelModification courbes = new PanelModification("Courbe", this.getListCourbes(), modCourbe, supCourbe);
+		JControllerListCourbe controlCourbes = new JControllerListCourbe(this, this.getListCourbes(), this.getApplication(), modCourbe, supCourbe);
 		this.getApplication().addObserver(controlCourbes);
 		this.getListCourbes().addListSelectionListener(controlCourbes);
 		menu.addTab("Courbe", courbes);
 		menu.setMnemonicAt(1, '1');
-		
-		PanelModification cercles = new PanelModification("Cercle", this.getListCercles());
-		JControllerListCercle controlCercles = new JControllerListCercle(this, this.getListCercles(), this.getApplication());
+
+		JButton modCercle = new JButton("Modifier");
+		JControllerButtonFiguresCercle controllerCercle = new JControllerButtonFiguresCercle(this, true, this.getApplication());
+		modCercle.addActionListener(controllerCercle);
+		JButton supCercle = new JButton("Supprimer");
+		JControllerDeleteCercle deleteCercle = new JControllerDeleteCercle(this, this.getApplication());
+		supCercle.addActionListener(deleteCercle);
+		PanelModification cercles = new PanelModification("Cercle", this.getListCercles(), modCercle, supCercle);
+		JControllerListCercle controlCercles = new JControllerListCercle(this, this.getListCercles(), this.getApplication(), modCercle, supCercle);
 		this.getApplication().addObserver(controlCercles);
 		this.getListCercles().addListSelectionListener(controlCercles);
 		menu.addTab("Cercle", cercles);
 		menu.setMnemonicAt(2, '2');
-		
-		PanelModification ellipses = new PanelModification("Ellipse", this.getListEllipses());
-		JControllerListEllipse controlEllipses = new JControllerListEllipse(this, this.getListEllipses(), this.getApplication());
+
+		JButton modEllipse = new JButton("Modifier");
+		JControllerButtonFiguresEllipse controllerEllipse = new JControllerButtonFiguresEllipse(this, true, this.getApplication());
+		modEllipse.addActionListener(controllerEllipse);
+		JButton supEllipse = new JButton("Supprimer");
+		JControllerDeleteEllipse deleteEllipse = new JControllerDeleteEllipse(this, this.getApplication());
+		supEllipse.addActionListener(deleteEllipse);
+		PanelModification ellipses = new PanelModification("Ellipse", this.getListEllipses(), modEllipse, supEllipse);
+		JControllerListEllipse controlEllipses = new JControllerListEllipse(this, this.getListEllipses(), this.getApplication(), modEllipse, supEllipse);
 		this.getApplication().addObserver(controlEllipses);
 		this.getListEllipses().addListSelectionListener(controlEllipses);
 		menu.addTab("Ellipse", ellipses);
 		menu.setMnemonicAt(3, '3');
-		
-		PanelModification carres = new PanelModification("Carré", this.getListCarres());
-		JControllerListCarre controlCarres = new JControllerListCarre(this, this.getListCarres(), this.getApplication());
+
+		JButton modCarre = new JButton("Modifier");
+		JControllerButtonFiguresCarre controllerCarre = new JControllerButtonFiguresCarre(this, true, this.getApplication());
+		modCarre.addActionListener(controllerCarre);
+		JButton supCarre = new JButton("Supprimer");
+		JControllerDeleteCarre deleteCarre = new JControllerDeleteCarre(this, this.getApplication());
+		supCarre.addActionListener(deleteCarre);
+		PanelModification carres = new PanelModification("Carré", this.getListCarres(), modCarre, supCarre);
+		JControllerListCarre controlCarres = new JControllerListCarre(this, this.getListCarres(), this.getApplication(), modCarre, supCarre);
 		this.getApplication().addObserver(controlCarres);
 		this.getListCarres().addListSelectionListener(controlCarres);
 		menu.addTab("Carré", carres);
 		menu.setMnemonicAt(4, '4');
-		
-		PanelModification rectangles = new PanelModification("Rectangle", this.getListRectangles());
-		JControllerListRectangle controlRectangles = new JControllerListRectangle(this, this.getListRectangles(), this.getApplication());
+
+		JButton modRectangle = new JButton("Modifier");
+		JControllerButtonFiguresRectangle controllerRectangle = new JControllerButtonFiguresRectangle(this, true, this.getApplication());
+		modRectangle.addActionListener(controllerRectangle);
+		JButton supRectangle = new JButton("Supprimer");
+		JControllerDeleteRectangle deleteRectangle = new JControllerDeleteRectangle(this, this.getApplication());
+		supRectangle.addActionListener(deleteRectangle);
+		PanelModification rectangles = new PanelModification("Rectangle", this.getListRectangles(), modRectangle, supRectangle);
+		JControllerListRectangle controlRectangles = new JControllerListRectangle(this, this.getListRectangles(), this.getApplication(), modRectangle, supRectangle);
 		this.getApplication().addObserver(controlRectangles);
 		this.getListRectangles().addListSelectionListener(controlRectangles);
 		menu.addTab("Rectangle", rectangles);
 		menu.setMnemonicAt(5, '5');
-		
-		PanelModification polygones = new PanelModification("Polygone", this.getListPolygones());
-		JControllerListPolygone controlPolygones = new JControllerListPolygone(this, this.getListPolygones(), this.getApplication());
+
+		JButton modPolygone = new JButton("Modifier");
+		JControllerButtonFiguresPolygone controllerPolygone = new JControllerButtonFiguresPolygone(this, true, this.getApplication());
+		modPolygone.addActionListener(controllerPolygone);
+		JButton supPolygone = new JButton("Supprimer");
+		JControllerDeletePolygone deletePolygone = new JControllerDeletePolygone(this, this.getApplication());
+		supPolygone.addActionListener(deletePolygone);
+		PanelModification polygones = new PanelModification("Polygone", this.getListPolygones(), modPolygone, supPolygone);
+		JControllerListPolygone controlPolygones = new JControllerListPolygone(this, this.getListPolygones(), this.getApplication(), modPolygone, supPolygone);
 		this.getApplication().addObserver(controlPolygones);
 		this.getListPolygones().addListSelectionListener(controlPolygones);
 		menu.addTab("Polygone", polygones);
 		menu.setMnemonicAt(6, '6');
-		
+
 		/*PanelModification images = new PanelModification("Image", this.getListImages());
 		JControllerListImage controlImages = new JControllerListImage(this, this.getListImages(), this.getApplication());
 		this.getApplication().addObserver(controlImages);
 		this.getListImages().addListSelectionListener(controlImages);
 		menu.addTab("Image", images);
 		menu.setMnemonicAt(7, '7');*/
-		
+
 		menu.setTabPlacement(JTabbedPane.RIGHT);
 
 		this.getContentPane().add(menu, BorderLayout.EAST);
 		this.pack();
 	}
 
-
-
 	private void createPreview() {
 		JTabbedPane menu = new JTabbedPane();
 
-		menu.setFont(new Font(menu.getFont().getName(), Font.BOLD, ITEM_MODIFICATION_SIZE));
+		menu.setFont(new Font(menu.getFont().getName(), Font.BOLD, ITEM_EXPORT_SIZE));
 		menu.setBackground(ITEM_MODIFICATION_COLOR_BACKGROUND);
 		menu.setForeground(ITEM_MODIFICATION_COLOR_POLICE);
-		
+
 		JPanel panelAWT = new JPanel();
-		
 		menu.addTab("AWT", panelAWT);
-		menu.setMnemonicAt(5, '5');
-		
-		this.getContentPane().add(menu, BorderLayout.EAST);
+		JPanel panelSVG = new JPanel();
+		menu.addTab("SVG", panelSVG);
+
+		menu.setTabPlacement(JTabbedPane.SCROLL_TAB_LAYOUT);
+
+		this.getContentPane().add(menu, BorderLayout.CENTER);
 		this.pack();
 	}
-	
+
 	class PanelModification extends JPanel {
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
 
-		public PanelModification (String s, JList<String> liste) {
+		public PanelModification (String s, JList<String> liste, JButton editer, JButton supprimer) {
 			this.setLayout(new BorderLayout());
+
 			JLabel title = new JLabel(s);
 			title.setFont(new Font(title.getFont().getName(), Font.BOLD, TITLE_MODIFICATION_SIZE));
 			this.add(title, BorderLayout.NORTH);
+
 			liste.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			liste.setFont(new Font(liste.getFont().getName(), Font.PLAIN, ITEM_LIST_MODIFICATION_SIZE));
-			this.add(liste, BorderLayout.CENTER);
+
+			JPanel centrePanel = new JPanel();
+			centrePanel.setLayout(new BorderLayout());
+
+			JPanel listePanel = new JPanel(new BorderLayout());
+			listePanel.add(liste, BorderLayout.CENTER);
+			listePanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+			JPanel editionPanel = new JPanel(new BorderLayout());
+			editionPanel.add(editer);
+			editionPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+			JPanel suppressionPanel = new JPanel(new BorderLayout());
+			suppressionPanel.add(supprimer);
+			suppressionPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+			JPanel modificationPanel = new JPanel();
+			modificationPanel.setLayout(new BoxLayout(modificationPanel, BoxLayout.X_AXIS));
+			modificationPanel.add(editionPanel);
+			modificationPanel.add(suppressionPanel);
+			modificationPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+			centrePanel.add(listePanel, BorderLayout.CENTER);
+			centrePanel.add(modificationPanel, BorderLayout.SOUTH);
+
+			this.add(centrePanel, BorderLayout.CENTER);
 		}
 	}
 }

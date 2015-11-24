@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import abstraction.Application;
+import controller.listes.JControllerListCarre;
 import implementation.Position;
 import implementation.Rectangle;
 import view.figures.CarreView;
@@ -13,12 +14,14 @@ import view.figures.CarreView;
 public class JControllerSaveCarre implements ActionListener {
 	private CarreView parent;
 	private boolean rempli;
+	private boolean edition;
 	private Application application;
 
-	public JControllerSaveCarre (Application application, CarreView parent, boolean rempli) {
+	public JControllerSaveCarre (Application application, CarreView parent, boolean rempli, boolean edition) {
 		this.application = application;
 		this.parent = parent;
 		this.rempli = rempli;
+		this.edition = edition;
 	}
 
 	@Override
@@ -36,7 +39,13 @@ public class JControllerSaveCarre implements ActionListener {
 							Position gauche = new Position(xG,yG);
 							Rectangle c = new Rectangle(gauche, cote, cote, this.rempli);
 							c.setCrayon(this.application.getCrayon());
-							this.application.addCarre(c);
+							if (!edition) {
+								this.application.addCarre(c);
+							}
+							else {
+								int i = JControllerListCarre.branchToIndice(this.application.getCarres(), this.application.getCarreSelected());
+								this.application.replaceCarre(i-1, c);
+							}
 							this.application.setCarreSelected(c);
 							this.parent.setVisible(false);
 						}
