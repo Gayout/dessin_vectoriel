@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.HeadlessException;
 import java.awt.Shape;
 
 import abstraction.Dessin;
@@ -39,6 +40,21 @@ public class VisiteurAWTDessiner extends Frame implements Visiteur{
 		this.setSize(500,500);
 		g = this.getGraphics();
 	}
+
+	/**
+	 * Constructeur avec largeur et hauteur customisable
+	 * @param largeur
+	 * 	largeur
+	 * @param hauteur
+	 * 	hauteur
+	 */
+	public VisiteurAWTDessiner(int largeur, int hauteur) {
+		super();
+		this.setVisible(true);
+		this.setSize(largeur,hauteur);
+		g = this.getGraphics();
+	}
+
 
 	/**
 	 * Pour la visite d'un DessinVide, il ne se passe rien

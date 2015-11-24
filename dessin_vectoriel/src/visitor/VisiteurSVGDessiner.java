@@ -28,6 +28,19 @@ public class VisiteurSVGDessiner implements Visiteur{
 				+ "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n"
 				+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"500\" height=\"500\" >\n</svg>";
 	}
+	/**
+	 * Constructeur avec largeur et hauteur customisable
+	 * @param largeur
+	 * 	largeur
+	 * @param hauteur
+	 * 	hauteur
+	 */
+	public VisiteurSVGDessiner(int largeur, int hauteur) {
+		super();
+		code = "<?xml version=\"1.0\" standalone=\"no\"?>\n"
+				+ "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n"
+				+ "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\""+largeur+"\" height=\""+hauteur+"\" >\n</svg>";
+	}
 
 	/**
 	 * @see VisiteurSVGDessiner
