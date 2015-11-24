@@ -29,7 +29,6 @@ public class WelcomeView extends JFrame {
 	public WelcomeView () {
 		super("Bienvenue");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);	
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
@@ -85,6 +84,7 @@ public class WelcomeView extends JFrame {
 		this.getContentPane().add(panel);
 		this.setVisible(true);
 		this.pack();
+		this.setLocationRelativeTo(null);
 	}
 
 	public JTextField getLargeur() {

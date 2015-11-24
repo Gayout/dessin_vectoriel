@@ -9,6 +9,7 @@ import java.util.Hashtable;
 import javax.swing.*;
 
 import abstraction.Application;
+import controller.JControllerDessins;
 import controller.crayon.JControllerButtonColor;
 import controller.crayon.JControllerSlider;
 import controller.listes.JControllerListCarre;
@@ -33,6 +34,7 @@ import controller.suppression.JControllerDeleteEllipse;
 import controller.suppression.JControllerDeletePolygone;
 import controller.suppression.JControllerDeleteRectangle;
 import controller.suppression.JControllerDeleteSegment;
+import visitor.VisiteurAWTDessiner2;
 
 public class MainView extends JFrame {
 	/**
@@ -499,8 +501,13 @@ public class MainView extends JFrame {
 		menu.setBackground(ITEM_MODIFICATION_COLOR_BACKGROUND);
 		menu.setForeground(ITEM_MODIFICATION_COLOR_POLICE);
 
-		JPanel panelAWT = new JPanel();
-		menu.addTab("AWT", panelAWT);
+		JPanel panelDessin = new JPanel(new BorderLayout());
+		VisiteurAWTDessiner2 panelAWT = new VisiteurAWTDessiner2(this.getApplication().largeur, this.getApplication().hauteur, this);
+		JControllerDessins controllerDessins = new JControllerDessins(panelAWT, this.getApplication());
+		this.getApplication().addObserver(controllerDessins);
+		panelDessin.add(panelAWT, BorderLayout.CENTER);
+		menu.addTab("AWT", panelDessin);
+		
 		JPanel panelSVG = new JPanel();
 		menu.addTab("SVG", panelSVG);
 

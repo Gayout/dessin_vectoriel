@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import abstraction.Application;
 import controller.listes.JControllerListPolygone;
+import implementation.Crayon;
 import implementation.Polygone;
 import implementation.Position;
 import view.figures.PolygoneView;
@@ -54,9 +55,11 @@ public class JControllerSavePolygone implements ActionListener {
 				y = Integer.parseInt(parent.getListY().get(taille-1).getText());
 				points.add(new Position(x, y));
 				Polygone p = new Polygone(points, !fenetre.getFerme().isSelected(), this.rempli);
-				p.setCrayon(this.application.getCrayon());
-				if (this.edition) {
+				Crayon crayon = new Crayon(this.application.getCrayon().getEpaisseur(), this.application.getCrayon().getCouleur());
+				p.setCrayon(crayon);
+				if (!this.edition) {
 					this.application.addPolygone(p);
+					this.application.addDessin(p);
 				}
 				else {
 					int i = JControllerListPolygone.branchToIndice(this.application.getPolygones(), this.application.getPolygoneSelected());

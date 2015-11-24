@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import abstraction.Application;
 import controller.listes.JControllerListCercle;
 import implementation.CourbeBezier;
+import implementation.Crayon;
 import implementation.Position;
 import view.figures.CourbeView;
 import view.figures.CourbeView2;
@@ -54,9 +55,11 @@ public class JControllerSaveCourbe implements ActionListener {
 				y = Integer.parseInt(parent.getListY().get(taille-1).getText());
 				points.add(new Position(x, y));
 				CourbeBezier c = new CourbeBezier(points, !fenetre.getFerme().isSelected(), this.rempli);
-				c.setCrayon(this.application.getCrayon());
+				Crayon crayon = new Crayon(this.application.getCrayon().getEpaisseur(), this.application.getCrayon().getCouleur());
+				c.setCrayon(crayon);
 				if (!edition) {
 					this.application.addCourbe(c);
+					this.application.addDessin(c);
 				}
 				else {
 					int i = JControllerListCercle.branchToIndice(this.application.getCercles(), this.application.getCercleSelected());

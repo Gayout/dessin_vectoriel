@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import abstraction.Application;
 import controller.listes.JControllerListRectangle;
+import implementation.Crayon;
 import implementation.Position;
 import implementation.Rectangle;
 import view.figures.RectangleView;
@@ -40,9 +41,11 @@ public class JControllerSaveRectangle implements ActionListener {
 									&& (yG>0) && (yG<this.application.hauteur)) {
 								Position gauche = new Position(xG,yG);
 								Rectangle r = new Rectangle(gauche, largeur, hauteur, this.rempli);
-								r.setCrayon(this.application.getCrayon());
+								Crayon crayon = new Crayon(this.application.getCrayon().getEpaisseur(), this.application.getCrayon().getCouleur());
+								r.setCrayon(crayon);
 								if (!edition) {
-									this.application.addRectangle(r);	
+									this.application.addRectangle(r);
+									this.application.addDessin(r);
 								}
 								else {
 									int i = JControllerListRectangle.branchToIndice(this.application.getRectangles(), this.application.getRectangleSelected());

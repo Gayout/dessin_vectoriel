@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import abstraction.Application;
 import controller.listes.JControllerListSegment;
+import implementation.Crayon;
 import implementation.Position;
 import implementation.Segment;
 import view.figures.SegmentView;
@@ -33,16 +34,18 @@ public class JControllerSaveSegment implements ActionListener  {
 					xA = Integer.parseInt(parent.getxA().getText());
 					try {
 						yA = Integer.parseInt(parent.getyA().getText());
-						if ((xA>0) && (xA<this.application.largeur)
-								&& (yA>0) && (yA<this.application.hauteur)
-								&& (xD>0) && (xD<this.application.largeur)
-								&& (yD>0) && (yD<this.application.hauteur)) {
+						if ((xA>=0) && (xA<=this.application.largeur)
+								&& (yA>=0) && (yA<=this.application.hauteur)
+								&& (xD>=0) && (xD<=this.application.largeur)
+								&& (yD>=0) && (yD<=this.application.hauteur)) {
 							Position depart = new Position(xD, yD);
 							Position arrivee = new Position(xA, yA);
 							Segment s = new Segment(depart, arrivee);
-							s.setCrayon(this.application.getCrayon());
+							Crayon crayon = new Crayon(this.application.getCrayon().getEpaisseur(), this.application.getCrayon().getCouleur());
+							s.setCrayon(crayon);
 							if (!edition) {
 								this.application.addSegment(s);
+								this.application.addDessin(s);
 							}
 							else {
 								int i = JControllerListSegment.branchToIndice(this.application.getSegments(), this.application.getSegmentSelected());
