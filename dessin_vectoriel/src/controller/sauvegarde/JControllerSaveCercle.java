@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import abstraction.Application;
 import controller.listes.JControllerListCercle;
 import implementation.Cercle;
+import implementation.Crayon;
 import implementation.Position;
 import view.figures.CercleView;
 
@@ -34,13 +35,15 @@ public class JControllerSaveCercle implements ActionListener {
 				try {
 					rayon = Integer.parseInt(parent.getR().getText());
 					if (rayon > 0) {	
-						if ((xC>0) && (xC<this.application.largeur)
-								&& (yC>0) && (yC<this.application.hauteur)) {
+						if ((xC>=0) && (xC<=this.application.largeur)
+								&& (yC>=0) && (yC<=this.application.hauteur)) {
 							Position centre = new Position(xC,yC);
 							Cercle c = new Cercle(centre, rayon, rempli);
-							c.setCrayon(this.application.getCrayon());
+							Crayon crayon = new Crayon(this.application.getCrayon().getEpaisseur(), this.application.getCrayon().getCouleur());
+							c.setCrayon(crayon);
 							if (!edition) {
 								this.application.addCercle(c);
+								this.application.addDessin(c);
 							}
 							else {
 								int i = JControllerListCercle.branchToIndice(this.application.getCercles(), this.application.getCercleSelected());

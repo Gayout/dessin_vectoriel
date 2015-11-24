@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import abstraction.Application;
 import controller.listes.JControllerListEllipse;
+import implementation.Crayon;
 import implementation.Ellipse;
 import implementation.Position;
 import view.figures.EllipseView;
@@ -43,9 +44,11 @@ public class JControllerSaveEllipse  implements ActionListener {
 									if (angle>0) {
 										Position centre = new Position(xC,yC);
 										Ellipse ep = new Ellipse(centre, gdAxe, ptiAxe, angle, this.rempli);
-										ep.setCrayon(this.application.getCrayon());
+										Crayon crayon = new Crayon(this.application.getCrayon().getEpaisseur(), this.application.getCrayon().getCouleur());
+										ep.setCrayon(crayon);
 										if (!edition) {
 											this.application.addEllipse(ep);
+											this.application.addDessin(ep);
 										}
 										else {
 											int i = JControllerListEllipse.branchToIndice(this.application.getEllipses(), this.application.getEllipseSelected());

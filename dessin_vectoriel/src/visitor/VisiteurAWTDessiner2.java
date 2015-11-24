@@ -6,22 +6,24 @@ import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.HeadlessException;
 import java.awt.Shape;
+
+import javax.swing.JPanel;
 
 import abstraction.Dessin;
 import abstraction.Visiteur;
 import implementation.*;
 import interpreteur.awt.*;
+import view.MainView;
 
 /**
  * <b>VisiteurAWTDessiner visite les dessins, les interpréte en AWT et les dessine dans une Frame</b>
- * Cette classe est utilisée pour les tests.
+ * Cette classe est quasiment identique à VisiteurAWTDessiner, elle est utilisée par notre IHM.
  * @author Aurore Claude/Quentin Gayout
  * @see Frame
  * @see Visiteur
  */
-public class VisiteurAWTDessiner extends Frame implements Visiteur{
+public class VisiteurAWTDessiner2 extends JPanel implements Visiteur{
 
 	/**
 	 * 
@@ -30,32 +32,20 @@ public class VisiteurAWTDessiner extends Frame implements Visiteur{
 	/**
 	 * VisiteurAWT possède un Graphics initialisé à la création dans lequel seront dessinés les Shape interprétés par l'interpreteur AWT lors des visites
 	 */
+	MainView container;
 	Graphics g;
 
 	/**
-	 * Constructeur sans paramètre
+	 * Constructeur
+	 * @see Visiteur#VisiteurAWTDessiner2(int, int)
 	 */
-	public VisiteurAWTDessiner() {
-		super();
-		this.setVisible(true);
-		this.setSize(500,500);
-		g = this.getGraphics();
-	}
-
-	/**
-	 * Constructeur avec largeur et hauteur customisable
-	 * @param largeur
-	 * 	largeur
-	 * @param hauteur
-	 * 	hauteur
-	 */
-	public VisiteurAWTDessiner(int largeur, int hauteur) {
+	public VisiteurAWTDessiner2(int largeur, int hauteur, MainView container) {
 		super();
 		this.setVisible(true);
 		this.setSize(largeur,hauteur);
-		g = this.getGraphics();
+		g = container.getGraphics();
+		System.out.println(g);
 	}
-
 
 	/**
 	 * Pour la visite d'un DessinVide, il ne se passe rien
@@ -255,6 +245,7 @@ public class VisiteurAWTDessiner extends Frame implements Visiteur{
 			SegmentAWT segmentAWT = segment.creerSegmentAWT();
 
 			Color color = segment.getCrayon().getCouleur();
+			System.out.println("Couleur "+color);
 			int epaisseur = segment.getCrayon().getEpaisseur();
 
 			Shape r1 = segmentAWT.shape();
@@ -268,7 +259,6 @@ public class VisiteurAWTDessiner extends Frame implements Visiteur{
 			ga.draw(r1);
 			ga.draw(r1);
 		}
-
 	}
 
 	/**

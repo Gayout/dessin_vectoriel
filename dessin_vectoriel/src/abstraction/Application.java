@@ -37,10 +37,13 @@ public class Application extends Observable {
 	public static final Integer MODIFY_POLYGONES = new Integer(15);
 	public static final Integer MODIFY_IMAGES = new Integer(16);
 	
+	public static final Integer MODIFY_DESSINS = new Integer(17);
 	
 	//Variables d'Instance
 	protected Crayon crayon;
 
+	protected Vector<Chemin> dessins;
+	
 	protected Vector<Segment> segments;
 	protected Vector<CourbeBezier> courbes;
 	protected Vector<Cercle> cercles;
@@ -66,6 +69,16 @@ public class Application extends Observable {
 		return crayon;
 	}
 
+	public Vector<Chemin> getDessins() {
+		return this.dessins;
+	}
+	
+	public void addDessin(Chemin c) {
+		this.getDessins().add(c);
+		this.setChanged();
+		this.notifyObservers(MODIFY_DESSINS);
+	}
+	
 	public Segment getSegmentSelected() {
 		return segmentSelected;
 	}
@@ -157,8 +170,10 @@ public class Application extends Observable {
 	public void setSegments(Vector<Segment> segments) {
 		this.segments = segments;
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_TRAITS);
 		this.notifyObservers(MODIFY_TRAIT_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 
 	public Vector<CourbeBezier> getCourbes() {
@@ -168,8 +183,10 @@ public class Application extends Observable {
 	public void setCourbes(Vector<CourbeBezier> courbes) {
 		this.courbes = courbes;
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_COURBES);
 		this.notifyObservers(MODIFY_COURBE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 
 	public Vector<Cercle> getCercles() {
@@ -179,8 +196,10 @@ public class Application extends Observable {
 	public void setCercles(Vector<Cercle> cercles) {
 		this.cercles = cercles;
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_CERCLES);
 		this.notifyObservers(MODIFY_CERCLE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 
 	public Vector<Ellipse> getEllipses() {
@@ -190,8 +209,10 @@ public class Application extends Observable {
 	public void setEllipses(Vector<Ellipse> ellipses) {
 		this.ellipses = ellipses;
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_ELLIPSES);
 		this.notifyObservers(MODIFY_ELLIPSE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 
 	public Vector<Rectangle> getCarres() {
@@ -201,8 +222,10 @@ public class Application extends Observable {
 	public void setCarres(Vector<Rectangle> carres) {
 		this.carres = carres;
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_CARRES);
 		this.notifyObservers(MODIFY_CARRE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 
 	public Vector<Rectangle> getRectangles() {
@@ -212,8 +235,10 @@ public class Application extends Observable {
 	public void setRectangles(Vector<Rectangle> rectangles) {
 		this.rectangles = rectangles;
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_RECTANGLES);
 		this.notifyObservers(MODIFY_RECTANGLE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 
 	public Vector<Polygone> getPolygones() {
@@ -223,8 +248,10 @@ public class Application extends Observable {
 	public void setPolygones(Vector<Polygone> polygones) {
 		this.polygones = polygones;
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_POLYGONES);
 		this.notifyObservers(MODIFY_POLYGONE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 
 	public Vector<ImageIcon> getImages() {
@@ -234,197 +261,226 @@ public class Application extends Observable {
 	public void setImages(Vector<ImageIcon> images) {
 		this.images = images;
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_IMAGES);
 		this.notifyObservers(MODIFY_IMAGE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void addSegment(Segment s) {
 		this.getSegments().add(s);
-		System.out.println("Segments : "+this.getSegments().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_TRAITS);
 		this.notifyObservers(MODIFY_TRAIT_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void addCarre(Rectangle c) {
 		this.getCarres().add(c);
-		System.out.println("Carres : "+this.getCarres().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_CARRES);
 		this.notifyObservers(MODIFY_CARRE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void addCercle(Cercle c) {
 		this.getCercles().add(c);
-		System.out.println("Cercles : "+this.getCercles().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_CERCLES);
 		this.notifyObservers(MODIFY_CERCLE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 
 	public void addCourbe(CourbeBezier c) {
 		this.getCourbes().add(c);
-		System.out.println("Courbes : "+this.getCourbes().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_COURBES);
 		this.notifyObservers(MODIFY_COURBE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void addEllipse(Ellipse e) {
 		this.getEllipses().add(e);
-		System.out.println("Ellipse : "+this.getEllipses().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_ELLIPSES);
 		this.notifyObservers(MODIFY_ELLIPSE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void addImage(ImageIcon i) {
 		this.getImages().add(i);
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_IMAGES);
 		this.notifyObservers(MODIFY_IMAGE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void addPolygone(Polygone p) {
 		this.getPolygones().add(p);
-		System.out.println("Polygone : "+this.getPolygones().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_POLYGONES);
 		this.notifyObservers(MODIFY_POLYGONE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void addRectangle(Rectangle r) {
 		this.getRectangles().add(r);
-		System.out.println("Rectangles : "+this.getRectangles().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_RECTANGLES);
 		this.notifyObservers(MODIFY_RECTANGLE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void removeSegment(int i) {
 		this.getSegments().remove(i);
-		System.out.println("Segments : "+this.getSegments().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_TRAITS);
 		this.notifyObservers(MODIFY_TRAIT_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void removeCarre(int i) {
 		this.getCarres().remove(i);
-		System.out.println("Carres : "+this.getCarres().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_CARRES);
 		this.notifyObservers(MODIFY_CARRE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void removeCercle(int i) {
 		this.getCercles().remove(i);
-		System.out.println("Cercles : "+this.getCercles().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_CERCLES);
 		this.notifyObservers(MODIFY_CERCLE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 
 	public void removeCourbe(int i) {
 		this.getCourbes().remove(i);
-		System.out.println("Courbes : "+this.getCourbes().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_COURBES);
 		this.notifyObservers(MODIFY_COURBE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void removeEllipse(int i) {
 		this.getEllipses().remove(i);
-		System.out.println("Ellipse : "+this.getEllipses().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_ELLIPSES);
 		this.notifyObservers(MODIFY_ELLIPSE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void removeImage(int i) {
 		this.getImages().remove(i);
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_IMAGES);
 		this.notifyObservers(MODIFY_IMAGE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void removePolygone(int i) {
 		this.getPolygones().remove(i);
-		System.out.println("Polygone : "+this.getPolygones().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_POLYGONES);
 		this.notifyObservers(MODIFY_POLYGONE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void removeRectangle(int i) {
 		this.getRectangles().remove(i);
-		System.out.println("Rectangles : "+this.getRectangles().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_RECTANGLES);
 		this.notifyObservers(MODIFY_RECTANGLE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void replaceSegment(int i, Segment newS) {
 		this.getSegments().set(i, newS);
-		System.out.println("Segments : "+this.getSegments().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_TRAITS);
 		this.notifyObservers(MODIFY_TRAIT_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void replaceCarre(int i, Rectangle newC) {
 		this.getCarres().set(i, newC);
-		System.out.println("Carres : "+this.getCarres().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_CARRES);
 		this.notifyObservers(MODIFY_CARRE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void replaceCercle(int i, Cercle newC) {
 		this.getCercles().set(i, newC);
-		System.out.println("Cercles : "+this.getCercles().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_CERCLES);
 		this.notifyObservers(MODIFY_CERCLE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 
 	public void replaceCourbe(int i, CourbeBezier newC) {
 		this.getCourbes().set(i, newC);
-		System.out.println("Courbes : "+this.getCourbes().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_COURBES);
 		this.notifyObservers(MODIFY_COURBE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void replaceEllipse(int i, Ellipse newE) {
 		this.getEllipses().set(i, newE);
-		System.out.println("Ellipse : "+this.getEllipses().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_ELLIPSES);
 		this.notifyObservers(MODIFY_ELLIPSE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void replaceImage(int i, ImageIcon newI) {
 		this.getImages().set(i, newI);
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_IMAGES);
 		this.notifyObservers(MODIFY_IMAGE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void replacePolygone(int i, Polygone newP) {
 		this.getPolygones().set(i, newP);
-		System.out.println("Polygone : "+this.getPolygones().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_POLYGONES);
 		this.notifyObservers(MODIFY_POLYGONE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public void replaceRectangle(int i, Rectangle newR) {
 		this.getRectangles().set(i, newR);
-		System.out.println("Rectangles : "+this.getRectangles().size());
 		this.setChanged();
+
 		this.notifyObservers(MODIFY_RECTANGLES);
 		this.notifyObservers(MODIFY_RECTANGLE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
 	public Application(int largeur, int hauteur) {
@@ -433,6 +489,9 @@ public class Application extends Observable {
 		this.hauteur = hauteur;
 
 		this.crayon = new Crayon(5, Color.BLACK);
+		
+		this.dessins = new Vector<Chemin>();
+		
 		this.segments = new Vector<Segment>();
 		this.courbes = new Vector<CourbeBezier>();
 		this.cercles = new Vector<Cercle>();

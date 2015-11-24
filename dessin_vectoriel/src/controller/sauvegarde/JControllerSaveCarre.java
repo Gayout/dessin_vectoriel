@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import abstraction.Application;
 import controller.listes.JControllerListCarre;
+import implementation.Crayon;
 import implementation.Position;
 import implementation.Rectangle;
 import view.figures.CarreView;
@@ -34,13 +35,15 @@ public class JControllerSaveCarre implements ActionListener {
 				try {
 					cote = Integer.parseInt(parent.getCote().getText());
 					if (cote > 0) {	
-						if ((xG>0) && (xG<this.application.largeur)
-								&& (yG>0) && (yG<this.application.hauteur)) {
+						if ((xG>=0) && (xG<=this.application.largeur)
+								&& (yG>=0) && (yG<=this.application.hauteur)) {
 							Position gauche = new Position(xG,yG);
 							Rectangle c = new Rectangle(gauche, cote, cote, this.rempli);
-							c.setCrayon(this.application.getCrayon());
+							Crayon crayon = new Crayon(this.application.getCrayon().getEpaisseur(), this.application.getCrayon().getCouleur());
+							c.setCrayon(crayon);
 							if (!edition) {
 								this.application.addCarre(c);
+								this.application.addDessin(c);
 							}
 							else {
 								int i = JControllerListCarre.branchToIndice(this.application.getCarres(), this.application.getCarreSelected());
