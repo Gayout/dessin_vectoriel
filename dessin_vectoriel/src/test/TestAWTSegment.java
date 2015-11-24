@@ -8,7 +8,7 @@ import interpreteur.awt.SegmentAWT;
 
 public class TestAWTSegment {
 
-
+/*
 	public static void main(String args[]) 
 	{
 
@@ -32,4 +32,6 @@ public class TestAWTSegment {
 		SegmentAWT.setSize(400, 400);
 		SegmentAWT.setVisible(true);
 	}
+	
+	*/
 }

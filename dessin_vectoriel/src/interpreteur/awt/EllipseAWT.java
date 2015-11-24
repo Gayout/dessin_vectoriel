@@ -5,28 +5,59 @@ import java.awt.geom.Ellipse2D;
 
 import implementation.Ellipse;
 import implementation.Position;
-
-public class EllipseAWT extends Frame{
+/**
+ * <b>Ellipse est une classe d'interprétation en AWT. Elle interpréte la classe Ellipse.</b>
+ * @author Aurore Claude/Quentin Gayout
+ * @see Ellipse
+ *
+ */
+public class EllipseAWT
+// décommenter pour tester
+//extends Frame
+{
 
 	/**
-	 * 
+	 * Une EllipseAWT est défini par une Ellipse
+	 * @see Ellipse
+	 * @see EllipseAWT#getEllipse()
+	 * @see EllipseAWT#EllipseAWT(Ellipse)
+	 * @see EllipseAWT#setEllipse(Ellipse)
 	 */
-	private static final long serialVersionUID = 1L;
 	private Ellipse ellipse;
 
-	public EllipseAWT(Ellipse ellipse) throws HeadlessException {
+	/**
+	 * Constructeur complet
+	 * @param ellipse
+	 * 	ellipse
+	 */
+	public EllipseAWT(Ellipse ellipse)
+			//throws HeadlessException
+	{
 		super();
 		this.ellipse = ellipse;
 	}
 
+	/**
+	 * @see EllipseAWT#ellipse
+	 * @return Ellipse
+	 */
 	public Ellipse getEllipse() {
 		return ellipse;
 	}
 
+	/**
+	 * Change l'ellipse
+	 * @see EllipseAWT#ellipse
+	 * @param ellipse
+	 * 	ellipse
+	 */
 	public void setEllipse(Ellipse ellipse) {
 		this.ellipse = ellipse;
 	}
 
+	/**
+	 * @return Transforme ellipse en une Shape dessinable dans une Frame
+	 */
 	public Shape shape(){
 		Position c = ellipse.getCentre();
 		int x = c.getX();
@@ -39,6 +70,9 @@ public class EllipseAWT extends Frame{
 		return r1;
 	}
 	
+	/*
+	 * Methode utilisée pour tester
+	 */
 	public void paint(Graphics g) {
 		Position c = ellipse.getCentre();
 		int x = c.getX();

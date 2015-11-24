@@ -3,23 +3,22 @@ package test;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import implementation.Rectangle;
 import implementation.Position;
-import interpreteur.awt.RectangleAWT;
+import implementation.Texte;
+import interpreteur.awt.TexteAWT;
 
-public class TestAWTRectangle {
-
-/*
+public class TestAWTText {
+	/*
 	public static void main(String args[]) 
 	{
 
 
 		Position p = (new Position(100,100));
 
-		Rectangle Rectangle = new Rectangle(p, 250,100,true);
+		Texte texte = new Texte(20, "Hello", "Arial", p);
 
-		RectangleAWT RectangleAWT= Rectangle.creerRectangleAWT(); 
-		RectangleAWT.addWindowListener(
+		TexteAWT texteAWT= texte.creerTexteAWT(); 
+		texteAWT.addWindowListener(
 				new WindowAdapter()
 				{
 					public void windowClosing(WindowEvent we)
@@ -29,8 +28,8 @@ public class TestAWTRectangle {
 				}
 				);
 
-		RectangleAWT.setSize(400, 400);
-		RectangleAWT.setVisible(true);
+		texteAWT.setSize(400, 400);
+		texteAWT.setVisible(true);
 	}
-*/
+	*/
 }

@@ -1,37 +1,65 @@
 package interpreteur.awt;
 
 import java.awt.*;
+
 import java.awt.geom.Path2D;
 import java.util.List;
 
 import implementation.Polygone;
 import implementation.Position;
-
-public class PolygoneAWT extends Frame{
+/**
+ * <b>PolygoneAWT est une classe d'interprétation en AWT. Elle interpréte la classe Polygone.</b>
+ * @author Aurore Claude/Quentin Gayout
+ * @see Polygone
+ *
+ */
+public class PolygoneAWT 
+//décommenter pour tester
+//extends Frame
+{
 
 	/**
-	 * 
+	 * Une PolygoneAWT est défini par une Polygone
+	 * @see Polygone
+	 * @see PolygoneAWT#getPolygone()
+	 * @see PolygoneAWT#PolygoneAWT(Polygone)
+	 * @see PolygoneAWT#setPolygone(Polygone)
 	 */
-	private static final long serialVersionUID = 1L;
 	private Polygone polygone;
 
-
-	public PolygoneAWT(Polygone polygone) throws HeadlessException {
+	/**
+	 * Constructeur complet
+	 * @param polygone
+	 * 	polygone
+	 */
+	public PolygoneAWT(Polygone polygone) 
+			//throws HeadlessException 
+	{
 		super();
 		this.polygone = polygone;
 	}
 
-
+	/**
+	 * @see PolygoneAWT#polygone
+	 * @return Polygone
+	 */
 	public Polygone getPolygone() {
 		return polygone;
 	}
 
-
-
+	/**
+	 * Change de Polygone
+	 * @see PolygoneAWT#polygone
+	 * @param polygone
+	 * 	polygone
+	 */
 	public void setPolygone(Polygone polygone) {
 		this.polygone = polygone;
 	}
 
+	/**
+	 * @return Transforme polygone en une Shape dessinable dans une Frame
+	 */
 	public Shape shape(){
 		List<Position> pos = polygone.getSommets();
 		int size = pos.size();
@@ -56,6 +84,9 @@ public class PolygoneAWT extends Frame{
 		return r1;
 	}
 
+	/*
+	 * Méthode de test
+	 */
 	public void paint(Graphics g) {
 
 		Color color = polygone.getCrayon().getCouleur();

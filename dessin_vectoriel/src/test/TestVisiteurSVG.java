@@ -1,7 +1,7 @@
 package test;
 
 import java.awt.Color;
-
+import java.awt.Font;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -19,6 +19,7 @@ import implementation.Polygone;
 import implementation.Position;
 import implementation.Rectangle;
 import implementation.Segment;
+import implementation.Texte;
 import visitor.VisiteurSVGDessiner;
 
 public class TestVisiteurSVG {
@@ -72,6 +73,9 @@ public class TestVisiteurSVG {
 		ligne.setCrayon(new Crayon(1, Color.orange));
 		
 		
+		/******TEXTE*******/
+		Texte Texte = new Texte(20, "Hello !", Font.SANS_SERIF, new Position(100,100));
+		Texte.getCrayon().setCouleur(Color.blue);;
 		
 		dessin.addDessin(cercle);
 		dessin.addDessin(courbeBezier);
@@ -79,6 +83,7 @@ public class TestVisiteurSVG {
 		dessin.addDessin(polygone);
 		dessin.addDessin(rectangle);
 		dessin.addDessin(ligne);
+		dessin.addDessin(Texte);
 
 		dessin.accept(visiteur);
 

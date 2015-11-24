@@ -1,6 +1,7 @@
 package test;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import implementation.Polygone;
 import implementation.Position;
 import implementation.Rectangle;
 import implementation.Segment;
+import implementation.Texte;
 import visitor.VisiteurAWTDessiner;
 
 public class TestVisiteurAWT {
@@ -73,12 +75,18 @@ public class TestVisiteurAWT {
 		Segment ligne = new Segment(new Position(0,0), new Position(100, 200));
 		ligne.setCrayon(new Crayon(1, Color.orange));
 
+		
+		/******TEXTE*******/
+		Texte Texte = new Texte(20, "Hello !", Font.SANS_SERIF, new Position(100,100));
+
+
 		dessin.addDessin(cercle);
 		dessin.addDessin(courbeBezier);
 		dessin.addDessin(ellipse);
 		dessin.addDessin(polygone);
 		dessin.addDessin(rectangle);
 		dessin.addDessin(ligne);
+		dessin.addDessin(Texte);
 
 		dessin.accept(visiteur);
 
