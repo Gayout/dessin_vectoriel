@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import abstraction.Application;
 import view.MainView;
 import view.WelcomeView;
 
@@ -25,7 +26,8 @@ public class JControllerSaveWelcome implements ActionListener {
 				largeur = Integer.parseInt(parent.getLargeur().getText());
 				if (hauteur > 0) {
 					if (largeur > 0) {
-						MainView mv = new MainView(largeur, hauteur);
+						Application application = new Application(largeur, hauteur);
+						MainView mv = new MainView(application);
 						parent.setVisible(false);
 					}
 					else {

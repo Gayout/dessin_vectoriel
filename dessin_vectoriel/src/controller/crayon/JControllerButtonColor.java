@@ -7,15 +7,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 
-import view.MainView;
+import abstraction.Application;
 
 public class JControllerButtonColor implements ActionListener {
-	private MainView fenetre;
 	private JButton bouton;
+	private Application application;
 	
-	public JControllerButtonColor (MainView fenetre, JButton bouton) {
-		this.fenetre = fenetre;
+	public JControllerButtonColor (JButton bouton, Application application) {
 		this.bouton = bouton;
+		this.application = application;
 		bouton.setEnabled(true);
 	}
 	
@@ -23,11 +23,10 @@ public class JControllerButtonColor implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		JColorChooser choixCouleur = new JColorChooser();
 		@SuppressWarnings("static-access")
-		Color couleur = choixCouleur.showDialog(this.bouton, "Choix de la couleur du crayon", this.fenetre.getCrayon().getCouleur());
+		Color couleur = choixCouleur.showDialog(this.bouton, "Choix de la couleur du crayon", this.application.getCrayon().getCouleur());
 		if (couleur != null) {
-			this.fenetre.getCrayon().setCouleur(couleur);
+			this.application.getCrayon().setCouleur(couleur);
 			this.bouton.setBackground(couleur);
 		}
 	}
-
 }

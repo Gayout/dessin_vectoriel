@@ -8,11 +8,9 @@ import view.figures.ImageView;
 
 public class JControllerButtonFiguresImage implements ActionListener {
 	private MainView fenetre;
-	private boolean edition;
 	
 	public JControllerButtonFiguresImage (MainView fenetre, boolean edition) {
 		this.fenetre = fenetre;
-		this.edition = edition;
 	}
 	
 	@Override

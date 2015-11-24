@@ -5,18 +5,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import abstraction.Application;
 import implementation.Position;
 import implementation.Rectangle;
-import view.MainView;
 import view.figures.RectangleView;
 
 public class JControllerSaveRectangle implements ActionListener {
-	private MainView fenetre;
+	private Application application;
 	private RectangleView parent;
 	private boolean rempli;
 
-	public JControllerSaveRectangle (MainView fenetre, RectangleView parent, boolean rempli) {
-		this.fenetre = fenetre;
+	public JControllerSaveRectangle (Application application, RectangleView parent, boolean rempli) {
+		this.application = application;
 		this.parent = parent;
 		this.rempli = rempli;
 	}
@@ -33,15 +33,17 @@ public class JControllerSaveRectangle implements ActionListener {
 					try {
 						hauteur = Integer.parseInt(parent.getHauteur().getText());
 						if ((largeur>0) && (hauteur>0)) {	
-							if ((xG>0) && (xG<this.fenetre.largeur)
-									&& (yG>0) && (yG<this.fenetre.hauteur)) {
+							if ((xG>0) && (xG<this.application.largeur)
+									&& (yG>0) && (yG<this.application.hauteur)) {
 								Position gauche = new Position(xG,yG);
 								Rectangle r = new Rectangle(gauche, largeur, hauteur, this.rempli);
-								this.fenetre.getRectangles().add(r);
-								this.fenetre.setRectangleSelected(r);
+								r.setCrayon(this.application.getCrayon());
+								this.application.addRectangle(r);
+								this.application.setRectangleSelected(r);
+								this.parent.setVisible(false);
 							}
 							else {
-								JOptionPane.showMessageDialog(parent, "Vérifiez que les coordonnées du sommet sont comprises entre 0 et "+this.fenetre.largeur+" pour l'abscisse , entre 0 et "+this.fenetre.hauteur+" pour l'ordonnée.", "Erreur!", 0);
+								JOptionPane.showMessageDialog(parent, "Vérifiez que les coordonnées du sommet sont comprises entre 0 et "+this.application.largeur+" pour l'abscisse , entre 0 et "+this.application.hauteur+" pour l'ordonnée.", "Erreur!", 0);
 							}
 						}
 						else {

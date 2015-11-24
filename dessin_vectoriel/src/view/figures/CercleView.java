@@ -5,6 +5,7 @@ import java.awt.Font;
 
 import javax.swing.*;
 
+import abstraction.Application;
 import controller.sauvegarde.JControllerSaveCercle;
 import view.MainView;
 
@@ -18,13 +19,17 @@ public class CercleView extends JDialog {
 	public static final int CATEGORY_SIZE = 15;
 	public static final int TEXT_SIZE = 20;
 	
+	private Application application;
 	private JTextField xC;
 	private JTextField yC;
 	private JTextField r;
 	private JCheckBox rempli;
 	
-	public CercleView (MainView parent, boolean edition) {
+	public CercleView (MainView parent, boolean edition, Application application) {
 		super(parent, "Créer un cercle", true);
+		
+		this.application = application;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 		
@@ -97,7 +102,7 @@ public class CercleView extends JDialog {
 		
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
-		JControllerSaveCercle controlCercle = new JControllerSaveCercle(parent, this, this.rempli.isSelected());
+		JControllerSaveCercle controlCercle = new JControllerSaveCercle(this.application, this, this.rempli.isSelected());
 		save.addActionListener(controlCercle);
 		this.getRootPane().setDefaultButton(save);
 		panelSave.add(save);

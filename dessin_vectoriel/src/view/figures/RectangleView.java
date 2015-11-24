@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import abstraction.Application;
 import controller.sauvegarde.JControllerSaveRectangle;
 import view.MainView;
 
@@ -25,14 +26,18 @@ public class RectangleView extends JDialog {
 	public static final int CATEGORY_SIZE = 15;
 	public static final int TEXT_SIZE = 20;
 	
+	private Application application;
 	private JTextField xG;
 	private JTextField yG;
 	private JTextField largeur;
 	private JTextField hauteur;
 	private JCheckBox rempli;
 	
-	public RectangleView (MainView parent, boolean edition) {
+	public RectangleView (MainView parent, boolean edition, Application application) {
 		super(parent, "Créer un rectangle", true);
+		
+		this.application = application;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 		
@@ -129,9 +134,9 @@ public class RectangleView extends JDialog {
 		
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
-		this.getRootPane().setDefaultButton(save);
-		JControllerSaveRectangle controlRectangle = new JControllerSaveRectangle(parent, this, this.rempli.isSelected());
+		JControllerSaveRectangle controlRectangle = new JControllerSaveRectangle(this.application, this, this.rempli.isSelected());
 		save.addActionListener(controlRectangle);
+		this.getRootPane().setDefaultButton(save);
 		panelSave.add(save);
 		panelSave.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));
 		panel.add(panelSave);

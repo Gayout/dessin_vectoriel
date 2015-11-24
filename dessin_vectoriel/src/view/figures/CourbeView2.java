@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import abstraction.Application;
 import controller.sauvegarde.JControllerSaveCourbe;
-import view.MainView;
 
 public class CourbeView2 extends JDialog {
 	/**
@@ -25,11 +25,15 @@ public class CourbeView2 extends JDialog {
 	public static final int CATEGORY_SIZE = 15;
 	public static final int TEXT_SIZE = 20;
 
+	private Application application;
 	private ArrayList<JTextField> x;
 	private ArrayList<JTextField> y;
 
-	public CourbeView2 (MainView main, CourbeView parent, boolean edition, int nb, boolean rempli) {
+	public CourbeView2 (Application application, CourbeView parent, boolean edition, int nb, boolean rempli) {
 		super(parent, "Créer une courbe", true);
+		
+		this.application = application;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 
@@ -82,7 +86,7 @@ public class CourbeView2 extends JDialog {
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
 		this.getRootPane().setDefaultButton(save);
-		JControllerSaveCourbe saveCourbe = new JControllerSaveCourbe(main, parent, this, rempli);
+		JControllerSaveCourbe saveCourbe = new JControllerSaveCourbe(this.application, parent, this, rempli);
 		save.addActionListener(saveCourbe);
 		panelSave.add(save);
 		panelSave.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));

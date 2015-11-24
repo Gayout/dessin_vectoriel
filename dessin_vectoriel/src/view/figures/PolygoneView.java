@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import abstraction.Application;
 import controller.menuFigures.JControllerButtonContinuePolygone;
 import view.MainView;
 
@@ -24,12 +25,16 @@ public class PolygoneView extends JDialog {
 	public static final int CATEGORY_SIZE = 15;
 	public static final int TEXT_SIZE = 20;
 
+	private Application application;
 	private JTextField nombrePoints;
 	private JCheckBox ferme;
 	private JCheckBox rempli;
 
-	public PolygoneView (MainView parent, boolean edition) {
+	public PolygoneView (MainView parent, boolean edition, Application application) {
 		super(parent, "Créer un polygone", true);
+		
+		this.application = application;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 
@@ -76,7 +81,7 @@ public class PolygoneView extends JDialog {
 		JPanel panelContinuer = new JPanel();
 		JButton continuer = new JButton("Continuer");
 		this.getRootPane().setDefaultButton(continuer);
-		JControllerButtonContinuePolygone controlPolygone = new JControllerButtonContinuePolygone(parent, this, this.ferme.isSelected(), this.rempli.isSelected());
+		JControllerButtonContinuePolygone controlPolygone = new JControllerButtonContinuePolygone(this.application, this, this.ferme.isSelected(), this.rempli.isSelected());
 		continuer.addActionListener(controlPolygone);
 		panelContinuer.add(continuer);
 		panelContinuer.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));

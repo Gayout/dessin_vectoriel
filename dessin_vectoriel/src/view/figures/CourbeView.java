@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import abstraction.Application;
 import controller.menuFigures.JControllerButtonContinueCourbe;
 import view.MainView;
 
@@ -20,16 +21,21 @@ public class CourbeView extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	public static final int TITLE_SIZE = 25;
 	public static final int CATEGORY_SIZE = 15;
 	public static final int TEXT_SIZE = 20;
 
+	private Application application;
 	private JTextField nombrePoints;
 	private JCheckBox ferme;
 	private JCheckBox rempli;
 
-	public CourbeView (MainView parent, boolean edition) {
+	public CourbeView (MainView parent, boolean edition, Application application) {
 		super(parent, "Créer une courbe de bézier", true);
+		
+		this.application = application;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 
@@ -75,7 +81,7 @@ public class CourbeView extends JDialog {
 		
 		JPanel panelContinuer = new JPanel();
 		JButton continuer = new JButton("Continuer");
-		JControllerButtonContinueCourbe controlCourbe = new JControllerButtonContinueCourbe(parent, this, this.ferme.isSelected(), this.rempli.isSelected());
+		JControllerButtonContinueCourbe controlCourbe = new JControllerButtonContinueCourbe(this.application, this, this.ferme.isSelected(), this.rempli.isSelected());
 		continuer.addActionListener(controlCourbe);
 		this.getRootPane().setDefaultButton(continuer);
 		panelContinuer.add(continuer);

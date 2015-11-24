@@ -6,20 +6,20 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import abstraction.Application;
 import implementation.Polygone;
 import implementation.Position;
-import view.MainView;
 import view.figures.PolygoneView;
 import view.figures.PolygoneView2;
 
 public class JControllerSavePolygone implements ActionListener {
-	private MainView main;
+	private Application application;
 	private PolygoneView fenetre;
 	private PolygoneView2 parent;
 	private boolean rempli;
 
-	public JControllerSavePolygone (MainView main, PolygoneView fenetre, PolygoneView2 parent, boolean rempli) {
-		this.main = main;
+	public JControllerSavePolygone (Application application, PolygoneView fenetre, PolygoneView2 parent, boolean rempli) {
+		this.application = application;
 		this.fenetre = fenetre;
 		this.parent = parent;
 		this.rempli = rempli;
@@ -51,8 +51,10 @@ public class JControllerSavePolygone implements ActionListener {
 				y = Integer.parseInt(parent.getListY().get(taille-1).getText());
 				points.add(new Position(x, y));
 				Polygone p = new Polygone(points, !fenetre.getFerme().isSelected(), this.rempli);
-				this.main.getPolygones().add(p);
-				this.main.setPolygoneSelected(p);
+				p.setCrayon(this.application.getCrayon());
+				this.application.addPolygone(p);
+				this.application.setPolygoneSelected(p);
+				this.parent.setVisible(false);
 			}
 			catch (NumberFormatException error) {
 				JOptionPane.showMessageDialog(parent, (taille-1)+" : La valeur "+parent.getListY().get(taille-1).getText()+" n'est pas entière.", "Erreur!", 0);

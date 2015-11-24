@@ -6,20 +6,20 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import abstraction.Application;
 import implementation.CourbeBezier;
 import implementation.Position;
-import view.MainView;
 import view.figures.CourbeView;
 import view.figures.CourbeView2;
 
 public class JControllerSaveCourbe implements ActionListener {
-	private MainView main;
+	private Application application;
 	private CourbeView fenetre;
 	private CourbeView2 parent;
 	private boolean rempli;
 
-	public JControllerSaveCourbe (MainView main, CourbeView fenetre, CourbeView2 parent, boolean rempli) {
-		this.main = main;
+	public JControllerSaveCourbe (Application application, CourbeView fenetre, CourbeView2 parent, boolean rempli) {
+		this.application = application;
 		this.fenetre = fenetre;
 		this.parent = parent;
 		this.rempli = rempli;
@@ -51,8 +51,10 @@ public class JControllerSaveCourbe implements ActionListener {
 				y = Integer.parseInt(parent.getListY().get(taille-1).getText());
 				points.add(new Position(x, y));
 				CourbeBezier c = new CourbeBezier(points, !fenetre.getFerme().isSelected(), this.rempli);
-				this.main.getCourbes().add(c);
-				this.main.setCourbeSelected(c);
+				c.setCrayon(this.application.getCrayon());
+				this.application.addCourbe(c);
+				this.application.setCourbeSelected(c);
+				this.parent.setVisible(false);
 			}
 			catch (NumberFormatException error) {
 				JOptionPane.showMessageDialog(parent, (taille-1)+" : La valeur "+parent.getListY().get(taille-1).getText()+" n'est pas entière.", "Erreur!", 0);

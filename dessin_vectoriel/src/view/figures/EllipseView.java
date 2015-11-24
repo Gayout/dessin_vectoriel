@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import abstraction.Application;
 import controller.sauvegarde.JControllerSaveEllipse;
 import view.MainView;
 
@@ -25,6 +26,7 @@ public class EllipseView extends JDialog {
 	public static final int CATEGORY_SIZE = 15;
 	public static final int TEXT_SIZE = 20;
 	
+	private Application application;
 	private JTextField xC;
 	private JTextField yC;
 	private JTextField gdAxe;
@@ -32,8 +34,11 @@ public class EllipseView extends JDialog {
 	private JTextField angle;
 	private JCheckBox rempli;
 	
-	public EllipseView (MainView parent, boolean edition) {
+	public EllipseView (MainView parent, boolean edition, Application application) {
 		super(parent, "Créer une ellipse", true);
+		
+		this.application = application;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 		
@@ -146,7 +151,7 @@ public class EllipseView extends JDialog {
 		
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
-		JControllerSaveEllipse controlEllipse = new JControllerSaveEllipse(parent, this, this.rempli.isSelected());
+		JControllerSaveEllipse controlEllipse = new JControllerSaveEllipse(this.application, this, this.rempli.isSelected());
 		save.addActionListener(controlEllipse);
 		this.getRootPane().setDefaultButton(save);
 		panelSave.add(save);

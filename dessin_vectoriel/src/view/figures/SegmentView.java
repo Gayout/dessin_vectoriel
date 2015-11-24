@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import abstraction.Application;
 import controller.sauvegarde.JControllerSaveSegment;
 import view.MainView;
 
@@ -24,13 +25,18 @@ public class SegmentView extends JDialog {
 	public static final int CATEGORY_SIZE = 15;
 	public static final int TEXT_SIZE = 20;
 	
+	@SuppressWarnings("unused")
+	private Application application;
 	private JTextField xD;
 	private JTextField yD;
 	private JTextField xA;
 	private JTextField yA;
 	
-	public SegmentView (MainView parent, boolean edition) {
+	public SegmentView (MainView parent, boolean edition, Application application) {
 		super(parent, "Créer un trait", true);
+		
+		this.application = application;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 		
@@ -115,9 +121,7 @@ public class SegmentView extends JDialog {
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
 		this.getRootPane().setDefaultButton(save);
-		JControllerSaveSegment controlSegment = new JControllerSaveSegment(parent, this);
-		save.addActionListener(controlSegment);
-		JControllerSaveSegment saveSegment = new JControllerSaveSegment(parent, this);
+		JControllerSaveSegment saveSegment = new JControllerSaveSegment(this, application);
 		save.addActionListener(saveSegment);
 		panelSave.add(save);
 		panelSave.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));

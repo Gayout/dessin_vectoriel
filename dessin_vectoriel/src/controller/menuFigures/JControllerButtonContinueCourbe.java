@@ -5,19 +5,20 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import view.MainView;
+import abstraction.Application;
 import view.figures.CourbeView;
 import view.figures.CourbeView2;
 
 public class JControllerButtonContinueCourbe implements ActionListener {
-	private MainView main;
+	private Application application;
 	private CourbeView fenetre;
 	private boolean edition;
 	private boolean rempli;
 
-	public JControllerButtonContinueCourbe (MainView main, CourbeView fenetre, boolean edition, boolean rempli) {
-		this.main = main;
+	public JControllerButtonContinueCourbe (Application application, CourbeView fenetre, boolean edition, boolean rempli) {
+		this.application = application;
 		this.fenetre = fenetre;
+		this.edition = edition;
 		this.rempli = rempli;
 	}
 
@@ -30,7 +31,7 @@ public class JControllerButtonContinueCourbe implements ActionListener {
 				JOptionPane.showMessageDialog(this.fenetre, "Entrez un nombre de points compris entre 0 et 4 inclus svp.", "Erreur!", 0);
 			}
 			else {
-				CourbeView2 cv = new CourbeView2(this.main, this.fenetre, this.edition, nb, rempli);
+				CourbeView2 cv = new CourbeView2(this.application, this.fenetre, this.edition, nb, rempli);
 				cv.setVisible(true);
 				fenetre.setVisible(false);
 			}

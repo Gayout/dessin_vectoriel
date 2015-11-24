@@ -5,18 +5,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import abstraction.Application;
 import implementation.Position;
 import implementation.Segment;
-import view.MainView;
 import view.figures.SegmentView;
 
-public class JControllerSaveSegment implements ActionListener {
-	private MainView fenetre;
+public class JControllerSaveSegment implements ActionListener  {
 	private SegmentView parent;
+	private Application application;
 
-	public JControllerSaveSegment (MainView fenetre, SegmentView parent) {
-		this.fenetre = fenetre;
+	public JControllerSaveSegment (SegmentView parent, Application application) {
 		this.parent = parent;
+		this.application = application;
 	}
 
 	@Override
@@ -30,18 +30,20 @@ public class JControllerSaveSegment implements ActionListener {
 					xA = Integer.parseInt(parent.getxA().getText());
 					try {
 						yA = Integer.parseInt(parent.getyA().getText());
-						if ((xA>0) && (xA<this.fenetre.largeur)
-								&& (yA>0) && (yA<this.fenetre.hauteur)
-								&& (xD>0) && (xD<this.fenetre.largeur)
-								&& (yD>0) && (yD<this.fenetre.hauteur)) {
+						if ((xA>0) && (xA<this.application.largeur)
+								&& (yA>0) && (yA<this.application.hauteur)
+								&& (xD>0) && (xD<this.application.largeur)
+								&& (yD>0) && (yD<this.application.hauteur)) {
 							Position depart = new Position(xD, yD);
 							Position arrivee = new Position(xA, yA);
 							Segment s = new Segment(depart, arrivee);
-							this.fenetre.getSegments().add(s);
-							this.fenetre.setSegmentSelected(s);
+							s.setCrayon(this.application.getCrayon());
+							this.application.addSegment(s);
+							this.application.setSegmentSelected(s);
+							this.parent.setVisible(false);
 						}
 						else {
-							JOptionPane.showMessageDialog(parent, "Vérifiez que les coordonnées des sommets sont comprises entre 0 et "+this.fenetre.largeur+" pour les abscisses , entre 0 et "+this.fenetre.hauteur+" pour les ordonnées.", "Erreur!", 0);
+							JOptionPane.showMessageDialog(parent, "Vérifiez que les coordonnées des sommets sont comprises entre 0 et "+this.application.largeur+" pour les abscisses , entre 0 et "+this.application.hauteur+" pour les ordonnées.", "Erreur!", 0);
 						}
 					} 
 					catch (NumberFormatException error) {

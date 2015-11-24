@@ -5,18 +5,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import view.MainView;
+import abstraction.Application;
 import view.figures.PolygoneView;
 import view.figures.PolygoneView2;
 
 public class JControllerButtonContinuePolygone implements ActionListener {
-	private MainView main;
+	private Application application;
 	private PolygoneView fenetre;
 	private boolean edition;
 	private boolean rempli;
 
-	public JControllerButtonContinuePolygone (MainView main, PolygoneView fenetre, boolean edition, boolean rempli) {
-		this.main = main;
+	public JControllerButtonContinuePolygone (Application application, PolygoneView fenetre, boolean edition, boolean rempli) {
+		this.application = application;
 		this.fenetre = fenetre;
 		this.edition = edition;
 		this.rempli = rempli;
@@ -31,7 +31,7 @@ public class JControllerButtonContinuePolygone implements ActionListener {
 				JOptionPane.showMessageDialog(this.fenetre, "Entrez un nombre de points compris entre 0 et 4 inclus svp.", "Erreur!", 0);
 			}
 			else {
-				PolygoneView2 pv = new PolygoneView2(this.main, this.fenetre, this.edition, nb, this.rempli);
+				PolygoneView2 pv = new PolygoneView2(this.application, this.fenetre, this.edition, nb, this.rempli);
 				pv.setVisible(true);
 				fenetre.setVisible(false);
 			}

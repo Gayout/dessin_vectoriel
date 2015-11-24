@@ -4,20 +4,21 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import view.MainView;
+import abstraction.Application;
 
 public class JControllerSlider implements ChangeListener {
-	private MainView fenetre;
+	private Application application;
 	
-	public JControllerSlider (MainView fenetre) {
-		this.fenetre = fenetre;
+	public JControllerSlider (Application application) {
+		this.application = application;
 	}
+	
 	@Override
 	public void stateChanged(ChangeEvent arg0) {
 		JSlider source = (JSlider)arg0.getSource();
 		int epaisseur = (int)source.getValue();
 		if ((epaisseur<=10) && (epaisseur>0)) {
-			this.fenetre.getCrayon().setEpaisseur(epaisseur);
+			this.application.getCrayon().setEpaisseur(epaisseur);
 		}
 	}
 }

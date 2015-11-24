@@ -5,18 +5,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import abstraction.Application;
 import implementation.Position;
 import implementation.Rectangle;
-import view.MainView;
 import view.figures.CarreView;
 
 public class JControllerSaveCarre implements ActionListener {
-	private MainView fenetre;
 	private CarreView parent;
 	private boolean rempli;
+	private Application application;
 
-	public JControllerSaveCarre (MainView fenetre, CarreView parent, boolean rempli) {
-		this.fenetre = fenetre;
+	public JControllerSaveCarre (Application application, CarreView parent, boolean rempli) {
+		this.application = application;
 		this.parent = parent;
 		this.rempli = rempli;
 	}
@@ -31,15 +31,17 @@ public class JControllerSaveCarre implements ActionListener {
 				try {
 					cote = Integer.parseInt(parent.getCote().getText());
 					if (cote > 0) {	
-						if ((xG>0) && (xG<this.fenetre.largeur)
-								&& (yG>0) && (yG<this.fenetre.hauteur)) {
+						if ((xG>0) && (xG<this.application.largeur)
+								&& (yG>0) && (yG<this.application.hauteur)) {
 							Position gauche = new Position(xG,yG);
 							Rectangle c = new Rectangle(gauche, cote, cote, this.rempli);
-							this.fenetre.getCarres().add(c);
-							this.fenetre.setCarreSelected(c);
+							c.setCrayon(this.application.getCrayon());
+							this.application.addCarre(c);
+							this.application.setCarreSelected(c);
+							this.parent.setVisible(false);
 						}
 						else {
-							JOptionPane.showMessageDialog(parent, "Vérifiez que les coordonnées du sommet sont compris entre 0 et "+this.fenetre.largeur+" pour l'abscisse , entre 0 et "+this.fenetre.hauteur+" pour l'ordonnée.", "Erreur!", 0);
+							JOptionPane.showMessageDialog(parent, "Vérifiez que les coordonnées du sommet sont compris entre 0 et "+this.application.largeur+" pour l'abscisse , entre 0 et "+this.application.hauteur+" pour l'ordonnée.", "Erreur!", 0);
 						}
 					}
 					else {

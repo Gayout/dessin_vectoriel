@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import abstraction.Application;
 import controller.sauvegarde.JControllerSavePolygone;
-import view.MainView;
 
 public class PolygoneView2 extends JDialog {
 	/**
@@ -25,12 +25,16 @@ public class PolygoneView2 extends JDialog {
 	public static final int CATEGORY_SIZE = 15;
 	public static final int TEXT_SIZE = 20;
 
+	private Application application;
 	private ArrayList<JTextField> x;
 	private ArrayList<JTextField> y;
 	
 
-	public PolygoneView2 (MainView main, PolygoneView parent, boolean edition, int nb, boolean rempli) {
+	public PolygoneView2 (Application application, PolygoneView parent, boolean edition, int nb, boolean rempli) {
 		super(parent, "Créer un polygone", true);
+		
+		this.application = application;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 
@@ -83,7 +87,7 @@ public class PolygoneView2 extends JDialog {
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
 		this.getRootPane().setDefaultButton(save);
-		JControllerSavePolygone savePolygone = new JControllerSavePolygone(main, parent, this, rempli);
+		JControllerSavePolygone savePolygone = new JControllerSavePolygone(this.application, parent, this, rempli);
 		save.addActionListener(savePolygone);
 		panelSave.add(save);
 		panelSave.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));

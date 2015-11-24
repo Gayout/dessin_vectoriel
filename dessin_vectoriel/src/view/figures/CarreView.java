@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import abstraction.Application;
 import controller.sauvegarde.JControllerSaveCarre;
 import view.MainView;
 
@@ -25,13 +26,17 @@ public class CarreView extends JDialog {
 	public static final int CATEGORY_SIZE = 15;
 	public static final int TEXT_SIZE = 20;
 	
+	private Application application;
 	private JTextField xG;
 	private JTextField yG;
 	private JTextField cote;
 	private JCheckBox rempli;
 	
-	public CarreView (MainView parent, boolean edition) {
+	public CarreView (MainView parent, boolean edition, Application application) {
 		super(parent, "Créer un carré", true);
+		
+		this.application = application;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 		
@@ -104,7 +109,7 @@ public class CarreView extends JDialog {
 		
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
-		JControllerSaveCarre controlCarre = new JControllerSaveCarre(parent, this, this.rempli.isSelected());
+		JControllerSaveCarre controlCarre = new JControllerSaveCarre(this.application, this, this.rempli.isSelected());
 		save.addActionListener(controlCarre);
 		this.getRootPane().setDefaultButton(save);
 		panelSave.add(save);
