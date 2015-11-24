@@ -54,30 +54,31 @@ public class VisiteurAWTDessiner extends Frame implements Visiteur{
 	 */
 	@Override
 	public void visit(Cercle cercle) {
-		CercleAWT cercleAWT = cercle.creerCercleAWT();
+		if(cercle!=null){
+			CercleAWT cercleAWT = cercle.creerCercleAWT();
 
 
-		Color color = cercle.getCrayon().getCouleur();
-		int epaisseur = cercle.getCrayon().getEpaisseur();
+			Color color = cercle.getCrayon().getCouleur();
+			int epaisseur = cercle.getCrayon().getEpaisseur();
 
-		Shape r1 = cercleAWT.shape();
+			Shape r1 = cercleAWT.shape();
 
-		Graphics2D ga = (Graphics2D)g;
-		ga.setPaint(color);
-		ga.setStroke(new BasicStroke((epaisseur)));
+			Graphics2D ga = (Graphics2D)g;
+			ga.setPaint(color);
+			ga.setStroke(new BasicStroke((epaisseur)));
 
-		//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
-		ga.draw(r1);
-		ga.draw(r1);
-		ga.draw(r1);
-
-		if(cercle.isRempli()){
 			//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
-			ga.fill(r1);
-			ga.fill(r1);
-			ga.fill(r1);		
-		}
+			ga.draw(r1);
+			ga.draw(r1);
+			ga.draw(r1);
 
+			if(cercle.isRempli()){
+				//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
+				ga.fill(r1);
+				ga.fill(r1);
+				ga.fill(r1);		
+			}
+		}
 
 	}
 
@@ -87,36 +88,38 @@ public class VisiteurAWTDessiner extends Frame implements Visiteur{
 	 */
 	@Override
 	public void visit(CourbeBezier courbeBezier) {
-		CourbeBezierAWT courbeBezierAWT = courbeBezier.creerCourbeBezierAWT();
+		if(courbeBezier!=null){
+			CourbeBezierAWT courbeBezierAWT = courbeBezier.creerCourbeBezierAWT();
 
-		Color color = courbeBezier.getCrayon().getCouleur();
-		int epaisseur = courbeBezier.getCrayon().getEpaisseur();
+			Color color = courbeBezier.getCrayon().getCouleur();
+			int epaisseur = courbeBezier.getCrayon().getEpaisseur();
 
-		Shape r1 = courbeBezierAWT.shape().get(0);
+			Shape r1 = courbeBezierAWT.shape().get(0);
 
-		Graphics2D ga = (Graphics2D)g;
+			Graphics2D ga = (Graphics2D)g;
 
-		ga.setPaint(color);
-		ga.setStroke(new BasicStroke((epaisseur)));
-		
-		//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
-		ga.draw(r1);
-		ga.draw(r1);
-		ga.draw(r1);
-		if(courbeBezier.isRempli()){
-		
+			ga.setPaint(color);
+			ga.setStroke(new BasicStroke((epaisseur)));
+
 			//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
-			ga.fill(r1);
-			ga.fill(r1);
-			ga.fill(r1);
-		}
-		if(!courbeBezier.isOuvert()){
-			Shape r2= courbeBezierAWT.shape().get(1);
-			
-			//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
-			ga.draw(r2);
-			ga.draw(r2);
-			ga.draw(r2);
+			ga.draw(r1);
+			ga.draw(r1);
+			ga.draw(r1);
+			if(courbeBezier.isRempli()){
+
+				//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
+				ga.fill(r1);
+				ga.fill(r1);
+				ga.fill(r1);
+			}
+			if(!courbeBezier.isOuvert()){
+				Shape r2= courbeBezierAWT.shape().get(1);
+
+				//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
+				ga.draw(r2);
+				ga.draw(r2);
+				ga.draw(r2);
+			}
 		}
 	}
 
@@ -126,37 +129,38 @@ public class VisiteurAWTDessiner extends Frame implements Visiteur{
 	 */
 	@Override
 	public void visit(Ellipse ellipse) {
-		EllipseAWT ellipseAWT = ellipse.creerEllipseAWT();
-		Position c = ellipse.getCentre();
-		int x = c.getX();
-		int y = c.getY();
-		int width = ellipse.getGdAxe();
-		int height = ellipse.getPetitAxe();
-		long angle =ellipse.getAngleAbsGdAxe();
-		Color color = ellipse.getCrayon().getCouleur();
-		int epaisseur = ellipse.getCrayon().getEpaisseur();
+		if(ellipse!=null){
+			EllipseAWT ellipseAWT = ellipse.creerEllipseAWT();
+			Position c = ellipse.getCentre();
+			int x = c.getX();
+			int y = c.getY();
+			int width = ellipse.getGdAxe();
+			int height = ellipse.getPetitAxe();
+			long angle =ellipse.getAngleAbsGdAxe();
+			Color color = ellipse.getCrayon().getCouleur();
+			int epaisseur = ellipse.getCrayon().getEpaisseur();
 
-		Shape r1 = ellipseAWT.shape();
+			Shape r1 = ellipseAWT.shape();
 
-		Graphics2D ga = (Graphics2D)g;
-		ga.rotate(Math.toRadians(angle),x+ width / 2, y+ height / 2);
-		ga.setPaint(color);
-		ga.setStroke(new BasicStroke((epaisseur)));
+			Graphics2D ga = (Graphics2D)g;
+			ga.rotate(Math.toRadians(angle),x+ width / 2, y+ height / 2);
+			ga.setPaint(color);
+			ga.setStroke(new BasicStroke((epaisseur)));
 
-		//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
-		ga.draw(r1);
-		ga.draw(r1);
-		ga.draw(r1);
-
-		if(ellipse.isRempli()){
 			//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
-			ga.fill(r1);
-			ga.fill(r1);
-			ga.fill(r1);
+			ga.draw(r1);
+			ga.draw(r1);
+			ga.draw(r1);
+
+			if(ellipse.isRempli()){
+				//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
+				ga.fill(r1);
+				ga.fill(r1);
+				ga.fill(r1);
+			}
+
+			ga.rotate(-Math.toRadians(angle),x,y);
 		}
-
-		ga.rotate(-Math.toRadians(angle),x,y);
-
 	}
 
 	/**
@@ -165,27 +169,29 @@ public class VisiteurAWTDessiner extends Frame implements Visiteur{
 	 */
 	@Override
 	public void visit(Polygone polygone) {
-		PolygoneAWT polygoneAWT = polygone.creerPolygoneAWT();
+		if(polygone!=null){
+			PolygoneAWT polygoneAWT = polygone.creerPolygoneAWT();
 
-		Color color = polygone.getCrayon().getCouleur();
-		int epaisseur = polygone.getCrayon().getEpaisseur();
-		Shape r1 = polygoneAWT.shape();
+			Color color = polygone.getCrayon().getCouleur();
+			int epaisseur = polygone.getCrayon().getEpaisseur();
+			Shape r1 = polygoneAWT.shape();
 
-		Graphics2D ga = (Graphics2D)g;
-		ga.setPaint(color);
-		ga.setStroke(new BasicStroke((epaisseur)));
+			Graphics2D ga = (Graphics2D)g;
+			ga.setPaint(color);
+			ga.setStroke(new BasicStroke((epaisseur)));
 
-		//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
-		ga.draw(r1);
-		ga.draw(r1);
-		ga.draw(r1);
-
-		if(polygone.isRempli()){
-			
 			//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
-			ga.fill(r1);
-			ga.fill(r1);
-			ga.fill(r1);
+			ga.draw(r1);
+			ga.draw(r1);
+			ga.draw(r1);
+
+			if(polygone.isRempli()){
+
+				//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
+				ga.fill(r1);
+				ga.fill(r1);
+				ga.fill(r1);
+			}
 		}
 	}
 
@@ -195,28 +201,30 @@ public class VisiteurAWTDessiner extends Frame implements Visiteur{
 	 */
 	@Override
 	public void visit(Rectangle rectangle) {
-		RectangleAWT rectangleAWT = rectangle.creerRectangleAWT();
+		if(rectangle != null){
+			RectangleAWT rectangleAWT = rectangle.creerRectangleAWT();
 
-		Color color = rectangle.getCrayon().getCouleur();
-		int epaisseur = rectangle.getCrayon().getEpaisseur();
+			Color color = rectangle.getCrayon().getCouleur();
+			int epaisseur = rectangle.getCrayon().getEpaisseur();
 
-		Shape r1 = rectangleAWT.shape();
+			Shape r1 = rectangleAWT.shape();
 
-		Graphics2D ga = (Graphics2D)g;
-		ga.setPaint(color);
-		ga.setStroke(new BasicStroke((epaisseur)));
-
-		//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
-		ga.draw(r1);
-		ga.draw(r1);
-		ga.draw(r1);
-
-		if(rectangle.isRempli()){
+			Graphics2D ga = (Graphics2D)g;
+			ga.setPaint(color);
+			ga.setStroke(new BasicStroke((epaisseur)));
 
 			//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
-			ga.fill(r1);
-			ga.fill(r1);
-			ga.fill(r1);
+			ga.draw(r1);
+			ga.draw(r1);
+			ga.draw(r1);
+
+			if(rectangle.isRempli()){
+
+				//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
+				ga.fill(r1);
+				ga.fill(r1);
+				ga.fill(r1);
+			}
 		}
 	}
 
@@ -226,21 +234,23 @@ public class VisiteurAWTDessiner extends Frame implements Visiteur{
 	 */
 	@Override
 	public void visit(Segment segment) {
-		SegmentAWT segmentAWT = segment.creerSegmentAWT();
+		if(segment != null){
+			SegmentAWT segmentAWT = segment.creerSegmentAWT();
 
-		Color color = segment.getCrayon().getCouleur();
-		int epaisseur = segment.getCrayon().getEpaisseur();
+			Color color = segment.getCrayon().getCouleur();
+			int epaisseur = segment.getCrayon().getEpaisseur();
 
-		Shape r1 = segmentAWT.shape();
+			Shape r1 = segmentAWT.shape();
 
-		Graphics2D ga = (Graphics2D)g;
-		ga.setPaint(color);
-		ga.setStroke(new BasicStroke((epaisseur)));
+			Graphics2D ga = (Graphics2D)g;
+			ga.setPaint(color);
+			ga.setStroke(new BasicStroke((epaisseur)));
 
-		//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
-		ga.draw(r1);
-		ga.draw(r1);
-		ga.draw(r1);
+			//si on ne dessine pas 3 fois la figure, elle n'apparait pas en entier
+			ga.draw(r1);
+			ga.draw(r1);
+			ga.draw(r1);
+		}
 
 	}
 
@@ -251,15 +261,16 @@ public class VisiteurAWTDessiner extends Frame implements Visiteur{
 	@Override
 	public void visit(Texte texte) {
 
-		String font = ""+texte.getPolice()+"-"+texte.getTaillePolice();
+		if(texte != null){
+			String font = ""+texte.getPolice()+"-"+texte.getTaillePolice();
 
-		Graphics2D ga = (Graphics2D)g;
-		
-		ga.setColor(texte.getCrayon().getCouleur());
-		ga.setFont(Font.decode(font));
-		
-		ga.drawString(texte.getTexte(), texte.getHtGauche().getX(), texte.getHtGauche().getY());
+			Graphics2D ga = (Graphics2D)g;
 
+			ga.setColor(texte.getCrayon().getCouleur());
+			ga.setFont(Font.decode(font));
+
+			ga.drawString(texte.getTexte(), texte.getHtGauche().getX(), texte.getHtGauche().getY());
+		}
 	}
 
 }

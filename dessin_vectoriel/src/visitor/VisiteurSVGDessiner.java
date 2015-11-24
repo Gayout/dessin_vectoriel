@@ -18,7 +18,7 @@ public class VisiteurSVGDessiner implements Visiteur{
 	 * @see VisiteurSVGDessiner#setCode(String)
 	 */
 	private String code;
-	
+
 	/**
 	 * Constructeur sans paramètre
 	 */
@@ -61,10 +61,12 @@ public class VisiteurSVGDessiner implements Visiteur{
 	 */
 	@Override
 	public void visit(Cercle cercle) {
-		code = code.substring(0, code.length()-6);
-		CercleSVG cercleSVG= cercle.creerCercleSVG();
-		code += "\t"+cercleSVG.generateCode();
-		code += "\n</svg>";
+		if(cercle != null){
+			code = code.substring(0, code.length()-6);
+			CercleSVG cercleSVG= cercle.creerCercleSVG();
+			code += "\t"+cercleSVG.generateCode();
+			code += "\n</svg>";
+		}
 	}
 
 	/**
@@ -73,10 +75,12 @@ public class VisiteurSVGDessiner implements Visiteur{
 	 */
 	@Override
 	public void visit(CourbeBezier courbeBezier) {
-		code = code.substring(0, code.length()-6);
-		CourbeBezierSVG courbeBezierSVG= courbeBezier.creerCourbeBezierSVG();
-		code += "\t"+courbeBezierSVG.generateCode();
-		code += "\n</svg>";		
+		if(courbeBezier!=null){
+			code = code.substring(0, code.length()-6);
+			CourbeBezierSVG courbeBezierSVG= courbeBezier.creerCourbeBezierSVG();
+			code += "\t"+courbeBezierSVG.generateCode();
+			code += "\n</svg>";		
+		}
 	}
 
 	/**
@@ -85,10 +89,12 @@ public class VisiteurSVGDessiner implements Visiteur{
 	 */
 	@Override
 	public void visit(Ellipse ellipse) {
-		code = code.substring(0, code.length()-6);
-		EllipseSVG ellipseSVG= ellipse.creerEllipseSVG();
-		code += "\t"+ellipseSVG.generateCode();
-		code += "\n</svg>";		
+		if(ellipse!=null){
+			code = code.substring(0, code.length()-6);
+			EllipseSVG ellipseSVG= ellipse.creerEllipseSVG();
+			code += "\t"+ellipseSVG.generateCode();
+			code += "\n</svg>";		
+		}
 	}
 
 	/**
@@ -97,22 +103,26 @@ public class VisiteurSVGDessiner implements Visiteur{
 	 */
 	@Override
 	public void visit(Polygone polygone) {
-		code = code.substring(0, code.length()-6);
-		PolygoneSVG polygoneSVG= polygone.creerPolygoneSVG();
-		code += "\t"+polygoneSVG.generateCode();
-		code += "\n</svg>";			
+		if(polygone != null){
+			code = code.substring(0, code.length()-6);
+			PolygoneSVG polygoneSVG= polygone.creerPolygoneSVG();
+			code += "\t"+polygoneSVG.generateCode();
+			code += "\n</svg>";			
+		}
 	}
-	
+
 	/**
 	 * Pour la visite d'un rectangle
 	 * @see Visiteur#visit(Rectangle)
 	 */
 	@Override
 	public void visit(Rectangle rectangle) {
-		code = code.substring(0, code.length()-6);
-		RectangleSVG rectangleSVG= rectangle.creerRectangleSVG();
-		code += "\t"+rectangleSVG.generateCode();
-		code += "\n</svg>";			
+		if(rectangle != null){
+			code = code.substring(0, code.length()-6);
+			RectangleSVG rectangleSVG= rectangle.creerRectangleSVG();
+			code += "\t"+rectangleSVG.generateCode();
+			code += "\n</svg>";			
+		}
 	}
 
 	/**
@@ -121,10 +131,12 @@ public class VisiteurSVGDessiner implements Visiteur{
 	 */
 	@Override
 	public void visit(Segment segment) {
-		code = code.substring(0, code.length()-6);
-		SegmentSVG segmentSVG= segment.creerSegmentSVG();
-		code += "\t"+segmentSVG.generateCode();
-		code += "\n</svg>";			
+		if(segment != null){
+			code = code.substring(0, code.length()-6);
+			SegmentSVG segmentSVG= segment.creerSegmentSVG();
+			code += "\t"+segmentSVG.generateCode();
+			code += "\n</svg>";			
+		}
 	}
 	/**
 	 * Pour la visite d'un texte
@@ -132,10 +144,11 @@ public class VisiteurSVGDessiner implements Visiteur{
 	 */
 	@Override
 	public void visit(Texte texte) {
-		code = code.substring(0, code.length()-6);
-		TexteSVG texteSVG= texte.creerTexteSVG();
-		code += "\t"+texteSVG.generateCode();
-		code += "\n</svg>";			
+		if(texte != null){
+			code = code.substring(0, code.length()-6);
+			TexteSVG texteSVG= texte.creerTexteSVG();
+			code += "\t"+texteSVG.generateCode();
+			code += "\n</svg>";			
+		}
 	}
-
 }
