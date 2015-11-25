@@ -7,6 +7,8 @@ import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import abstraction.Dessin;
 import abstraction.Visiteur;
@@ -39,6 +41,12 @@ public class VisiteurAWTDessiner extends Frame implements Visiteur{
 		this.setVisible(true);
 		this.setSize(500,500);
 		g = this.getGraphics();
+		this.addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent we)
+			{
+				System.exit(0);
+			}
+		});
 	}
 
 	/**
@@ -53,8 +61,29 @@ public class VisiteurAWTDessiner extends Frame implements Visiteur{
 		this.setVisible(true);
 		this.setSize(largeur,hauteur);
 		g = this.getGraphics();
+		this.addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent we)
+			{
+				System.exit(0);
+			}
+		});
+	}
+	
+	/**
+	 * Getter
+	 * @return la variable d'instance de type Graphics
+	 */
+	public Graphics getG() {
+		return g;
 	}
 
+	/**
+	 * Setter
+	 * @param g
+	 */
+	public void setG(Graphics g) {
+		this.g = g;
+	}
 
 	/**
 	 * Pour la visite d'un DessinVide, il ne se passe rien

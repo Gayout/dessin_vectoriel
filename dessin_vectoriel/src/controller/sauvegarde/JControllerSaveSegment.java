@@ -49,7 +49,9 @@ public class JControllerSaveSegment implements ActionListener  {
 							}
 							else {
 								int i = JControllerListSegment.branchToIndice(this.application.getSegments(), this.application.getSegmentSelected());
+								this.application.replaceDessin(this.application.getSegments().get(i-1), s);
 								this.application.replaceSegment(i-1, s);
+								System.out.println(((Segment)this.application.getDessins().get(0)).getArrivee().getX());
 							}
 							this.application.setSegmentSelected(s);
 							

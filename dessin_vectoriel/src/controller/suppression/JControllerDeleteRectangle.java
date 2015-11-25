@@ -24,6 +24,7 @@ public class JControllerDeleteRectangle implements ActionListener {
 		if(choix == 0) {
 			try {
 				int i = JControllerListRectangle.branchToIndice(this.application.getRectangles(), this.application.getRectangleSelected());
+				this.application.removeDessin(this.application.getRectangles().get(i-1));
 				this.application.removeRectangle(i-1);
 				this.application.setRectangleSelected(null);
 			}

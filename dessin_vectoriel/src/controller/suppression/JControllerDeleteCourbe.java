@@ -24,6 +24,7 @@ public class JControllerDeleteCourbe implements ActionListener {
 		if(choix == 0) {
 			try {
 				int i = JControllerListCourbe.branchToIndice(this.application.getCourbes(), this.application.getCourbeSelected());
+				this.application.removeDessin(this.application.getCourbes().get(i-1));
 				this.application.removeCourbe(i-1);
 				this.application.setCourbeSelected(null);
 			}

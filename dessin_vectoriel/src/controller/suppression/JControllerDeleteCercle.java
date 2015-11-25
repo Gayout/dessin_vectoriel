@@ -24,6 +24,7 @@ public class JControllerDeleteCercle implements ActionListener {
 		if(choix == 0) {
 			try {
 				int i = JControllerListCercle.branchToIndice(this.application.getCercles(), this.application.getCercleSelected());
+				this.application.removeDessin(this.application.getCercles().get(i-1));
 				this.application.removeCercle(i-1);
 				this.application.setCercleSelected(null);
 			}

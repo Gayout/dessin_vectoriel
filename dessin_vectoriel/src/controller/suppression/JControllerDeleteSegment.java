@@ -24,6 +24,7 @@ public class JControllerDeleteSegment implements ActionListener {
 		if(choix == 0) {
 			try {
 				int i = JControllerListSegment.branchToIndice(this.application.getSegments(), this.application.getSegmentSelected());
+				this.application.removeDessin(this.application.getSegments().get(i-1));
 				this.application.removeSegment(i-1);
 				this.application.setSegmentSelected(null);
 			}

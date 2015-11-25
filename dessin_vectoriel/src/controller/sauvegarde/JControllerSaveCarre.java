@@ -47,6 +47,7 @@ public class JControllerSaveCarre implements ActionListener {
 							}
 							else {
 								int i = JControllerListCarre.branchToIndice(this.application.getCarres(), this.application.getCarreSelected());
+								this.application.replaceDessin(this.application.getCarres().get(i-1), c);
 								this.application.replaceCarre(i-1, c);
 							}
 							this.application.setCarreSelected(c);

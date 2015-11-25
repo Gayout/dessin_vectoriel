@@ -24,6 +24,7 @@ public class JControllerDeleteCarre implements ActionListener {
 		if(choix == 0) {
 			try {
 				int i = JControllerListCarre.branchToIndice(this.application.getCarres(), this.application.getCarreSelected());
+				this.application.removeDessin(this.application.getCarres().get(i-1));
 				this.application.removeCarre(i-1);
 				this.application.setCarreSelected(null);
 			}

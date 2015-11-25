@@ -10,6 +10,7 @@ import javax.swing.*;
 
 import abstraction.Application;
 import controller.JControllerDessins;
+import controller.JControllerExport;
 import controller.crayon.JControllerButtonColor;
 import controller.crayon.JControllerSlider;
 import controller.listes.JControllerListCarre;
@@ -34,7 +35,7 @@ import controller.suppression.JControllerDeleteEllipse;
 import controller.suppression.JControllerDeletePolygone;
 import controller.suppression.JControllerDeleteRectangle;
 import controller.suppression.JControllerDeleteSegment;
-import visitor.VisiteurAWTDessiner2;
+import visitor.VisiteurAWTDessiner;
 
 public class MainView extends JFrame {
 	/**
@@ -69,7 +70,9 @@ public class MainView extends JFrame {
 
 	//Variables d'instance
 	private Application application;
-
+	
+	private VisiteurAWTDessiner panelAWT;
+	
 	protected JList<String> listSegments;
 	protected JList<String> listCourbes;
 	protected JList<String> listCercles;
@@ -88,6 +91,14 @@ public class MainView extends JFrame {
 
 	public void setApplication(Application application) {
 		this.application = application;
+	}
+	
+	public VisiteurAWTDessiner getPanelAWT() {
+		return panelAWT;
+	}
+
+	public void setPanelAWT(VisiteurAWTDessiner panelAWT) {
+		this.panelAWT = panelAWT;
 	}
 
 	public JList<String> getListSegments() {
@@ -183,13 +194,14 @@ public class MainView extends JFrame {
 
 		//Modification Figures Créées
 		this.createModificationMenu();
-
-		//Ajout Preview AWT
-		this.createPreview();
-
+		
+		this.panelAWT = new VisiteurAWTDessiner(this.getApplication().largeur, this.getApplication().hauteur);
+		JControllerDessins controllerDessins = new JControllerDessins(panelAWT, this.getApplication());
+		this.getApplication().addObserver(controllerDessins);
+		
 		this.setVisible(true);
 		this.pack();
-		this.setLocationRelativeTo(null);		
+		this.setLocationRelativeTo(null);	
 	}
 
 	//== ELEMENTS DE L'INTERFACE GRAPHIQUE==\\
@@ -204,6 +216,8 @@ public class MainView extends JFrame {
 		JMenuItem enregistrer = new JMenuItem("Enregistrer sous");
 		enregistrer.setFont(new Font(enregistrer.getFont().getName(), Font.BOLD, ITEM_MENU_SIZE));
 		enregistrer.setMnemonic('s');
+		JControllerExport controlExport = new JControllerExport(this.getApplication(), enregistrer);
+		enregistrer.addActionListener(controlExport);
 		fichier.add(enregistrer);
 		barreMenu.add(fichier);
 		this.setJMenuBar(barreMenu);
@@ -286,7 +300,7 @@ public class MainView extends JFrame {
 		choixCouleur.setBackground(this.application.getCrayon().getCouleur());
 		choixCouleur.setForeground(this.application.getCrayon().getCouleur());
 		couleurPanel.add(choixCouleur);
-		couleurPanel.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 900));
+		couleurPanel.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 30));
 
 		crayonPanel.add(couleurPanel);
 
@@ -490,32 +504,9 @@ public class MainView extends JFrame {
 
 		menu.setTabPlacement(JTabbedPane.RIGHT);
 
-		this.getContentPane().add(menu, BorderLayout.EAST);
-		this.pack();
-	}
-
-	private void createPreview() {
-		JTabbedPane menu = new JTabbedPane();
-
-		menu.setFont(new Font(menu.getFont().getName(), Font.BOLD, ITEM_EXPORT_SIZE));
-		menu.setBackground(ITEM_MODIFICATION_COLOR_BACKGROUND);
-		menu.setForeground(ITEM_MODIFICATION_COLOR_POLICE);
-
-		JPanel panelDessin = new JPanel(new BorderLayout());
-		VisiteurAWTDessiner2 panelAWT = new VisiteurAWTDessiner2(this.getApplication().largeur, this.getApplication().hauteur, this);
-		JControllerDessins controllerDessins = new JControllerDessins(panelAWT, this.getApplication());
-		this.getApplication().addObserver(controllerDessins);
-		panelDessin.add(panelAWT, BorderLayout.CENTER);
-		menu.addTab("AWT", panelDessin);
-		
-		JPanel panelSVG = new JPanel();
-		menu.addTab("SVG", panelSVG);
-
-		menu.setTabPlacement(JTabbedPane.SCROLL_TAB_LAYOUT);
-
 		this.getContentPane().add(menu, BorderLayout.CENTER);
 		this.pack();
-	}
+	}	
 
 	class PanelModification extends JPanel {
 		/**

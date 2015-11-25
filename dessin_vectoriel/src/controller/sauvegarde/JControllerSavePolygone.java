@@ -63,6 +63,7 @@ public class JControllerSavePolygone implements ActionListener {
 				}
 				else {
 					int i = JControllerListPolygone.branchToIndice(this.application.getPolygones(), this.application.getPolygoneSelected());
+					this.application.replaceDessin(this.application.getPolygones().get(i-1), p);
 					this.application.replacePolygone(i-1, p);
 				}
 				this.application.setPolygoneSelected(p);

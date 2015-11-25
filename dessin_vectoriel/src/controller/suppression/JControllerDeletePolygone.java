@@ -24,6 +24,7 @@ public class JControllerDeletePolygone implements ActionListener {
 		if(choix == 0) {
 			try {
 				int i = JControllerListPolygone.branchToIndice(this.application.getPolygones(), this.application.getPolygoneSelected());
+				this.application.removeDessin(this.application.getPolygones().get(i-1));
 				this.application.removePolygone(i-1);
 				this.application.setPolygoneSelected(null);
 			}

@@ -49,6 +49,7 @@ public class JControllerSaveRectangle implements ActionListener {
 								}
 								else {
 									int i = JControllerListRectangle.branchToIndice(this.application.getRectangles(), this.application.getRectangleSelected());
+									this.application.replaceDessin(this.application.getRectangles().get(i-1), r);
 									this.application.replaceRectangle(i-1, r);
 								}
 								this.application.setRectangleSelected(r);

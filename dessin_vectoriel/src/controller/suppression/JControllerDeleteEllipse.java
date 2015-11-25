@@ -24,6 +24,7 @@ public class JControllerDeleteEllipse implements ActionListener {
 		if(choix == 0) {
 			try {
 				int i = JControllerListEllipse.branchToIndice(this.application.getEllipses(), this.application.getEllipseSelected());
+				this.application.removeDessin(this.application.getEllipses().get(i-1));
 				this.application.removeEllipse(i-1);
 				this.application.setEllipseSelected(null);
 			}

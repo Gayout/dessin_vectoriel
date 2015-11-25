@@ -52,6 +52,7 @@ public class JControllerSaveEllipse  implements ActionListener {
 										}
 										else {
 											int i = JControllerListEllipse.branchToIndice(this.application.getEllipses(), this.application.getEllipseSelected());
+											this.application.replaceDessin(this.application.getEllipses().get(i-1), ep);
 											this.application.replaceEllipse(i-1, ep);
 										}
 										this.application.setEllipseSelected(ep);

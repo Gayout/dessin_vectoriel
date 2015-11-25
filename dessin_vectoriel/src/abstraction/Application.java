@@ -339,6 +339,20 @@ public class Application extends Observable {
 		this.notifyObservers(MODIFY_DESSINS);
 	}
 	
+	public void removeDessin(Chemin c) {
+		boolean aret = false;
+		int j = 0;
+		for(int i=0; i<this.getDessins().size() && !aret;i++) {
+			aret = this.getDessins().get(i).equals(c);
+			j++;
+		}
+		if (aret) {
+			this.getDessins().remove(j-1);
+		}
+		this.setChanged();
+		this.notifyObservers(MODIFY_DESSINS);
+	}
+	
 	public void removeSegment(int i) {
 		this.getSegments().remove(i);
 		this.setChanged();
@@ -408,6 +422,20 @@ public class Application extends Observable {
 
 		this.notifyObservers(MODIFY_RECTANGLES);
 		this.notifyObservers(MODIFY_RECTANGLE_SELECTED);
+		this.notifyObservers(MODIFY_DESSINS);
+	}
+	
+	public void replaceDessin(Chemin cAncien, Chemin cNew) {
+		boolean aret = false;
+		int j = 0;
+		for(int i=0; i<this.getDessins().size() && !aret;i++) {
+			aret = this.getDessins().get(i).equals(cAncien);
+			j++;
+		}
+		if (aret) {
+			this.getDessins().set(j-1, cNew);
+		}
+		this.setChanged();
 		this.notifyObservers(MODIFY_DESSINS);
 	}
 	

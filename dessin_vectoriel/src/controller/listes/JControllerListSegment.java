@@ -44,7 +44,6 @@ public class JControllerListSegment implements Observer, ListSelectionListener {
 
 	@Override
 	public void valueChanged(ListSelectionEvent arg0) {
-		System.out.println(this.application.getSegmentSelected());
 		if ((this.list.getSelectedIndex() != -1) && !((String)this.list.getSelectedValue()).equals("-")) {
 			this.application.setSegmentSelected(this.application.getSegments().get(this.list.getSelectedIndex() - 1));
 			this.mod.setEnabled(true);

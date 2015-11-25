@@ -63,6 +63,7 @@ public class JControllerSaveCourbe implements ActionListener {
 				}
 				else {
 					int i = JControllerListCercle.branchToIndice(this.application.getCercles(), this.application.getCercleSelected());
+					this.application.replaceDessin(this.application.getCourbes().get(i-1), c);
 					this.application.replaceCourbe(i-1, c);
 				}
 				this.application.setCourbeSelected(c);

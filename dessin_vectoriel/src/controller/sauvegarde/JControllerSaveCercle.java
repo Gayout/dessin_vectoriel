@@ -47,6 +47,7 @@ public class JControllerSaveCercle implements ActionListener {
 							}
 							else {
 								int i = JControllerListCercle.branchToIndice(this.application.getCercles(), this.application.getCercleSelected());
+								this.application.replaceDessin(this.application.getCercles().get(i-1), c);
 								this.application.replaceCercle(i-1, c);
 							}
 							this.application.setCercleSelected(c);
