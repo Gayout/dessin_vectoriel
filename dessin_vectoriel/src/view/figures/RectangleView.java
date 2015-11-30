@@ -161,7 +161,7 @@ public class RectangleView extends JDialog {
 		
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
-		JControllerSaveRectangle controlRectangle = new JControllerSaveRectangle(this.application, this, this.rempli.isSelected(), edition);
+		JControllerSaveRectangle controlRectangle = new JControllerSaveRectangle(this.application, this, edition);
 		save.addActionListener(controlRectangle);
 		this.getRootPane().setDefaultButton(save);
 		panelSave.add(save);
@@ -203,5 +203,13 @@ public class RectangleView extends JDialog {
 
 	public void setHauteur(JTextField hauteur) {
 		this.hauteur = hauteur;
+	}
+
+	public JCheckBox getRempli() {
+		return rempli;
+	}
+
+	public void setRempli(JCheckBox rempli) {
+		this.rempli = rempli;
 	}
 }

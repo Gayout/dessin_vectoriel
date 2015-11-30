@@ -124,7 +124,7 @@ public class CercleView extends JDialog {
 		
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
-		JControllerSaveCercle controlCercle = new JControllerSaveCercle(this.application, this, this.rempli.isSelected(), edition);
+		JControllerSaveCercle controlCercle = new JControllerSaveCercle(this.application, this, edition);
 		save.addActionListener(controlCercle);
 		this.getRootPane().setDefaultButton(save);
 		panelSave.add(save);
@@ -159,5 +159,12 @@ public class CercleView extends JDialog {
 	public void setR(JTextField r) {
 		this.r = r;
 	}
-	
+
+	public JCheckBox getRempli() {
+		return rempli;
+	}
+
+	public void setRempli(JCheckBox rempli) {
+		this.rempli = rempli;
+	}	
 }

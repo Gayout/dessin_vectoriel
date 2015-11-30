@@ -131,7 +131,7 @@ public class CarreView extends JDialog {
 		
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
-		JControllerSaveCarre controlCarre = new JControllerSaveCarre(this.application, this, this.rempli.isSelected(), edition);
+		JControllerSaveCarre controlCarre = new JControllerSaveCarre(this.application, this, edition);
 		save.addActionListener(controlCarre);
 		this.getRootPane().setDefaultButton(save);
 		panelSave.add(save);
@@ -165,5 +165,13 @@ public class CarreView extends JDialog {
 
 	public void setCote(JTextField cote) {
 		this.cote = cote;
+	}
+
+	public JCheckBox getRempli() {
+		return rempli;
+	}
+
+	public void setRempli(JCheckBox rempli) {
+		this.rempli = rempli;
 	}
 }

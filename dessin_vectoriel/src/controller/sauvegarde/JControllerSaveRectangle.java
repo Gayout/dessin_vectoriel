@@ -15,13 +15,11 @@ import view.figures.RectangleView;
 public class JControllerSaveRectangle implements ActionListener {
 	private Application application;
 	private RectangleView parent;
-	private boolean rempli;
 	private boolean edition;
 
-	public JControllerSaveRectangle (Application application, RectangleView parent, boolean rempli, boolean edition) {
+	public JControllerSaveRectangle (Application application, RectangleView parent, boolean edition) {
 		this.application = application;
 		this.parent = parent;
-		this.rempli = rempli;
 		this.edition = edition;
 	}
 
@@ -40,7 +38,7 @@ public class JControllerSaveRectangle implements ActionListener {
 							if ((xG>0) && (xG<this.application.largeur)
 									&& (yG>0) && (yG<this.application.hauteur)) {
 								Position gauche = new Position(xG,yG);
-								Rectangle r = new Rectangle(gauche, largeur, hauteur, this.rempli);
+								Rectangle r = new Rectangle(gauche, largeur, hauteur, parent.getRempli().isSelected());
 								Crayon crayon = new Crayon(this.application.getCrayon().getEpaisseur(), this.application.getCrayon().getCouleur());
 								r.setCrayon(crayon);
 								if (!edition) {

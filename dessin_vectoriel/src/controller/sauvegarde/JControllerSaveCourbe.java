@@ -18,14 +18,12 @@ public class JControllerSaveCourbe implements ActionListener {
 	private Application application;
 	private CourbeView fenetre;
 	private CourbeView2 parent;
-	private boolean rempli;
 	private boolean edition;
 
-	public JControllerSaveCourbe (Application application, CourbeView fenetre, CourbeView2 parent, boolean rempli, boolean edition) {
+	public JControllerSaveCourbe (Application application, CourbeView fenetre, CourbeView2 parent, boolean edition) {
 		this.application = application;
 		this.fenetre = fenetre;
 		this.parent = parent;
-		this.rempli = rempli;
 		this.edition = edition;
 	}
 
@@ -54,7 +52,7 @@ public class JControllerSaveCourbe implements ActionListener {
 			try {
 				y = Integer.parseInt(parent.getListY().get(taille-1).getText());
 				points.add(new Position(x, y));
-				CourbeBezier c = new CourbeBezier(points, !fenetre.getFerme().isSelected(), this.rempli);
+				CourbeBezier c = new CourbeBezier(points, !fenetre.getFerme().isSelected(), fenetre.getRempli().isSelected());
 				Crayon crayon = new Crayon(this.application.getCrayon().getEpaisseur(), this.application.getCrayon().getCouleur());
 				c.setCrayon(crayon);
 				if (!edition) {

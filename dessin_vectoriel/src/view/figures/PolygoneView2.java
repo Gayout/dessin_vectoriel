@@ -28,9 +28,11 @@ public class PolygoneView2 extends JDialog {
 	private Application application;
 	private ArrayList<JTextField> x;
 	private ArrayList<JTextField> y;
+	private boolean rempli;
+	private boolean ferme;
 	
 
-	public PolygoneView2 (Application application, PolygoneView parent, boolean edition, int nb, boolean rempli, boolean ferme) {
+	public PolygoneView2 (Application application, PolygoneView parent, boolean edition, int nb) {
 		super(parent, "Créer un polygone", true);
 		
 		this.application = application;
@@ -40,7 +42,9 @@ public class PolygoneView2 extends JDialog {
 
 		this.x = new ArrayList<JTextField>();
 		this.y = new ArrayList<JTextField>();
-		
+		this.rempli = parent.getRempli().isSelected();
+		this.ferme = parent.getFerme().isSelected();
+
 		for(int i = 0; i<nb; i++) {
 			JPanel panelPoint = new JPanel(new BorderLayout());
 			JPanel panelCoordonnees = new JPanel();
@@ -87,7 +91,7 @@ public class PolygoneView2 extends JDialog {
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
 		this.getRootPane().setDefaultButton(save);
-		JControllerSavePolygone savePolygone = new JControllerSavePolygone(this.application, parent, this, rempli, edition);
+		JControllerSavePolygone savePolygone = new JControllerSavePolygone(this.application, parent, this, edition);
 		save.addActionListener(savePolygone);
 		panelSave.add(save);
 		panelSave.setBorder(BorderFactory.createEmptyBorder(5, 5, 10, 5));
@@ -112,5 +116,21 @@ public class PolygoneView2 extends JDialog {
 
 	public void setListY(ArrayList<JTextField> y) {
 		this.y = y;
+	}
+
+	public boolean isRempli() {
+		return rempli;
+	}
+
+	public void setRempli(boolean rempli) {
+		this.rempli = rempli;
+	}
+
+	public boolean isFerme() {
+		return ferme;
+	}
+
+	public void setFerme(boolean ferme) {
+		this.ferme = ferme;
 	}
 }

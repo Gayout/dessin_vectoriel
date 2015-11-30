@@ -18,14 +18,12 @@ public class JControllerSavePolygone implements ActionListener {
 	private Application application;
 	private PolygoneView fenetre;
 	private PolygoneView2 parent;
-	private boolean rempli;
 	private boolean edition;
 
-	public JControllerSavePolygone (Application application, PolygoneView fenetre, PolygoneView2 parent, boolean rempli, boolean edition) {
+	public JControllerSavePolygone (Application application, PolygoneView fenetre, PolygoneView2 parent, boolean edition) {
 		this.application = application;
 		this.fenetre = fenetre;
 		this.parent = parent;
-		this.rempli = rempli;
 		this.edition = edition;
 	}
 
@@ -54,7 +52,7 @@ public class JControllerSavePolygone implements ActionListener {
 			try {
 				y = Integer.parseInt(parent.getListY().get(taille-1).getText());
 				points.add(new Position(x, y));
-				Polygone p = new Polygone(points, !fenetre.getFerme().isSelected(), this.rempli);
+				Polygone p = new Polygone(points, !fenetre.getFerme().isSelected(), fenetre.getRempli().isSelected());
 				Crayon crayon = new Crayon(this.application.getCrayon().getEpaisseur(), this.application.getCrayon().getCouleur());
 				p.setCrayon(crayon);
 				if (!this.edition) {

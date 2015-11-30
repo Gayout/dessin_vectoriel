@@ -24,7 +24,7 @@ import controller.menuFigures.JControllerButtonFiguresCarre;
 import controller.menuFigures.JControllerButtonFiguresCercle;
 import controller.menuFigures.JControllerButtonFiguresCourbe;
 import controller.menuFigures.JControllerButtonFiguresEllipse;
-import controller.menuFigures.JControllerButtonFiguresImage;
+import controller.menuFigures.JControllerButtonFiguresText;
 import controller.menuFigures.JControllerButtonFiguresPolygone;
 import controller.menuFigures.JControllerButtonFiguresRectangle;
 import controller.menuFigures.JControllerButtonFiguresSegment;
@@ -80,7 +80,7 @@ public class MainView extends JFrame {
 	protected JList<String> listCarres;
 	protected JList<String> listRectangles;
 	protected JList<String> listPolygones;
-	protected JList<String> listImages;
+	protected JList<String> listTexts;
 
 
 	//== GETTERS & SETTERS ==\\
@@ -157,12 +157,12 @@ public class MainView extends JFrame {
 		this.listPolygones = listPolygones;
 	}
 
-	public JList<String> getListImages() {
-		return listImages;
+	public JList<String> getListTexts() {
+		return listTexts;
 	}
 
-	public void setListImages(JList<String> listImages) {
-		this.listImages = listImages;
+	public void setListTexts(JList<String> listTexts) {
+		this.listTexts = listTexts;
 	}
 
 	//== CONSTRUCTEUR ==\\
@@ -181,7 +181,7 @@ public class MainView extends JFrame {
 		this.listCarres = new JList<String>();
 		this.listRectangles = new JList<String>();
 		this.listPolygones = new JList<String>();
-		this.listImages = new JList<String>();
+		this.listTexts = new JList<String>();
 
 		//Barre Menu
 		this.createBarreMenu();
@@ -383,15 +383,15 @@ public class MainView extends JFrame {
 		polygonePanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 15));
 		figuresPanel.add(polygonePanel);
 
-		JPanel imagePanel = new JPanel();
-		imagePanel.setBackground(ITEM_DESSIN_COLOR_BACKGROUND);
-		JButton bImage = new JButton(new ImageIcon(getClass().getResource("/view/images/Image.png")));
-		JControllerButtonFiguresImage controllerImage = new JControllerButtonFiguresImage(this, false);
-		bImage.addActionListener(controllerImage);
-		bImage.setToolTipText("Insérer une image");
-		imagePanel.add(bImage);
-		imagePanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 15));
-		figuresPanel.add(imagePanel);
+		JPanel textPanel = new JPanel();
+		textPanel.setBackground(ITEM_DESSIN_COLOR_BACKGROUND);
+		JButton bText = new JButton(new ImageIcon(getClass().getResource("/view/images/Text.png")));
+		JControllerButtonFiguresText controllerText = new JControllerButtonFiguresText(this, false);
+		bText.addActionListener(controllerText);
+		bText.setToolTipText("Insérer du texte");
+		textPanel.add(bText);
+		textPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 15));
+		figuresPanel.add(textPanel);
 
 		this.getContentPane().add(figuresPanel, BorderLayout.WEST);
 		this.pack();
@@ -495,11 +495,11 @@ public class MainView extends JFrame {
 		menu.addTab("Polygone", polygones);
 		menu.setMnemonicAt(6, '6');
 
-		/*PanelModification images = new PanelModification("Image", this.getListImages());
-		JControllerListImage controlImages = new JControllerListImage(this, this.getListImages(), this.getApplication());
-		this.getApplication().addObserver(controlImages);
-		this.getListImages().addListSelectionListener(controlImages);
-		menu.addTab("Image", images);
+		/*PanelModification texts = new PanelModification("Texte", this.getListTexts());
+		JControllerListText controlTexts = new JControllerListText(this, this.getListTexts(), this.getApplication());
+		this.getApplication().addObserver(controlTexts);
+		this.getListTexts().addListSelectionListener(controlTexts);
+		menu.addTab("Texte", texts);
 		menu.setMnemonicAt(7, '7');*/
 
 		menu.setTabPlacement(JTabbedPane.RIGHT);

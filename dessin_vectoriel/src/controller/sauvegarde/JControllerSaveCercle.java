@@ -14,13 +14,11 @@ import view.figures.CercleView;
 
 public class JControllerSaveCercle implements ActionListener {
 	CercleView parent;
-	private boolean rempli;
 	private boolean edition;
 	private Application application;
 
-	public JControllerSaveCercle (Application application, CercleView parent, boolean rempli, boolean edition) {
+	public JControllerSaveCercle (Application application, CercleView parent, boolean edition) {
 		this.parent = parent;
-		this.rempli = rempli;
 		this.application = application;
 		this.edition = edition;
 	}
@@ -38,9 +36,9 @@ public class JControllerSaveCercle implements ActionListener {
 						if ((xC>=0) && (xC<=this.application.largeur)
 								&& (yC>=0) && (yC<=this.application.hauteur)) {
 							Position centre = new Position(xC,yC);
-							Cercle c = new Cercle(centre, rayon, rempli);
+							Cercle c = new Cercle(centre, rayon, parent.getRempli().isSelected());
 							Crayon crayon = new Crayon(this.application.getCrayon().getEpaisseur(), this.application.getCrayon().getCouleur());
-							c.setCrayon(crayon);
+							c.setCrayon(crayon); 
 							if (!edition) {
 								this.application.addCercle(c);
 								this.application.addDessin(c);

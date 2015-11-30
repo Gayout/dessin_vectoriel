@@ -14,14 +14,12 @@ import view.figures.CarreView;
 
 public class JControllerSaveCarre implements ActionListener {
 	private CarreView parent;
-	private boolean rempli;
 	private boolean edition;
 	private Application application;
 
-	public JControllerSaveCarre (Application application, CarreView parent, boolean rempli, boolean edition) {
+	public JControllerSaveCarre (Application application, CarreView parent,  boolean edition) {
 		this.application = application;
 		this.parent = parent;
-		this.rempli = rempli;
 		this.edition = edition;
 	}
 
@@ -38,7 +36,7 @@ public class JControllerSaveCarre implements ActionListener {
 						if ((xG>=0) && (xG<=this.application.largeur)
 								&& (yG>=0) && (yG<=this.application.hauteur)) {
 							Position gauche = new Position(xG,yG);
-							Rectangle c = new Rectangle(gauche, cote, cote, this.rempli);
+							Rectangle c = new Rectangle(gauche, cote, cote, this.parent.getRempli().isSelected());
 							Crayon crayon = new Crayon(this.application.getCrayon().getEpaisseur(), this.application.getCrayon().getCouleur());
 							c.setCrayon(crayon);
 							if (!edition) {

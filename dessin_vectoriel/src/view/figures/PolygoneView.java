@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import abstraction.Application;
+import controller.JControllerBoxRemplie;
 import controller.menuFigures.JControllerButtonContinuePolygone;
 import implementation.Polygone;
 import view.MainView;
@@ -44,6 +45,9 @@ public class PolygoneView extends JDialog {
 		
 		this.rempli = new JCheckBox("remplie");
 		this.rempli.setFont(new Font(this.rempli.getFont().getName(), Font.ITALIC, TEXT_SIZE));
+		
+		JControllerBoxRemplie boxRemplie = new JControllerBoxRemplie(this.rempli, this.ferme);
+		this.ferme.addActionListener(boxRemplie);
 		
 		if (edition) {
 			Polygone pAncien = this.application.getPolygoneSelected();
@@ -99,7 +103,7 @@ public class PolygoneView extends JDialog {
 		JPanel panelContinuer = new JPanel();
 		JButton continuer = new JButton("Continuer");
 		this.getRootPane().setDefaultButton(continuer);
-		JControllerButtonContinuePolygone controlPolygone = new JControllerButtonContinuePolygone(this.application, this, edition, this.rempli.isSelected(), this.ferme.isSelected());
+		JControllerButtonContinuePolygone controlPolygone = new JControllerButtonContinuePolygone(this.application, this, edition);
 		continuer.addActionListener(controlPolygone);
 		
 		panelContinuer.add(continuer);
@@ -125,5 +129,13 @@ public class PolygoneView extends JDialog {
 
 	public void setFerme(JCheckBox ferme) {
 		this.ferme = ferme;
+	}
+
+	public JCheckBox getRempli() {
+		return rempli;
+	}
+
+	public void setRempli(JCheckBox rempli) {
+		this.rempli = rempli;
 	}
 }

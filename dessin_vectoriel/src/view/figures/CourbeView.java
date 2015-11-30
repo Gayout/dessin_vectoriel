@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import abstraction.Application;
+import controller.JControllerBoxRemplie;
 import controller.menuFigures.JControllerButtonContinueCourbe;
 import implementation.CourbeBezier;
 import view.MainView;
@@ -45,6 +46,9 @@ public class CourbeView extends JDialog {
 		
 		this.rempli = new JCheckBox("remplie");
 		this.rempli.setFont(new Font(this.rempli.getFont().getName(), Font.ITALIC, TEXT_SIZE));
+		
+		JControllerBoxRemplie boxRemplie = new JControllerBoxRemplie(this.rempli, this.ferme);
+		this.ferme.addActionListener(boxRemplie);
 		
 		if (edition) {
 			CourbeBezier cAncien = this.application.getCourbeSelected();
@@ -99,7 +103,7 @@ public class CourbeView extends JDialog {
 		
 		JPanel panelContinuer = new JPanel();
 		JButton continuer = new JButton("Continuer");
-		JControllerButtonContinueCourbe controlCourbe = new JControllerButtonContinueCourbe(this.application, this, edition, this.rempli.isSelected(), this.ferme.isSelected());
+		JControllerButtonContinueCourbe controlCourbe = new JControllerButtonContinueCourbe(this.application, this, edition);
 		continuer.addActionListener(controlCourbe);
 		this.getRootPane().setDefaultButton(continuer);
 		panelContinuer.add(continuer);
@@ -125,5 +129,13 @@ public class CourbeView extends JDialog {
 
 	public void setFerme(JCheckBox ferme) {
 		this.ferme = ferme;
+	}
+
+	public JCheckBox getRempli() {
+		return rempli;
+	}
+
+	public void setRempli(JCheckBox rempli) {
+		this.rempli = rempli;
 	}
 }

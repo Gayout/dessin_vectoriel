@@ -181,7 +181,7 @@ public class EllipseView extends JDialog {
 		
 		JPanel panelSave = new JPanel();
 		JButton save = new JButton("Enregistrer");
-		JControllerSaveEllipse controlEllipse = new JControllerSaveEllipse(this.application, this, this.rempli.isSelected(), edition);
+		JControllerSaveEllipse controlEllipse = new JControllerSaveEllipse(this.application, this, edition);
 		save.addActionListener(controlEllipse);
 		this.getRootPane().setDefaultButton(save);
 		panelSave.add(save);
@@ -231,5 +231,13 @@ public class EllipseView extends JDialog {
 
 	public void setAngle(JTextField angle) {
 		this.angle = angle;
+	}
+
+	public JCheckBox getRempli() {
+		return rempli;
+	}
+
+	public void setRempli(JCheckBox rempli) {
+		this.rempli = rempli;
 	}
 }

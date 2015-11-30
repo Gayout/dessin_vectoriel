@@ -15,13 +15,11 @@ import view.figures.EllipseView;
 public class JControllerSaveEllipse  implements ActionListener {
 	private Application application;
 	private EllipseView parent;
-	private boolean rempli;
 	private boolean edition;
 
-	public JControllerSaveEllipse (Application application, EllipseView parent, boolean rempli, boolean edition) {
+	public JControllerSaveEllipse (Application application, EllipseView parent, boolean edition) {
 		this.application = application;
 		this.parent = parent;
-		this.rempli = rempli;
 		this.edition = edition;
 	}
 
@@ -43,7 +41,7 @@ public class JControllerSaveEllipse  implements ActionListener {
 										&& (yC>0) && (yC<this.application.hauteur)) {
 									if (angle>0) {
 										Position centre = new Position(xC,yC);
-										Ellipse ep = new Ellipse(centre, gdAxe, ptiAxe, angle, this.rempli);
+										Ellipse ep = new Ellipse(centre, gdAxe, ptiAxe, angle, this.parent.getRempli().isSelected());
 										Crayon crayon = new Crayon(this.application.getCrayon().getEpaisseur(), this.application.getCrayon().getCouleur());
 										ep.setCrayon(crayon);
 										if (!edition) {
